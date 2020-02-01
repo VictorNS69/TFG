@@ -4,7 +4,8 @@
 \usepackage{hyperref}
 \usepackage[left=3cm, right=3cm, top=3.5cm, bottom=3.5cm]{geometry} % Márgenes recomendados
 \usepackage{times} % La fuente debe ser Times New Romans
-\usepackage[english]{babel}%, spanish, es-noshorthands, es-tabla]{babel}
+\usepackage[english]{babel} 
+% , spanish, es-noshorthands, es-tabla]{babel}
 %\usepackage[english]{translator}
 \usepackage[style=ieee, backend=biber]{biblatex} % Bibliografía en formato IEEE
 \usepackage{sectsty}
@@ -60,9 +61,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus malesuada
 volutpat. Nam id tortor purus. Aliquam sit amet felis ipsum. Nullam ac ante
 tempus, dignissim dolor a, aliquet nunc. In hac habitasse platea dictumst. In ac
 lacus sit amet velit fringilla pharetra. Duis at cursus erat. Curabitur sed
-pellentesque lacus. Aliquam sit amet est nec nisl cursus varius. Sed pharetra ac
+pellentesque lacus. Aliquam sit amet est nec nisl\cite{test} cursus varius. Sed pharetra ac
 neque quis imperdiet. Quisque ac tortor enim. Sed dignissim blandit orci, id
-fermentum lorem commodo eget\cite{Recos}.
+fermentum lorem commodo eget\cite{Recos}.\cite{test}
 
 \section{Estado del arte}
 
@@ -79,4 +80,6 @@ fermentum lorem commodo eget\cite{Recos}.
 \subsection{Conclusiones}
 
 \printbibliography[heading=bibnumbered] % Última sección, numerada, para la bibliografía
+
+
 \end{document}
