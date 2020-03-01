@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
