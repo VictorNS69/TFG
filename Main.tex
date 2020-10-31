@@ -1,17 +1,15 @@
-\documentclass[a4paper, 12pt]{article} % La fuente debe ser de 12pt
+\documentclass[a4paper, 12pt]{article} % Ffuente 12pt
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage[left=3cm, right=3cm, top=3.5cm, bottom=3.5cm]{geometry} % Márgenes recomendados
-\usepackage{times} % La fuente debe ser Times New Romans
+\usepackage{times} % Fuente Times New Romans
 \usepackage[english]{babel} 
-% , spanish, es-noshorthands, es-tabla]{babel}
-%\usepackage[english]{translator}
 \usepackage[style=ieee, backend=biber]{biblatex} % Bibliografía en formato IEEE
 \usepackage{sectsty}
 \usepackage{cover}
 
-\sectionfont{\MakeUppercase} % Las secciones deben estar en mayúsculas
+\sectionfont{\MakeUppercase} % Secciones en mayúsculas
 \bibliography{Bibliography.bib}
 
 \Director{Víctor Rampérez Martín}
@@ -21,14 +19,18 @@
 
 \author{Víctor Nieves Sánchez}
 \date{Enero de 2021}
-\title{Título del trabajo}
+\title{Alastria Blockchain Ecosystem. Security and privacy in Self- Sovereign Identity}
 
 \begin{document}
 \maketitle
 \null
 \newpage
 
-\pagenumbering{roman} % La numeración debe ser romana hasta la primera sección
+\section*{Acknowledgement}
+    TODO : )
+\newpage
+
+\pagenumbering{roman} % Numeración romana hasta la primera sección
 \tableofcontents
 \newpage
 
@@ -36,36 +38,78 @@
 \listoftables
 \newpage
 
-\begin{abstract}
-  \normalsize
-  Aquí el texto del abstract.
-
-  \textbf{Palabras clave:} palabra 1, palabra 2, palabra 3\ldots
-\end{abstract}
-
-\begin{otherlanguage}{english}
-  \begin{abstract}
-    \normalsize
-    Here goes the abstract text.
-
-    \textbf{Keywords:} keyword 1, keyword 2, keyword 3\ldots
-  \end{abstract}
+\begin{otherlanguage}{spanish}
+    \renewcommand{\spanishabstractname}{Resumen}
+    \begin{abstract}
+        \normalsize
+        El consorcio Alastria fomenta la economía digital a través del desarrollo de tecnologías de registro descentralizado como es Blockchain.\\
+          
+        La tecnología \textit{Blockchain} es una tecnología que, basándose en cálculos criptográficos, ofrece un libro de cuentas distribuido (llamado \textit{ledger}) en el que se apuntan transacciones entre participantes que no tienen una relación de confianza entre si. Las principales características de este \textit{ledger} son que se distribuye entre los múltiples nodos participantes de la red, que es inmutable, no repudiable y que no depende de relaciones de confianza entre participantes ni de una entidad central.\\
+        
+        Alastria ha definido un modelo de identidad digital llamado \textit{Alastria ID}. El proyecto \textit{Alastria ID} está desplegado como una de las aplicaciones básicas de la infraestructura blockchain promovida por el consorcio dentro de su plataforma. Esta propuesta tecnológica de identidad digital en blockchain tiene como objetivo proporcionar un marco de infraestructura y desarrollo, para llevar a cabo proyectos de Identidad Digital Soberana (\textit{Self-Sovereign Identity} en inglés), con plena vigencia legal en la zona euro.\\
+        
+        El objetivo de este trabajo es doble. Por un lado se estudiará el concepto de \textit{Self-Sovereign Identity (SSI)}, así como la implementación de Alastria llamada \textit{Alastria ID} y otras implementaciones que se hayan o se estén definiendo. Por otro lado, se pretende hacer un estudio desde el punto de vista de la seguridad, de la implementación de \textit{Alastria ID}, auditando los distintos artefactos y herramientas que proporciona Alastria, y realizando una prueba de concepto de un potencial ataque.\\
+        
+        \textbf{Palabras clave:} Blockchain, Alastria, Identidad Soberana, Ethereum, Quorum, Solidity, Hacking, Ciberseguridad\ldots
+    \end{abstract}
 \end{otherlanguage}
 
 \newpage
-\pagenumbering{arabic} % Iniciamos la numeración árabe en la primera sección
 
-\section{Introducción}
+\begin{abstract}
+    \normalsize
+    Here goes the abstract text. 
+    -> Hacer cuando tenga visto bueno del resumen
+    
+    \textbf{Keywords:} Blockchain, Alastria, Self-Sovereign Identity, Ethereum, Quorum, Solidity, Hacking, Cybersecurity\ldots
+\end{abstract}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus malesuada
-volutpat. Nam id tortor purus. Aliquam sit amet felis ipsum. Nullam ac ante
-tempus, dignissim dolor a, aliquet nunc. In hac habitasse platea dictumst. In ac
-lacus sit amet velit fringilla pharetra. Duis at cursus erat. Curabitur sed
-pellentesque lacus. Aliquam sit amet est nec nisl\cite{test} cursus varius. Sed pharetra ac
-neque quis imperdiet. Quisque ac tortor enim. Sed dignissim blandit orci, id
-fermentum lorem commodo eget\cite{Recos}.\cite{test}
+\newpage
+\pagenumbering{arabic} % Numeración árabe en la primera sección
 
-\section{Estado del arte}
+\section{Introduction}
+    This section presents the context of thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
+    
+    \subsection{Context}
+        \subsubsection{Blockchain}
+        
+        \subsubsection{Self-Sovereign Identity}
+        
+        \subsubsection{Alastria}
+        Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
+        
+        Alastria has the clear vocation to become a pioneering project of reference in the generation of new Digital Economy models. It promotes an innovation methodology that anticipates the needs of the Society regarding the use of products and services based on decentralized technologies.\\
+        
+        Alastria's mission and vision covers several areas.
+        \begin{itemize}
+            \item Digital Economy: Alastria is a non-profit association that fosters the Digital Economy through the development of Blockchain.
+            \item Blockchain Democratization: Alastria seeks to democratize access to Blockchain by providing the necessary tools to promote access, adoption and use of technology.
+            \item Networks promoted by its members: Alastria is technology agnostic and offers the networks promoted by its members and a Digital Identity model (\textit{Alastria ID}), focused on making the transactions on the Networks with a legal validity. 
+            \item Pioneer Project: Alastria is a pioneering project that encourages innovation, anticipating the possible interest of our Society for the use of services and products based on Blockchain.
+        \end{itemize}
+        
+        \subsection{Motivation}
+            Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects.\\
+            
+            Also, the idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions.\\
+            
+            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), and also to be part of the \textit{CORE Identity Team} of Alastria. Therefore, and with the intention of studying other implementations for the \textit{SSI}, and to improve the current implementation proposed by Alastria, I have chosen this topic.
+            
+        \subsection{Objectives}
+            The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{Self-Sovereign Identity} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
+            \begin{itemize}
+                \item[1] the analysis of the blockchain technology.
+                \item[2] the study of the \textit{Self-Sovereign Identity}.
+                \item[3] the delve in the implementation of \textit{Alastria ID}.
+                \item[4] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}
+                \item[5] the design of a potential attack and demonstration of its criticality.
+            \end{itemize}
+            
+        \subsection{Document Structure}
+            TODO :) 
+        \newpage
+        
+\section{State of the Art}
 
 \section{Otra sección}
 
@@ -73,13 +117,9 @@ fermentum lorem commodo eget\cite{Recos}.\cite{test}
 
 \subsubsection{Otra subsección}
 
-\section{Resultados y conclusiones}
+\section{Conclusions}
 
-\subsection{Pruebas}
-
-\subsection{Conclusiones}
-
+\nocite{*} % Cita todas las ref (incluidas las no citadas)
 \printbibliography[heading=bibnumbered] % Última sección, numerada, para la bibliografía
-
 
 \end{document}
