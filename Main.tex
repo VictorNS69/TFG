@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{article} % Ffuente 12pt
+\documentclass[a4paper, 12pt]{article} % Fuente 12pt
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
@@ -8,6 +8,10 @@
 \usepackage[style=ieee, backend=biber]{biblatex} % Bibliografía en formato IEEE
 \usepackage{sectsty}
 \usepackage{cover}
+\usepackage{graphicx}
+\graphicspath{ {images/} } % Directorio imágenes
+\usepackage{listings} % Formateo código
+\input{./assets/solidity-highlighting.tex} % Resaltado de solidity
 
 \sectionfont{\MakeUppercase} % Secciones en mayúsculas
 \bibliography{Bibliography.bib}
@@ -27,7 +31,7 @@
 \newpage
 
 \section*{Acknowledgement}
-    TODO : )
+    TODO
 \newpage
 
 \pagenumbering{roman} % Numeración romana hasta la primera sección
@@ -58,7 +62,7 @@
 
 \begin{abstract}
     \normalsize
-    Here goes the abstract text. 
+    TODO
     -> Hacer cuando tenga visto bueno del resumen
     
     \textbf{Keywords:} Blockchain, Alastria, Self-Sovereign Identity, Ethereum, Quorum, Solidity, Hacking, Cybersecurity\ldots
@@ -72,9 +76,11 @@
     
     \subsection{Context}
         \subsubsection{Blockchain}
-        
+            TODO
+            
         \subsubsection{Self-Sovereign Identity}
-        
+            TODO
+            
         \subsubsection{Alastria}
         Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
         
@@ -106,17 +112,188 @@
             \end{itemize}
             
         \subsection{Document Structure}
-            TODO :) 
+            TODO
         \newpage
         
 \section{State of the Art}
+    \subsection{Blockchain}
+        Blockchain is a type of DLT (Distributed Ledger Technologie) which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
+        \begin{itemize}
+            \item \textbf{Decentralization}. The information is not stored by a single entity, in fact, everyone in the network owns the information and can access it. Decentralization means that there is no core authority to dictate the truth to the other participants. Also, in a decentralized network, if you want to interact with another participant, you can do it directly without going through a third party.
+            \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below we can see the public transaction in the Alastria network, but we are not able to know the accounts “from” and “to”.
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.0\textwidth]{Alastria-block-exporer.png}
+                \caption{Alastria's Block explorer}
+                \label{fig:alastria_block_explorer}
+            \end{figure}
+            \item \textbf{Immutability}. This property ensures that once something has been entered into the blockchain, it cannot be tampered or modified.
+        \end{itemize}
+        
+        \subsubsection{How does Blockchain work?}
+            A Blockchain is a growing list of records, called blocks, that are linked using cryptography. Each block contains a hash of the previous block, the timestamp and a batch of valid transaction hashes encoded into a Merkle tree. The linked blocks form a chain. This iterative process confirms the integrity of the previous block, all the way back to the original genesis block (the first block of the network).
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.0\textwidth]{block-example.png}
+                \caption{Visual example of linked blocks}
+                \label{fig:linked_blocks}
+            \end{figure}
+            
+        \subsubsection{Types of blockchains}
+            There are different kinds of Blockchain networks, each one with different features. One of the most common classification is according to the architecture. The following figure shows a table with the classification.
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.0\textwidth]{Blockchain-types.png}
+                \caption{Blockchain architecture classification by \textit{McKinsey\&Company}}
+                \label{fig:blockchain_classification}
+            \end{figure}
 
-\section{Otra sección}
+            \begin{itemize}
+                \item \textbf{Public}. A public network is the one where everyone can join. Some examples of public networks are Bitcoin, Ethereum and Litecoin.
+                \item \textbf{Private}. A private network is the one where only authorized members can join. Some examples of private networks are Quorum and Monax.
+                \item \textbf{Permissionless}. A permissionless network is a private or public blockchain where every member can read and write.
+                \item \textbf{Permissioned}. A permissioned network is a private or public blockchain where every member can read but only some can write. Some examples of public permissioned networks are Alastria and LACChain.
+            \end{itemize}          
+            Also, there are two more types of blockchain networks on the rise.
+            \begin{itemize}
+                \item \textbf{Consortium} or \textbf{hybrid networks}. These networks are private and permissioned, operated by known entities such as stakeholders of a given industry regrouped in a consortium or exploiting a shared platform. Some known examples are \textit{Hyperledger} \textit{Fabric}, \textit{R3 Corda} and \textit{Multichain}.
+                \item \textbf{Blockchain as a Service} (BaaS). These are cloud platforms hosted by a service provider to deploy blockchain applications. The service provider manages the blockchain network while the customer defines the business logic. Some of the examples are \textit{Amazon (AWS)} and \textit{Oracle} blockchain platforms.
+            \end{itemize}
+            
+            \subsubsection{Uses of blockchain}
+                With the different properties of blockchain technology, and the different types of networks, there are a lot of use cases. The best known use case is using the blockchain as a payment infrastructure, the best example is Bitcoin. But there are a lot of other use cases shown in the next figure.\\
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=0.95\textwidth]{Blockchain-uses.png}
+                    \caption{Use cases table by \textit{McKinsey\&Company}}
+                    \label{fig:blockchain_uses}
+                \end{figure}
+                
+                In this document we are going to focus on the Self Sovereign Identity (SSI) using blockchain.
 
-\subsection{Una subsección}
+    \subsection{Ethereum}
+        Ethereum is an open-source, public, blockchain-based distributed ledger featuring smart contract functionality. It enables developers to build blockchain applications with business logic that execute in a trustless environment, while leveraging the high availability of the Ethereum network. 
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{ethereum-logo-portrait-purple.png}
+            \caption{Ethereum logo}
+            \label{fig:ethereum_logo}
+        \end{figure}
+        The principles behind Ethereum philosophy are:
+        \begin{itemize}
+            \item \textbf{Simplicity}. The Ethereum protocol should be as simple as possible.
+            \item \textbf{Universality}. Ethereum provides an internal Turing-complete scripting language. This language can be used to construct any logic, and any business case.
+            \item \textbf{Modularity}. The Ethereum protocol is designed to be as modular as possible, to allow if one was to make a small protocol modification in one place, the application stack would continue to function as normally. 
+            \item \textbf{Agility}. The protocol can be modified.
+            \item \textbf{Non-discrimination} and \textbf{non-censorship}. The protocol should not restrict any usage.
+        \end{itemize}
+        
+        \subsubsection{Ether}
+            Ether (ETH) is the native cryptocurrency used on the Ethereum network and is used to compensate miners who secure transactions. It is used to pay for gas, a unit of computation used in transactions and other state transitions.
+            Ether also has many current use cases, such as a store of value, a medium of exchange, and a unit of account.
+            
+        \subsubsection{Ethereum Accounts}
+            An Ethereum account or simply an “account” is the combination of an Ethereum address and it’s private key. An account can hold balance (Ether) and can send transactions. In Ethereum there are 2 types of accounts.
+            \begin{itemize}
+                \item \textbf{Externally owned accounts} (EOA). These accounts are a combination of public address and private key. This accounts:
+                \begin{itemize}
+                    \item Has an ether balance
+                    \item Can send transactions to Smart Contracts
+                    \item Can send and receive ether to/from another account
+                    \item Is controlled by private keys
+                    \item Has no associated code
+                \end{itemize}
+                \item \textbf{Contract accounts}: These accounts don’t have a corresponding private key. These accounts are generated when a Smart Contract is deployed in the blockchain. They are normally called “contracts” instead of contract accounts. A contract:
+                \begin{itemize}
+                    \item Has an ether balance
+                    \item They can receive ether just like EOA
+                    \item Has associated code
+                    \item Code execution is triggered by transactions or calls received from other contracts or accounts
+                    \item When executed can manipulate its own persistent storage
+                \end{itemize}
+            \end{itemize}
+        
+        \subsubsection{Ethereum wallet}
+            Wallets are software that are used to store and manage Ethereum accounts. Wallets allow the user to manage multiple accounts, provide functionality to sign transactions, track balances and so on. Wallets can be classified into two types.
+            \begin{itemize}
+                \item \textbf{Non-deterministic} wallet. These wallets use a random private key and generate a private key from it.
+                \item \textbf{Deterministic} wallet. In this wallet, keys are derived from a seed. The seed allows a user to easily back up and restore a wallet without needing any other information, and in some cases allow the creation of public addresses without the knowledge of the private key.
+            \end{itemize}
+        
+        \subsubsection{Ethereum stack}
+            Like any software stack, the complete "Ethereum stack" will vary from project to project depending on your business goals. However, the typical layers are:
+            \paragraph{Ethereum Virtual Machine (EVM)}
+                The Ethereum Virtual Machine, normally known as EVM is a software designed to emulate a machine with certain capabilities that make the Ethereum blockchain possible. We can program instructions for the EVM, using a series of opcodes, which we can then compile and translate into a specific bytecode or language that the EVM can understand and execute.\\
+                
+                The opcodes perform standard stack operations like \textit{XORAND}, \textit{ADD}, \textit{SUB}, etc. The EVM also implements a number of blockchain-specific stack operations, such as \textit{ADDRESS}, \textit{BALANCE}, \textit{SHA3}, \textit{BLOCKHASH}, etc. More specific information can be found at \url{ https://www.ethervm.io/#opcodes}.\\
+                
+                To make programming easier for the virtual machine, a specialized high-level language called Solidity was created. This programming language is used to create Smart Contracts. Solidity first transforms opcodes and then these to bytecode. This bytecode is finally executed by the EVM to perform the specified operations of a  Smart Contract. All this means that the EVM can function as a real computer, executing from the simplest to the most complex operations.\\
+                
+                In the following sections we will talk in detail about the Smart Contracts and Solidity.
+                
+            \paragraph{EVM Characteristics}
+                The EVM has a series of unique characteristics:
+                \begin{itemize}
+                    \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, EVM is capable of executing unreliable codes without disastrous consequences.
+                    \item The EVM is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the EVM are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can’t be modified or altered.
+                    \item Applications can be executed on the same blockchain network, without affecting other operations.
+                    \item EVM is able to follow the “rules” of Smart Contracts.
+                    \item The EVM has the ability to execute a series of well-defined opcodes.
+                \end{itemize}
+                
+            \paragraph{How does it work?}
+                The next figure defines how the EVM works.
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=1\textwidth]{evm-stack.jpeg}
+                    \caption{EVM stack schema}
+                    \label{fig:blockchain_stack}
+                \end{figure}
+                The Smart Contracts made with Solidity are compiled and converted to opcodes. These opcodes are transformed to bytecode, so it does facilitate the performance of the EVM tasks.\\
 
-\subsubsection{Otra subsección}
+                Thus, each transaction and operation that is carried out on the Ethereum blockchain goes through this process, and its execution is carried out by the EVM, which at the end records everything on the Ethereum blockchain, leaving a public record of those operations. 
 
+        \subsubsection{Smart Contracts}
+            Sam Richards, a Software Engineer working on Ethereum defines the Smart Contract as 
+            \begin{quote}
+                \textit{“a snippet of code that runs on the Ethereum blockchain. It's a collection of functions and data that resides at a specific address on the Ethereum blockchain.}
+
+                \textit{Smart contracts are a type of Ethereum account. This means they have a balance and they can send transactions over the network. However they're not controlled by a user, instead they are deployed to the network and run as programmed. User accounts can then interact with a smart contract by submitting transactions that execute a function defined on the smart contract. Smart contracts can define rules, like a regular contract, and automatically enforce them via the code.”}
+            \end{quote}
+
+        \subsubsection{Solidity}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.4\textwidth]{solidity-logo.jpg}
+                \caption{Solidity logo}
+                \label{fig:solidity_logo}
+            \end{figure}
+            
+            Solidity defines itself as an object-oriented, high-level language for implementing Smart Contracts. Smart Contracts are programs which govern the behaviour of accounts within the Ethereum state.\\
+            
+            Solidity was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
+
+            
+            Below is a Smart Contract written in Solidity (Source code from \url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}).
+            \lstinputlisting[language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
+    
+            More details about Solidity can be found in the official documentation. \url{https://solidity.readthedocs.io/en/latest/index.html}.
+            
+        \subsubsection{Ethereum Nodes}
+            TODO
+            
+        \subsubsection{Ethereum Client APIs}
+            TODO
+            
+        \subsubsection{End User Applications}
+            TODO
+            
+        \subsubsection{Ethereum 2.0 (Eth2)}
+            TODO
+
+    \subsection{JSON-RPC}
+                TODO
+            
 \section{Conclusions}
 
 \nocite{*} % Cita todas las ref (incluidas las no citadas)
