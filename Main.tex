@@ -31,7 +31,7 @@
 \newpage
 
 \section*{Acknowledgement}
-    TODO
+    /* TODO */
 \newpage
 
 \pagenumbering{roman} % Numeración romana hasta la primera sección
@@ -39,13 +39,17 @@
 \newpage
 
 \listoffigures
+\newpage
 \listoftables
+\newpage
+\lstlistoflistings
 \newpage
 
 \begin{otherlanguage}{spanish}
     \renewcommand{\spanishabstractname}{Resumen}
     \begin{abstract}
         \normalsize
+        % TODO: mejorar y extender con María
         El consorcio Alastria fomenta la economía digital a través del desarrollo de tecnologías de registro descentralizado como es Blockchain.\\
           
         La tecnología \textit{Blockchain} es una tecnología que, basándose en cálculos criptográficos, ofrece un libro de cuentas distribuido (llamado \textit{ledger}) en el que se apuntan transacciones entre participantes que no tienen una relación de confianza entre si. Las principales características de este \textit{ledger} son que se distribuye entre los múltiples nodos participantes de la red, que es inmutable, no repudiable y que no depende de relaciones de confianza entre participantes ni de una entidad central.\\
@@ -62,8 +66,7 @@
 
 \begin{abstract}
     \normalsize
-    TODO
-    -> Hacer cuando tenga visto bueno del resumen
+    % TODO
     
     \textbf{Keywords:} Blockchain, Alastria, Self-Sovereign Identity, Ethereum, Quorum, Solidity, Hacking, Cybersecurity\ldots
 \end{abstract}
@@ -72,14 +75,34 @@
 \pagenumbering{arabic} % Numeración árabe en la primera sección
 
 \section{Introduction}
-    This section presents the context of thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
+    This section presents the context of the thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
     
     \subsection{Context}
         \subsubsection{Blockchain}
-            TODO
+            % TODO añadir más con María
+            Blockchain\cite{blockchain-sum}\cite{blockchainGartner} is as a large distributed ledger that stores records of transactions. This “ledger” is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
+            
+            Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
             
         \subsubsection{Self-Sovereign Identity}
-            TODO
+            % TODO añadir más con María
+            Self-Sovereign Identity or just \textit{SSI}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital and analog identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
+            
+            Under Self-Sovereign Identity model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
+            
+            The ten guiding principles of SSI, defined by Christopher Allen in \textit{The Path to Self-Sovereign Identity}\cite{path-to-ssi} are:
+            \begin{itemize}
+                \item \textbf{Existence} - Users must have an independent existence.
+                \item \textbf{Control} - Users must control their identities.
+                \item \textbf{Access} - Users must have access to their own data.
+                \item \textbf{Transparency} - Systems and algorithms must be transparent.
+                \item \textbf{Persistence} - Identities must be long-lived.
+                \item \textbf{Portability} - Information and services about identity must be transportable.
+                \item \textbf{Interoperability} - Identities should be as widely usable as possible.
+                \item \textbf{Consent} - Users must agree to the use of their identity.
+                \item \textbf{Minimization} - Disclosure of claims must be minimized.
+                \item \textbf{Protection} - The rights of users must be protected.
+            \end{itemize}
             
         \subsubsection{Alastria}
         Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
@@ -95,35 +118,39 @@
         \end{itemize}
         
         \subsection{Motivation}
+            % TODO añadir más con María
             Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects.\\
             
             Also, the idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions.\\
             
+            % TODO lo que puede suponer hacer esto
+            
             Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), and also to be part of the \textit{CORE Identity Team} of Alastria. Therefore, and with the intention of studying other implementations for the \textit{SSI}, and to improve the current implementation proposed by Alastria, I have chosen this topic.
+            % TODO Mover a contexto a general y preguntar a alto nivel lo que hacemos a maria
             
         \subsection{Objectives}
             The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{Self-Sovereign Identity} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
-            \begin{itemize}
-                \item[1)] the analysis of the blockchain technology.
-                \item[2)] the study of the \textit{Self-Sovereign Identity}.
-                \item[3)] the delve in the implementation of \textit{Alastria ID}.
-                \item[4)] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}
-                \item[5)] the design of a potential attack and demonstration of its criticality.
+            \begin{itemize} 
+                \item[1)] the analysis of the blockchain technology: Explain and define what this technology is and how it works.
+                \item[2)] the study of the \textit{Self-Sovereign Identity}: Study what it is and analyze implementations that are currently being made.
+                \item[3)] the delve in the implementation of \textit{Alastria ID}: Expose the \textit{Alastria ID} model with the tools created by Alastria to implement the Self-Sovereign Identity.
+                \item[4)] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}: Analyze the framework and tools provided by Alastria, to grant they are not vulnerable.
+                \item[5)] the design of a potential attack and demonstration of its criticality: Create a proof of concept about an attack that can exploit a vulnerability inside \textit{Alastria ID}.
             \end{itemize}
             
         \subsection{Document Structure}
-            TODO
+            % TODO
         \newpage
         
 \section{State of the Art}
     \subsection{Blockchain}
-        Blockchain is a type of DLT (Distributed Ledger Technologie) which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
+        Blockchain\cite{Bitcoin2015}\cite{blockchain-hype}\cite{blockchain-tech} is a type of DLT (Distributed Ledger Technologie) which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
         \begin{itemize}
             \item \textbf{Decentralization}. The information is not stored by a single entity, in fact, everyone in the network owns the information and can access it. Decentralization means that there is no core authority to dictate the truth to the other participants. Also, in a decentralized network, if you want to interact with another participant, you can do it directly without going through a third party.
-            \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below we can see the public transaction in the Alastria network, but we are not able to know the accounts “from” and “to”.
+            \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below (figure \ref{fig:alastria_block_explorer}) we can see the public transaction in the Alastria network, but we are not able to know the accounts “from” and “to”.
             \begin{figure}[h]
                 \centering
-                \includegraphics[width=1.0\textwidth]{Alastria-block-exporer.png}
+                \includegraphics[width=1.1\textwidth]{Alastria-block-exporer.png}
                 \caption{Alastria's Block explorer}
                 \label{fig:alastria_block_explorer}
             \end{figure}
@@ -131,7 +158,7 @@
         \end{itemize}
         
         \subsubsection{How does Blockchain work?}
-            A Blockchain is a growing list of records, called blocks, that are linked using cryptography. Each block contains a hash of the previous block, the timestamp and a batch of valid transaction hashes encoded into a Merkle tree. The linked blocks form a chain. This iterative process confirms the integrity of the previous block, all the way back to the original genesis block (the first block of the network).
+            A Blockchain is a growing list of records, called blocks (figure \ref{fig:linked_blocks}), that are linked using cryptography. Each block contains a hash of the previous block, the timestamp and a batch of valid transaction hashes encoded into a Merkle tree. The linked blocks form a chain. This iterative process confirms the integrity of the previous block, all the way back to the original genesis block (the first block of the network).
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=1.0\textwidth]{block-example.png}
@@ -140,7 +167,7 @@
             \end{figure}
             
         \subsubsection{Types of blockchains}
-            There are different kinds of Blockchain networks, each one with different features. One of the most common classification is according to the architecture. The following figure shows a table with the classification.
+            There are different kinds of Blockchain networks, each one with different features (figure  \ref{fig:blockchain_classification}). One of the most common classification is according to the architecture. The following figure shows a table with the classification.
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=1.0\textwidth]{Blockchain-types.png}
@@ -161,7 +188,7 @@
             \end{itemize}
             
             \subsubsection{Uses of blockchain}
-                With the different properties of blockchain technology, and the different types of networks, there are a lot of use cases. The best known use case is using the blockchain as a payment infrastructure, the best example is Bitcoin. But there are a lot of other use cases shown in the next figure.\\
+                With the different properties of blockchain technology, and the different types of networks, there are a lot of use cases (figure \ref{fig:blockchain_uses}). The best known use case is using the blockchain as a payment infrastructure, the best example is Bitcoin. But there are a lot of other use cases shown in the next figure.\\
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.95\textwidth]{Blockchain-uses.png}
@@ -172,14 +199,14 @@
                 In this document we are going to focus on the Self Sovereign Identity (SSI) using blockchain.
 
     \subsection{Ethereum}
-        Ethereum is an open-source, public, blockchain-based distributed ledger featuring smart contract functionality. It enables developers to build blockchain applications with business logic that execute in a trustless environment, while leveraging the high availability of the Ethereum network. 
+        Ethereum\cite{ethereum} (figure \ref{fig:ethereum_logo}) is an open-source, public, blockchain-based distributed ledger featuring smart contract functionality. It enables developers to build blockchain applications with business logic that execute in a trustless environment, while leveraging the high availability of the Ethereum network. 
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.5\textwidth]{ethereum-logo-portrait-purple.png}
             \caption{Ethereum logo}
             \label{fig:ethereum_logo}
         \end{figure}
-        The principles behind Ethereum philosophy are:
+        The principles behind Ethereum philosophy are\cite{ethereumWhitepaper}:
         \begin{itemize}
             \item \textbf{Simplicity}. The Ethereum protocol should be as simple as possible.
             \item \textbf{Universality}. Ethereum provides an internal Turing-complete scripting language. This language can be used to construct any logic, and any business case.
@@ -221,18 +248,18 @@
             \end{itemize}
         
         \subsubsection{Ethereum stack}
-            Like any software stack, the complete "Ethereum stack" will vary from project to project depending on your business goals. However, the typical layers are:
+            Like any software stack, the complete "Ethereum stack"\cite{ethereumStack} will vary from project to project depending on your business goals. However, the typical layers are:
             \paragraph{Ethereum Virtual Machine (EVM)}
-                The Ethereum Virtual Machine, normally known as EVM is a software designed to emulate a machine with certain capabilities that make the Ethereum blockchain possible. We can program instructions for the EVM, using a series of opcodes, which we can then compile and translate into a specific bytecode or language that the EVM can understand and execute.\\
+                The Ethereum Virtual Machine\cite{evm}, normally known as EVM is a software designed to emulate a machine with certain capabilities that make the Ethereum blockchain possible. We can program instructions for the EVM, using a series of opcodes, which we can then compile and translate into a specific bytecode or language that the EVM can understand and execute.\\
                 
-                The opcodes perform standard stack operations like \textit{XORAND}, \textit{ADD}, \textit{SUB}, etc. The EVM also implements a number of blockchain-specific stack operations, such as \textit{ADDRESS}, \textit{BALANCE}, \textit{SHA3}, \textit{BLOCKHASH}, etc. More specific information can be found at \url{ https://www.ethervm.io/#opcodes}.\\
+                The opcodes perform standard stack operations like \textit{XORAND}, \textit{ADD}, \textit{SUB}, etc. The EVM also implements a number of blockchain-specific stack operations, such as \textit{ADDRESS}, \textit{BALANCE}, \textit{SHA3}, \textit{BLOCKHASH}, etc. More specific information can be found at the official documentation\cite{opcodes}.\\
                 
                 To make programming easier for the virtual machine, a specialized high-level language called Solidity was created. This programming language is used to create Smart Contracts. Solidity first transforms opcodes and then these to bytecode. This bytecode is finally executed by the EVM to perform the specified operations of a  Smart Contract. All this means that the EVM can function as a real computer, executing from the simplest to the most complex operations.\\
                 
                 In the following sections we will talk in detail about the Smart Contracts and Solidity.
                 
             \paragraph{EVM Characteristics}
-                The EVM has a series of unique characteristics:
+                The EVM has a series of unique characteristics\cite{ethereumGavin}\cite{ethereumDocu}:
                 \begin{itemize}
                     \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, EVM is capable of executing unreliable codes without disastrous consequences.
                     \item The EVM is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the EVM are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can’t be modified or altered.
@@ -242,23 +269,24 @@
                 \end{itemize}
                 
             \paragraph{How does it work?}
-                The next figure defines how the EVM works.
+                The figure \ref{fig:blockchain_stack} defines how the EVM works\cite{queEsEvm}.
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=1\textwidth]{evm-stack.jpeg}
                     \caption{EVM stack schema}
                     \label{fig:blockchain_stack}
                 \end{figure}
+
                 The Smart Contracts made with Solidity are compiled and converted to opcodes. These opcodes are transformed to bytecode, so it does facilitate the performance of the EVM tasks.\\
 
                 Thus, each transaction and operation that is carried out on the Ethereum blockchain goes through this process, and its execution is carried out by the EVM, which at the end records everything on the Ethereum blockchain, leaving a public record of those operations. 
 
         \subsubsection{Smart Contracts}
-            Sam Richards, a Software Engineer working on Ethereum defines the Smart Contract as 
+            Sam Richards\cite{smartContracts}, a Software Engineer working on Ethereum defines the Smart Contract as 
             \begin{quote}
-                \textit{“a snippet of code that runs on the Ethereum blockchain. It's a collection of functions and data that resides at a specific address on the Ethereum blockchain.}
+                \textit{a snippet of code that runs on the Ethereum blockchain. It's a collection of functions and data that resides at a specific address on the Ethereum blockchain.}
 
-                \textit{Smart contracts are a type of Ethereum account. This means they have a balance and they can send transactions over the network. However they're not controlled by a user, instead they are deployed to the network and run as programmed. User accounts can then interact with a smart contract by submitting transactions that execute a function defined on the smart contract. Smart contracts can define rules, like a regular contract, and automatically enforce them via the code.”}
+                \textit{Smart contracts are a type of Ethereum account. This means they have a balance and they can send transactions over the network. However they're not controlled by a user, instead they are deployed to the network and run as programmed. User accounts can then interact with a smart contract by submitting transactions that execute a function defined on the smart contract. Smart contracts can define rules, like a regular contract, and automatically enforce them via the code.}
             \end{quote}
 
         \subsubsection{Solidity}
@@ -269,34 +297,172 @@
                 \label{fig:solidity_logo}
             \end{figure}
             
-            Solidity defines itself as an object-oriented, high-level language for implementing Smart Contracts. Smart Contracts are programs which govern the behaviour of accounts within the Ethereum state.\\
+            Solidity (figure \ref{fig:solidity_logo}) defines itself as an object-oriented, high-level language for implementing Smart Contracts. Smart Contracts are programs which govern the behaviour of accounts within the Ethereum state.\\
             
-            Solidity was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
+            Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
 
+            Below is an example of a Smart Contract written in Solidity (listing  \ref{lst:AlastriaIdentityIssuer}).
             
-            Below is a Smart Contract written in Solidity (Source code from \url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}).
-            \lstinputlisting[language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
-    
-            More details about Solidity can be found in the official documentation. \url{https://solidity.readthedocs.io/en/latest/index.html}.
+            \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer\cite{AlastriaIdentityIssuer}, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
+            % TODO quitar el enlace en la tabla de contenido
+            
+            More details about Solidity can be found in the official documentation\cite{solidity}.
             
         \subsubsection{Ethereum Nodes}
-            TODO
+            A Node refers to a piece of software which is an implementation of Ethereum that verifies all transactions in each block, keeping the network secure and the data accurate. They collectively store the state of the Ethereum blockchain and reach consensus on transactions to mutate the blockchain state.\\
             
+            There are three types of nodes.
+            \begin{itemize}
+                \item \textbf{Full node}. These types of nodes store full blockchain data, participate in block validation, verifies all blocks and states and serves the network and provides data on request. Also, all states can be derived from a full node.
+                \item \textbf{Light node}. Stores the header chain and requests everything else. Can verify the validity of the data against the state roots in the block headers and it is useful for low capacity devices, such as embedded devices or mobile phones, which can't afford to store gigabytes of blockchain data.
+                \item \textbf{Archive node}. Stores everything kept in the full node and builds an archive of historical states. These nodes can be handy for services like block explorers, wallet vendors, and chain analytics.
+            \end{itemize}
+            By connecting your application to an Ethereum node via JSON RPC, your application is able to read data from the blockchain as well as broadcast new transactions to the network.
+
         \subsubsection{Ethereum Client APIs}
-            TODO
+            While APIs are not a necessary piece of the stack, they abstract away much of the complexity of interacting directly with Ethereum nodes and Smart contracts.\\
             
+            Most of these APIs are open source and maintained by the Ethereum community.
+
         \subsubsection{End User Applications}
-            TODO
+            The final part of the stack is the user-facing applications, primarily web and mobile apps.  They are made for users so they do not need to know the application they're using is built using a blockchain. Also the end user applications are made to hide the complexity from the user.
             
         \subsubsection{Ethereum 2.0 (Eth2)}
-            TODO
+            Eth2\cite{eth2} is a long-planned upgrade to the Ethereum network, it will reduce energy consumption, allow the network to process more transactions, and increase security.  Ethereum will become a proof-of-stake blockchain and introduce shard chains. Shard chains are like parallel blockchains that sit within Ethereum and take on a portion of the network's processing work.\\
+            
+            The phase 1 of Ethereum 2.0 is supposed to happen in 2021. The roadmap can be checked in the official website\cite{eth2Roadmap}.
+            
 
     \subsection{JSON-RPC}
-                TODO
-            
-\section{Conclusions}
+        JSON-RPC is a remote procedure call protocol (RPC) encoded in JSON. It is a simple protocol that defines only a few data types and commands. JSON-RPC allows for notifications (data sent to the server that does not require a response) and for multiple asynchronous calls. It uses JSON \textit{RFC-4627}\cite{rfc4627} as data format.\\
+        
+        The first officially released specification was \textit{JSON-RPC 1.0}\cite{json-rpc-1} published in 2005, but the last official specification is \textit{JSON-RPC 2.0}\cite{json-rpc-2} published in 2010 with several improvements.
+        
+        \subsubsection{JSON}
+            JavaScript Object Notation mostly known as JSON is a lightweight data-interchange format. It is human readable and easy to write. Also, it is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language independent but uses conventions that are familiar to several languages such as \textit{C}, \textit{C++}, \textit{Java}, \textit{JavaScript}, \textit{Perl}, \textit{Python} and many others.\\
+                        
+            JSON is built on two structures\cite{jsonSchema}:
+            \begin{itemize}
+                \item A collection of name-value pairs (figure \ref{fig:json_objects}). In various languages, this is realized as an Object, Record, Struct, Dictionary, ...
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=1.0\textwidth]{json-objects.png}
+                    \caption{JSON objects schema}
+                    \label{fig:json_objects}
+                \end{figure}
+                \item An ordered list of values (figure \ref{fig:json_arrays}). In most languages, this is realized as an Array, Vector, List, ...
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=1.0\textwidth]{json-arrays.png}
+                    \caption{JSON array schema}
+                    \label{fig:json_arrays}
+                \end{figure}
+            \end{itemize}
 
-\nocite{*} % Cita todas las ref (incluidas las no citadas)
+        \subsubsection{RPC}
+            A \textbf{remote procedure call (RPC)}\cite{rpc} is when a computer program causes a procedure to execute in a different address space (commonly on another computer), which is coded as if it were a local procedure call. That is, the programmer writes essentially the same code whether the program will run locally or in a remote machine.\\
+            
+            The transparency is one of the great strengths of RPC, because the application software does not contain any communication code, it is independent of:
+            \begin{itemize}
+                \item The communication hardware and protocols used
+                \item The operative system
+                \item The calling sequence needed to use the communication software layer
+            \end{itemize}
+            
+            \paragraph{How RPC works}
+                From the point of view of a remote call, the calling program is known as client, and the subroutine it calls is known as the server\cite{rpcInOS}\cite{howRPC}. When the client calls the server, the RPC system must take care of:
+                \begin{itemize}
+                    \item Taking all the parameters which are passed to the subroutine and transferring them to the remote node
+                    \item Having the subroutine executed on the remote node
+                    \item Transferring back all the parameters which are returned to the calling routine
+                \end{itemize}
+                
+                In the next figure (figure \cite{fig:rpc_schema}) we can see the typical RPC communication schema.
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=1.0\textwidth]{rpc.png}
+                    \caption{RPC schema}
+                    \label{fig:rpc_schema}
+                \end{figure}
+                The most common method of doing this is by the use of stub modules (figure \ref{fig:rpc_mechanism}). The client is linked to a client stub module. This is a subroutine which looks like the remote subroutine, but on the inside, it is almost empty. All it does is take the values of the parameters which are passed to it, and put them in a message. This is known as marshalling.\\
+
+                The client stub then uses a routine in the RPC Run-Time System (RTS) to send the message off and wait for a reply message. When the reply arrives, the stub unmarshals the parameters that were returned in the reply message, putting their values into the variables of the calling program. The client stub then returns to the calling program just like a normal subroutine.\\
+
+                The server stub (located in the remote machine) is called by the RPC RTS when the message arrives from the client. The server stub performs the unmarshall of the parameters passed to the subroutine, calling the subroutine, and marshalling the return parameters. 
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=1.0\textwidth]{rpc-mecha.png}
+                    \caption{RPC mechanism}
+                    \label{fig:rpc_mechanism}
+                \end{figure}
+                All the communication details are handled by the RPC RTS, so the stubs contain only the code which is specific to the application involved\cite{rpc2}.
+                \begin{itemize}
+                    \item In order to produce stub modules, it is need to know
+                    \item The names of the procedures in the package (set of procedures)
+                    \item The number of parameters which they take
+                    \item The data type of each parameter
+                    \item The direction in which each parameter is transferred
+                \end{itemize}
+        \subsubsection{JSON-RPC 1.0}
+            The general mechanism consists of two peers establishing a data connection\cite{json-rpc-1}. Peers may invoke methods provided by the older peer. To invoke a remote method, a request serialized using JSON is sent. The request is a single JSON Object with three properties: 
+            \begin{itemize}
+                \item \textbf{method}: The name of the invoked method.
+                \item \textbf{params}: The params passed as arguments to the method. It is an Array of Objects.
+                \item \textbf{id}: The request id. It can be of any type. It is used to match the response with the reply. If it is a notification request, it must be Null.
+            \end{itemize}
+            The request must be replied unless it is a notification (does not need a response). The response is also a single Object serialized using JSON and has this properties:
+            \begin{itemize}
+                \item \textbf{result}: The Object returned by the invoked method. It is Null in case there was an error.
+                \item \textbf{error}: An error Object if there was an error while invoking the method. It is Null if there was no error.
+                \item \textbf{id}: The id of the request that was sent. 
+            \end{itemize}
+            JSON-RPC does not require a certain transport protocol, but TCP/IP socket streams are encouraged. The request and the response are sent to the peers through byte streams.\\
+
+            Also HTTP can be used as the communication transport. The request must be sent as an \textit{HTTP POST} with all the serialized Objects. Once the client has received the response, it must reply with another \textit{HTTP POST}. A non-valid request will result in closing the connection.
+        \subsubsection{JSON-RPC 2.0}
+            This specification\cite{json-rpc-2} works almost the same way as the JSON-RPC 1.0 but it has several upgrades.\\
+            
+            The request Object has the following properties:
+            \begin{itemize}
+                \item \textbf{sonrpc}: The version of the JSON-RPC protocol. It must be exactly “2.0”.
+                \item \textbf{method}: A String containing the name of the method.
+                \item \textbf{params}: A Structured value (Object or Array) with the parameter values passed as arguments to the method.
+                \item \textbf{id}: It is a String, Number or \textit{Null} identifier. If it is not included, it is assumed to be a notification. Normally it should not be \textit{Null} because this specification uses a value of \textit{Null} for responses with unknown id. Also, JSON-RPC 1.0 uses \textit{Null} for notifications, and it causes confusion in handling.
+            \end{itemize}
+            Similarly, the response from the server is expressed as a single JSON Object with the following properties:
+            \begin{itemize}
+                \item \textbf{jsonrpc}: As in the request, it must exactly be “2.0”
+                \item \textbf{result}: It is required on success, but must not exist if there was an error.
+                \item \textbf{error}: It is required on error, but must not exist if there was no error. It must be an Object with the following properties:
+                \begin{itemize}
+                    \item \textbf{code}: A Number that indicates the error type occurred.
+                    \item \textbf{message}: The provided short description of the error.
+                    \item \textbf{data}: A Primitive (String, Number, Boolean or Null) or Structured (Object or Array) with additional information about the error. This may be omitted and it is defined by the server. The error codes are nearly the same as those suggested for XML-RPC\cite{rpc-err}.
+                \end{itemize}
+                \item \textbf{id}: This property must be the same as the value of the requested Object. If there was an error, it must be \textit{Null}.
+            \end{itemize}
+            To send several requests at the same time, the client may send an Array with all the request objects. It is called batch. The response from the server should be another Array containing the response objects after all the requests have been processed. The server may process the batch as a set of concurrent tasks. Also, the response objects may be returned in any order within the Array. Thanks to the id server and client will match the context between requests and responses.
+            
+        \subsection{Self-Sovereign Identity}
+            % TODO resumen "intenso"
+            \subsubsection{Alastria ID}
+                % TODO Resumen de alastria ID y mencionar el punto importante 
+            \subsubsection{Other implementations}
+                % TODO resumen de otras, como UPORT
+\newpage
+
+\section{Alastria ID}
+% TODO cuerpo del trabajo
+
+\newpage
+\section{Conclusions}
+% TODO hacer
+
+\newpage
+\section{Future Work}
+
+\newpage
+% \nocite{*} % Cita todas las ref (incluidas las no citadas)
 \printbibliography[heading=bibnumbered] % Última sección, numerada, para la bibliografía
 
 \end{document}
