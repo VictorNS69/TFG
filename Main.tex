@@ -301,12 +301,13 @@
             
             Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
 
-            Below is an example of a Smart Contract written in Solidity (listing  \ref{lst:AlastriaIdentityIssuer}).
+            Below is an example of a Smart Contract written in Solidity (listing  \ref{lst:entityIssuer}).
             
-            \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer\cite{AlastriaIdentityIssuer}, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
+            \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer.sol, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
             % TODO quitar el enlace en la tabla de contenido
             
-            More details about Solidity can be found in the official documentation\cite{solidity}.
+            \footnotetext[1]{Source code from AlastriaIdentityIssuer.sol\cite{AlastriaIdentityIssuer}}
+            \footnotetext[2]{More details about Solidity can be found in the official documentation\cite{solidity}}
             
         \subsubsection{Ethereum Nodes}
             A Node refers to a piece of software which is an implementation of Ethereum that verifies all transactions in each block, keeping the network secure and the data accurate. They collectively store the state of the Ethereum blockchain and reach consensus on transactions to mutate the blockchain state.\\
@@ -424,7 +425,7 @@
             
             The request Object has the following properties:
             \begin{itemize}
-                \item \textbf{sonrpc}: The version of the JSON-RPC protocol. It must be exactly “2.0”.
+                \item \textbf{jsonrpc}: The version of the JSON-RPC protocol. It must be exactly “2.0”.
                 \item \textbf{method}: A String containing the name of the method.
                 \item \textbf{params}: A Structured value (Object or Array) with the parameter values passed as arguments to the method.
                 \item \textbf{id}: It is a String, Number or \textit{Null} identifier. If it is not included, it is assumed to be a notification. Normally it should not be \textit{Null} because this specification uses a value of \textit{Null} for responses with unknown id. Also, JSON-RPC 1.0 uses \textit{Null} for notifications, and it causes confusion in handling.
