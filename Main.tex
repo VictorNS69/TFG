@@ -445,7 +445,119 @@
             To send several requests at the same time, the client may send an Array with all the request objects. It is called batch. The response from the server should be another Array containing the response objects after all the requests have been processed. The server may process the batch as a set of concurrent tasks. Also, the response objects may be returned in any order within the Array. Thanks to the id server and client will match the context between requests and responses.
             
         \subsection{Self-Sovereign Identity}
-            % TODO resumen "intenso"
+            The idea of the Self-Sovereign Identity was born to solve the problems with the current physical and digital identifications.\\
+            Some of the physical IDs problems are:
+            \begin{itemize}
+                \item The process of obtaining them is time consuming, bureaucratic and costly. For both the ID Owner and Issuer Organization. 
+                \item If you lose your ID and need to obtain a new one.
+                \item Physical IDs can be defrauded with impersonation and ID theft. The only way to check its authenticity is often by contacting the issuing organization.
+                \item They are not private.
+            \end{itemize}
+            Also, some problems with the current digital IDs are:
+            \begin{itemize}
+                \item Having to register and sign up with different login credentials to every new online service is uncomfortable for the user. 
+                \item Tedious on-boardings.
+                \item Managing multiple passwords is hard and using the same password is a security risk.
+                \item The user has no control over what data is being shared and with whom.
+                \item The verification of your credentials is dependent on the availability of the issuer.
+                \item Third party login services have a financial incentive to collect and store your data.
+                \item The user's personal data is stored on the issuer’s servers. Centralized storages of personal data create \textit{“honeypots”}. This data is at risk of breaches, leaks or hacks.
+            \end{itemize}
+
+            Self-Sovereign Identity (\textit{SSI}) is a digital identification scheme in which the user acquires the responsibility of managing how and in what quantity their personal data is used. To do this, it allows the creation of digital \textit{“identity cards}” that can be general for any service or specific for each case. \\
+            The main characteristics of Self-Sovereign Identity are\cite{ssi-guide}:
+            \begin{itemize}
+                \item It is secure and digital peer-to-peer channel is established between Issuer, owner and Verifier.
+                \item When credentials are exchanged not even the Self-Sovereign Identity system provider knows what is being exchanged.
+                \item Credentials are tamper-proof through the use of cryptography.
+                \item They are private and under the owner control. SSI uses Selective Identity disclosure technology.
+                \item The Owner chooses what data they want to “show” and is always in control of the relationship with ID Verifiers.
+                \item Credentials can be verified anywhere, at any time.
+                \item Personal Data is not stored on centralized servers.
+                \item SSI tries to abolish multiple passwords. You just need to know your wallet password.
+            \end{itemize}
+
+            \subsubsection{How does it work?}
+                In order to explain how the SSI works, we have to see some concepts previously.
+                \paragraph{Actors}
+                    The following figure (figure \ref{fig:trust-triangle}) explains the different actors\cite{ssi-guide} that take place in the process.
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[width=1.0\textwidth]{trust-triangle.png}
+                        \caption{Trust triangle / Actors in SSI}
+                        \label{fig:trust-triangle}
+                    \end{figure}
+                    \begin{itemize}
+                        \item \textbf{Owner / Holder}: orders the creation of credentials. He stores the credentials locally. He has the power to revoke access to these credentials.
+                        \item \textbf{Issuer}: provides a digital service. It needs to identify users. Does not need to store user data.
+                        \item \textbf{Verifier}: creates the credentials with the data provided by the user. It does not store user data (although it has access to it at the time of creation of the credential).
+                    \end{itemize}
+            
+                \paragraph{Verifiable Credentials}
+                    According to the World Wide Web Consortium \textit{(W3C)}\cite{w3c-vc}:
+                    \begin{quote}
+                        \textit{A verifiable credential can represent all of the same information that a physical credential represents. The addition of technologies, such as digital signatures, makes verifiable credentials more tamper-evident and more trustworthy than their physical counterparts.}
+                    \end{quote}
+                    In the following figure (figure \ref{fig:ssi-vc}), we can see clearly the relationship between Issuer, Holder and Verifier and how a Verifiable Data Registry (normally a blockchain) is used to verify the credentials’ data without the need to contact the issuing party.
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[width=1.0\textwidth]{ssi-vc.png}
+                        \caption{The roles and information in a SSI ecosystem by W3C}
+                        \label{fig:ssi-vc}
+                    \end{figure}
+                
+                \paragraph{Verifiable Presentation}
+                    According to W3C\cite{w3c-vc}:
+                    \begin{quote}
+                        \textit{A verifiable presentation expresses data from one or more verifiable credentials, and is packaged in such a way that the authorship of the data is verifiable. If verifiable credentials are presented directly, they become verifiable presentations. Data formats derived from verifiable credentials that are cryptographically verifiable, but do not of themselves contain verifiable credentials, might also be verifiable presentations.}
+                        
+                        \textit{The data in a presentation is often about the same subject, but might have been issued by multiple issuers. The aggregation of this information typically expresses an aspect of a person, organization, or entity.}
+                    \end{quote}
+                    In the figure \ref{fig:ssi-vp} we can see the components of a verifiable presentation.
+                    \begin{figure}[h] 
+                        \centering
+                        \includegraphics[width=0.4\textwidth]{ssi-vp.png}
+                        \caption{Basic components of a verifiable presentation by W3C}
+                        \label{fig:ssi-vp}
+                    \end{figure}
+                \newpage % TODO: que no corte el texto de DIDs
+                \paragraph{Decentralized Identifiers (DIDs)}
+                    According to W3C\cite{w3c-did}:
+                    \begin{quote}
+                        \textit{Decentralized identifiers (DIDs) are a new type of identifier that enables verifiable, decentralized digital identity. A DID identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the DID decides that it identifies. In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a DID, the design enables the controller of a DID to prove control over it without requiring permission from any other party. DIDs are URIs that associate a DID subject with a DID document allowing trustable interactions associated with that subject.}
+                        
+                        \textit{Each DID document can express cryptographic material, verification methods, or service endpoints, which provide a set of mechanisms enabling a DID controller to prove control of the DID. Service endpoints enable trusted interactions associated with the DID subject. A DID document might contain the DID subject itself, if the DID subject is an information resource such as a data model.}
+                    \end{quote}
+                \paragraph{Wallets}
+                    A wallet\cite{ssi-wallets} is a private repository that allows its owner to store, manage, and present keys and identity credentials.\\
+                    
+                    Some of the properties every wallet should have are:
+                    \begin{itemize}
+                        \item Provide secure access to the owner.
+                        \item Guarantee that only authorized entities can access to it.
+                        \item Ensure security and data encryption.
+                        \item Provide recovery for keys and credentials.
+                        \item Be connected to the blockchain where the DID was registered.
+                        \item Provide mechanism for subjects and issuers to change the status of their credentials.
+                        \item Provide mechanism for the owner to erase all the data associated with them.
+                    \end{itemize}
+                    Normally, when we talk about wallet, we think in mobile wallets (mobile applications), but a wallet can also be in a desktop, browser, hardware or the cloud.
+                
+                \paragraph{Functioning}
+                    In the architecture\cite{how-to-ssi} we find a credential provider (\textit{issuer}) that is responsible for signing the data provided by the user by creating a certificate. Then, it will be signed by the user, attesting that the certificate generated by the issuer does not contain missing or altered information.\\
+                    
+                    Signatures by both the user and the issuer are performed using DIDs, which are traditional asymmetric keys. The public key of both is stored publicly on the blockchain. In this way, later on, the service provider (\textit{verifier}) that wants to identify the user will only have to verify that the signatures are correct and that, therefore, the credential has not been altered and contains the same information that the user provided to the identity provider.\\
+                    
+                    In the next figure (figure \ref{fig:ssi-scheme}) we can see a graphic scheme of the explained above.
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[width=1.0\textwidth]{how-to-ssi.png}
+                        \caption{SSI functioning scheme}
+                        \label{fig:ssi-scheme}
+                    \end{figure}
+
+            \subsubsection{Use cases}
+            % https://tykn.tech/self-sovereign-identity/#Models_of_Digital_Identity
             \subsubsection{Alastria ID}
                 % TODO Resumen de alastria ID y mencionar el punto importante 
             \subsubsection{Other implementations}
