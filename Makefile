@@ -1,11 +1,14 @@
 FILE=Main.tex  # path to your TeX file 
 
-default: compile clean
+default: compile rename clean
 
 compile: ## Compile paper
 	 rubber --pdf $(FILE)
 
-clean:  ## Clean output files
-	rubber --clean $(FILE)
+rename:	 ## Renmae output file
+	 mv Main.pdf "TFG_VICTOR_NIEVES_SANCHEZ.pdf"
+
+clean:   ## Clean output files
+	 rubber --clean $(FILE)
 
 	
