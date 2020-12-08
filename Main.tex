@@ -11,6 +11,8 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} } % Directorio imágenes
 \usepackage{listings} % Formateo código
+\usepackage{scrextend}
+
 \input{./assets/solidity-highlighting.tex} % Resaltado de solidity
 
 \sectionfont{\MakeUppercase} % Secciones en mayúsculas
@@ -301,14 +303,11 @@
             
             Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
 
-            Below is an example of a Smart Contract written in Solidity (listing  \ref{lst:entityIssuer}).
+            Below is an example\footnote{Source code from AlastriaIdentityIssuer.sol\cite{AlastriaIdentityIssuer}}
+ of a Smart Contract written in Solidity\footnote{More details about Solidity can be found in the official documentation\cite{solidity}} (listing  \ref{lst:AlastriaIdentityIssuer}).
             
             \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer.sol, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
-            % TODO quitar el enlace en la tabla de contenido
-            
-            \footnotetext[1]{Source code from AlastriaIdentityIssuer.sol\cite{AlastriaIdentityIssuer}}
-            \footnotetext[2]{More details about Solidity can be found in the official documentation\cite{solidity}}
-            
+
         \subsubsection{Ethereum Nodes}
             A Node refers to a piece of software which is an implementation of Ethereum that verifies all transactions in each block, keeping the network secure and the data accurate. They collectively store the state of the Ethereum blockchain and reach consensus on transactions to mutate the blockchain state.\\
             
@@ -494,7 +493,7 @@
                     \end{itemize}
             
                 \paragraph{Verifiable Credentials}
-                    According to the World Wide Web Consortium \textit{(W3C)}\cite{w3c-vc}:
+                    According to the World Wide Web Consortium \textit{(W3C)}\cite{w3c-vc}\footnote{\label{footnote-w3c}More information about Verifiable Credentials and Verifiable Presentations can be found in the main web page of W3C\cite{w3c-vc}}:
                     \begin{quote}
                         \textit{A verifiable credential can represent all of the same information that a physical credential represents. The addition of technologies, such as digital signatures, makes verifiable credentials more tamper-evident and more trustworthy than their physical counterparts.}
                     \end{quote}
@@ -506,28 +505,29 @@
                         \label{fig:ssi-vc}
                     \end{figure}
                 
-                \paragraph{Verifiable Presentation}
-                    According to W3C\cite{w3c-vc}:
+                \paragraph{Verifiable Presentations}
+                    According to W3C\cite{w3c-vc}\footref{footnote-w3c}:
                     \begin{quote}
                         \textit{A verifiable presentation expresses data from one or more verifiable credentials, and is packaged in such a way that the authorship of the data is verifiable. If verifiable credentials are presented directly, they become verifiable presentations. Data formats derived from verifiable credentials that are cryptographically verifiable, but do not of themselves contain verifiable credentials, might also be verifiable presentations.}
                         
                         \textit{The data in a presentation is often about the same subject, but might have been issued by multiple issuers. The aggregation of this information typically expresses an aspect of a person, organization, or entity.}
                     \end{quote}
                     In the figure \ref{fig:ssi-vp} we can see the components of a verifiable presentation.
-                    \begin{figure}[h] 
+                    \begin{figure}[ht] 
                         \centering
                         \includegraphics[width=0.4\textwidth]{ssi-vp.png}
                         \caption{Basic components of a verifiable presentation by W3C}
                         \label{fig:ssi-vp}
                     \end{figure}
-                \newpage % TODO: que no corte el texto de DIDs
+                %\newpage % TODO: que no corte el texto de DIDs
                 \paragraph{Decentralized Identifiers (DIDs)}
-                    According to W3C\cite{w3c-did}:
+                    According to W3C\cite{w3c-did}\footnote{More information about the DIDs can be found in the main web page of W3C\cite{w3c-did}}:
                     \begin{quote}
                         \textit{Decentralized identifiers (DIDs) are a new type of identifier that enables verifiable, decentralized digital identity. A DID identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the DID decides that it identifies. In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a DID, the design enables the controller of a DID to prove control over it without requiring permission from any other party. DIDs are URIs that associate a DID subject with a DID document allowing trustable interactions associated with that subject.}
                         
                         \textit{Each DID document can express cryptographic material, verification methods, or service endpoints, which provide a set of mechanisms enabling a DID controller to prove control of the DID. Service endpoints enable trusted interactions associated with the DID subject. A DID document might contain the DID subject itself, if the DID subject is an information resource such as a data model.}
                     \end{quote}
+                    
                 \paragraph{Wallets}
                     A wallet\cite{ssi-wallets} is a private repository that allows its owner to store, manage, and present keys and identity credentials.\\
                     
