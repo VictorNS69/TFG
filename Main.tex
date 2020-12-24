@@ -346,14 +346,14 @@
                 \item A collection of name-value pairs (figure \ref{fig:json_objects}). In various languages, this is realized as an Object, Record, Struct, Dictionary, ...
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[width=1.0\textwidth]{json-objects.png}
+                    \includegraphics[width=0.8\textwidth]{json-objects.png}
                     \caption{JSON objects schema}
                     \label{fig:json_objects}
                 \end{figure}
                 \item An ordered list of values (figure \ref{fig:json_arrays}). In most languages, this is realized as an Array, Vector, List, ...
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[width=1.0\textwidth]{json-arrays.png}
+                    \includegraphics[width=0.8\textwidth]{json-arrays.png}
                     \caption{JSON array schema}
                     \label{fig:json_arrays}
                 \end{figure}
@@ -380,7 +380,7 @@
                 In the next figure (figure \ref{fig:rpc_schema}) we can see the typical RPC communication schema.
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[width=1.0\textwidth]{rpc.png}
+                    \includegraphics[width=0.8\textwidth]{rpc.png}
                     \caption{RPC schema}
                     \label{fig:rpc_schema}
                 \end{figure}
@@ -391,7 +391,7 @@
                 The server stub (located in the remote machine) is called by the RPC RTS when the message arrives from the client. The server stub performs the unmarshall of the parameters passed to the subroutine, calling the subroutine, and marshalling the return parameters. 
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[width=1.0\textwidth]{rpc-mecha.png}
+                    \includegraphics[width=0.8\textwidth]{rpc-mecha.png}
                     \caption{RPC mechanism}
                     \label{fig:rpc_mechanism}
                 \end{figure}
@@ -515,7 +515,7 @@
                     In the figure \ref{fig:ssi-vp} we can see the components of a verifiable presentation.
                     \begin{figure}[ht] 
                         \centering
-                        \includegraphics[width=0.4\textwidth]{ssi-vp.png}
+                        \includegraphics[width=0.5\textwidth]{ssi-vp.png}
                         \caption{Basic components of a verifiable presentation by W3C}
                         \label{fig:ssi-vp}
                     \end{figure}
@@ -557,11 +557,27 @@
                     \end{figure}
 
             \subsubsection{Use cases}
-            % https://tykn.tech/self-sovereign-identity/#Models_of_Digital_Identity
-            \subsubsection{Alastria ID}
-                % TODO Resumen de alastria ID y mencionar el punto importante 
+                Self-Sovereign Identity is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and GDPR\cite{gdpr} fines.
+
+            \subsubsection{Alastria}
+                Alastria is the world’s first nation-wide, multi-sectorial, enterprise grade, permissioned blockchain network. A non-profit association open to all types of companies and organizations with the mission to contribute to the creation of a diverse innovation ecosystem. Alastria is technology agnostic and offers the networks promoted by its partners as well as a user centric Digital Identity model, the Alastria ID, focused on ensuring the legal validity of the transactions on the networks.
+
+                \paragraph{Alastria ID}
+                    Alastria ID is a digital identity model proposed by the Consortium for use in digital services, even beyond blockchain technology itself and inspired by the Self Sovereign Identity concept.\\
+                    
+                    The Identity Commission of Alastria ID\cite{alastria-context} has taken a further step in the typical functionalities of this tool. It has followed the recommendations of the ID of the World Wide Web Consortium\cite{w3c} (W3C), the international community that develops Internet standards. It has even been improved. Alastria ID has been developed in accordance with the demanding European data protection regulations GDPR\cite{gdpr}, and eIDAS\cite{eidas} (European system for the recognition of electronic identities).\\
+
+                    The Alastria Standards Commission, which participates in all international and national standardization bodies, has collaborated in the process of the definition of the Alastria ID. The model specification inspired the Spanish identity standard UNE 71307\cite{une-71307} and the decentralized identity framework of EBSI\cite{ebsi} (European Blockchain Services Infrastructure), the blockchain of European public administrations.\\
+                    
+                    In the next section we will delve into the peculiarities and details of the different tools created by Alastria to facilitate the use of Alastria ID.
+
             \subsubsection{Other implementations}
                 % TODO resumen de otras, como UPORT
+                \paragraph{uPort}
+                
+                \paragraph{David19}
+                
+                \paragraph{sorvin}
 \newpage
 
 \section{Alastria ID}
