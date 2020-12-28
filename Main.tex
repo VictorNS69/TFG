@@ -5,13 +5,17 @@
 \usepackage[left=3cm, right=3cm, top=3.5cm, bottom=3.5cm]{geometry} % Márgenes recomendados
 \usepackage{times} % Fuente Times New Romans
 \usepackage[english]{babel} 
-\usepackage[style=ieee, backend=biber]{biblatex} % Bibliografía en formato IEEE
+\usepackage[style=ieee, backend=bibtex]{biblatex} % Bibliografía en formato IEEE
 \usepackage{sectsty}
 \usepackage{cover}
 \usepackage{graphicx}
 \graphicspath{ {images/} } % Directorio imágenes
 \usepackage{listings} % Formateo código
 \usepackage{scrextend}
+% Lista de acronimos
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\input{Acronyms.tex}
 
 \input{./assets/solidity-highlighting.tex} % Resaltado de solidity
 
@@ -25,7 +29,7 @@
 
 \author{Víctor Nieves Sánchez}
 \date{Enero de 2021}
-\title{Alastria Blockchain Ecosystem. Security and privacy in Self- Sovereign Identity}
+\title{Alastria Blockchain Ecosystem. Security and privacy in Self-Sovereign Identity}
 
 \begin{document}
 \maketitle
@@ -46,6 +50,8 @@
 \newpage
 \lstlistoflistings
 \newpage
+\printglossary[type=\acronymtype]
+\newpage
 
 \begin{otherlanguage}{spanish}
     \renewcommand{\spanishabstractname}{Resumen}
@@ -56,9 +62,9 @@
           
         La tecnología \textit{Blockchain} es una tecnología que, basándose en cálculos criptográficos, ofrece un libro de cuentas distribuido (llamado \textit{ledger}) en el que se apuntan transacciones entre participantes que no tienen una relación de confianza entre si. Las principales características de este \textit{ledger} son que se distribuye entre los múltiples nodos participantes de la red, que es inmutable, no repudiable y que no depende de relaciones de confianza entre participantes ni de una entidad central.\\
         
-        Alastria ha definido un modelo de identidad digital llamado \textit{Alastria ID}. El proyecto \textit{Alastria ID} está desplegado como una de las aplicaciones básicas de la infraestructura blockchain promovida por el consorcio dentro de su plataforma. Esta propuesta tecnológica de identidad digital en blockchain tiene como objetivo proporcionar un marco de infraestructura y desarrollo, para llevar a cabo proyectos de Identidad Digital Soberana (\textit{Self-Sovereign Identity} en inglés), con plena vigencia legal en la zona euro.\\
+        Alastria ha definido un modelo de identidad digital llamado \textit{Alastria ID}. El proyecto \textit{Alastria ID} está desplegado como una de las aplicaciones básicas de la infraestructura blockchain promovida por el consorcio dentro de su plataforma. Esta propuesta tecnológica de identidad digital en blockchain tiene como objetivo proporcionar un marco de infraestructura y desarrollo, para llevar a cabo proyectos de Identidad Digital Soberana (\textit{\acrlong{ssi}} en inglés), con plena vigencia legal en la zona euro.\\
         
-        El objetivo de este trabajo es doble. Por un lado se estudiará el concepto de \textit{Self-Sovereign Identity (SSI)}, así como la implementación de Alastria llamada \textit{Alastria ID} y otras implementaciones que se hayan o se estén definiendo. Por otro lado, se pretende hacer un estudio desde el punto de vista de la seguridad, de la implementación de \textit{Alastria ID}, auditando los distintos artefactos y herramientas que proporciona Alastria, y realizando una prueba de concepto de un potencial ataque.\\
+        El objetivo de este trabajo es doble. Por un lado se estudiará el concepto de \textit{\acrfull{ssi}}, así como la implementación de Alastria llamada \textit{Alastria ID} y otras implementaciones que se hayan o se estén definiendo. Por otro lado, se pretende hacer un estudio desde el punto de vista de la seguridad, de la implementación de \textit{Alastria ID}, auditando los distintos artefactos y herramientas que proporciona Alastria, y realizando una prueba de concepto de un potencial ataque.\\
         
         \textbf{Palabras clave:} Blockchain, Alastria, Identidad Soberana, Ethereum, Quorum, Solidity, Hacking, Ciberseguridad\ldots
     \end{abstract}
@@ -70,7 +76,7 @@
     \normalsize
     % TODO
     
-    \textbf{Keywords:} Blockchain, Alastria, Self-Sovereign Identity, Ethereum, Quorum, Solidity, Hacking, Cybersecurity\ldots
+    \textbf{Keywords:} Blockchain, Alastria, \acrlong{ssi}, Ethereum, Quorum, Solidity, Hacking, Cybersecurity\ldots
 \end{abstract}
 
 \newpage
@@ -88,11 +94,11 @@
             
         \subsubsection{Self-Sovereign Identity}
             % TODO añadir más con María
-            Self-Sovereign Identity or just \textit{SSI}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital and analog identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
+            \acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital and analog identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
             
-            Under Self-Sovereign Identity model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
+            Under \acrlong{ssi} model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
             
-            The ten guiding principles of SSI, defined by Christopher Allen in \textit{The Path to Self-Sovereign Identity}\cite{path-to-ssi} are:
+            The ten guiding principles of \acrshort{ssi}, defined by Christopher Allen in \textit{The Path to \acrlong{ssi}}\cite{path-to-ssi} are:
             \begin{itemize}
                 \item \textbf{Existence} - Users must have an independent existence.
                 \item \textbf{Control} - Users must control their identities.
@@ -127,15 +133,15 @@
             
             % TODO lo que puede suponer hacer esto
             
-            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), and also to be part of the \textit{CORE Identity Team} of Alastria. Therefore, and with the intention of studying other implementations for the \textit{SSI}, and to improve the current implementation proposed by Alastria, I have chosen this topic.
+            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), and also to be part of the \textit{CORE Identity Team} of Alastria. Therefore, and with the intention of studying other implementations for the \textit{\acrshort{ssi}}, and to improve the current implementation proposed by Alastria, I have chosen this topic.
             % TODO Mover a contexto a general y preguntar a alto nivel lo que hacemos a maria
             
         \subsection{Objectives}
-            The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{Self-Sovereign Identity} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
+            The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{\acrlong{ssi}} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
             \begin{itemize} 
                 \item[1)] the analysis of the blockchain technology: Explain and define what this technology is and how it works.
-                \item[2)] the study of the \textit{Self-Sovereign Identity}: Study what it is and analyze implementations that are currently being made.
-                \item[3)] the delve in the implementation of \textit{Alastria ID}: Expose the \textit{Alastria ID} model with the tools created by Alastria to implement the Self-Sovereign Identity.
+                \item[2)] the study of the \textit{\acrlong{ssi}}: Study what it is and analyze implementations that are currently being made.
+                \item[3)] the delve in the implementation of \textit{Alastria ID}: Expose the \textit{Alastria ID} model with the tools created by Alastria to implement the \acrlong{ssi}.
                 \item[4)] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}: Analyze the framework and tools provided by Alastria, to grant they are not vulnerable.
                 \item[5)] the design of a potential attack and demonstration of its criticality: Create a proof of concept about an attack that can exploit a vulnerability inside \textit{Alastria ID}.
             \end{itemize}
@@ -198,7 +204,7 @@
                     \label{fig:blockchain_uses}
                 \end{figure}
                 
-                In this document we are going to focus on the Self Sovereign Identity (SSI) using blockchain.
+                In this document we are going to focus on the \acrfull{ssi} using blockchain.
 
     \subsection{Ethereum}
         Ethereum\cite{ethereum} (figure \ref{fig:ethereum_logo}) is an open-source, public, blockchain-based distributed ledger featuring smart contract functionality. It enables developers to build blockchain applications with business logic that execute in a trustless environment, while leveraging the high availability of the Ethereum network. 
@@ -444,7 +450,7 @@
             To send several requests at the same time, the client may send an Array with all the request objects. It is called batch. The response from the server should be another Array containing the response objects after all the requests have been processed. The server may process the batch as a set of concurrent tasks. Also, the response objects may be returned in any order within the Array. Thanks to the id server and client will match the context between requests and responses.
             
         \subsection{Self-Sovereign Identity}
-            The idea of the Self-Sovereign Identity was born to solve the problems with the current physical and digital identifications.\\
+            The idea of the \acrlong{ssi} was born to solve the problems with the current physical and digital identifications.\\
             Some of the physical IDs problems are:
             \begin{itemize}
                 \item The process of obtaining them is time consuming, bureaucratic and costly. For both the ID Owner and Issuer Organization. 
@@ -463,27 +469,27 @@
                 \item The user's personal data is stored on the issuer’s servers. Centralized storages of personal data create \textit{“honeypots”}. This data is at risk of breaches, leaks or hacks.
             \end{itemize}
 
-            Self-Sovereign Identity (\textit{SSI}) is a digital identification scheme in which the user acquires the responsibility of managing how and in what quantity their personal data is used. To do this, it allows the creation of digital \textit{“identity cards}” that can be general for any service or specific for each case. \\
-            The main characteristics of Self-Sovereign Identity are\cite{ssi-guide}:
+            \acrfull{ssi} is a digital identification scheme in which the user acquires the responsibility of managing how and in what quantity their personal data is used. To do this, it allows the creation of digital \textit{“identity cards}” that can be general for any service or specific for each case. \\
+            The main characteristics of \acrlong{ssi} are\cite{ssi-guide}:
             \begin{itemize}
                 \item It is secure and digital peer-to-peer channel is established between Issuer, owner and Verifier.
-                \item When credentials are exchanged not even the Self-Sovereign Identity system provider knows what is being exchanged.
+                \item When credentials are exchanged not even the \acrlong{ssi} system provider knows what is being exchanged.
                 \item Credentials are tamper-proof through the use of cryptography.
-                \item They are private and under the owner control. SSI uses Selective Identity disclosure technology.
+                \item They are private and under the owner control. \acrshort{ssi} uses Selective Identity disclosure technology.
                 \item The Owner chooses what data they want to “show” and is always in control of the relationship with ID Verifiers.
                 \item Credentials can be verified anywhere, at any time.
                 \item Personal Data is not stored on centralized servers.
-                \item SSI tries to abolish multiple passwords. You just need to know your wallet password.
+                \item \acrshort{ssi} tries to abolish multiple passwords. You just need to know your wallet password.
             \end{itemize}
 
             \subsubsection{How does it work?}
-                In order to explain how the SSI works, we have to see some concepts previously.
+                In order to explain how the \acrshort{ssi} works, we have to see some concepts previously.
                 \paragraph{Actors}
                     The figure \ref{fig:trust-triangle} explains the different actors\cite{ssi-guide} that take place in the process.
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=0.7\textwidth]{trust-triangle.png}
-                        \caption{Trust triangle / Actors in SSI}
+                        \caption{Trust triangle / Actors in \acrshort{ssi}}
                         \label{fig:trust-triangle}
                     \end{figure}
                     \begin{itemize}
@@ -501,7 +507,7 @@
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=1.0\textwidth]{ssi-vc.png}
-                        \caption{The roles and information in a SSI ecosystem by W3C}
+                        \caption{The roles and information in a \acrshort{ssi} ecosystem by W3C}
                         \label{fig:ssi-vc}
                     \end{figure}
                 
@@ -557,7 +563,7 @@
                     \end{figure}
 
             \subsubsection{Use cases}
-                Self-Sovereign Identity is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and GDPR\cite{gdpr} fines.
+                \acrlong{ssi} is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and GDPR\cite{gdpr} fines.
 
             \subsubsection{Alastria}
                 Alastria (figure \ref{fig:alastria_logo}) is the world’s first nation-wide, multi-sectorial, enterprise grade, permissioned blockchain network. A non-profit association open to all types of companies and organizations with the mission to contribute to the creation of a diverse innovation ecosystem. Alastria is technology agnostic and offers the networks promoted by its partners as well as a user centric Digital Identity model, the Alastria ID, focused on ensuring the legal validity of the transactions on the networks.
@@ -583,12 +589,12 @@
                     In the next section we will delve into the peculiarities and details of the different tools created by Alastria to facilitate the use of Alastria ID.
 
             \subsubsection{Other implementations}
-                At present, self-sovereign identity is still at an early stage. However, there is already an extensive catalog of projects that show their potential. Different working groups and standardization agencies have been working to develop new standards and protocols that are the base of the SSI model\cite{ssi-wallets}. Some of these groups are: the \textit{Decentralized Identity Foundation} (DIF), the \textit{European Blockchain Services Infrastructure} (EBSI), the \textit{Internet Engineering Task Force} (IETF), \textit{LACChain}, \textit{NIST}, \textit{Sovrin}, \textit{OASIS}, the \textit{OpenID Foundation} (ODIF), and the \textit{World Wide Web Consortium} (W3C).\\
+                At present, \acrlong{ssi} is still at an early stage. However, there is already an extensive catalog of projects that show their potential. Different working groups and standardization agencies have been working to develop new standards and protocols that are the base of the \acrshort{ssi} model\cite{ssi-wallets}. Some of these groups are: the \textit{Decentralized Identity Foundation} (DIF), the \textit{European Blockchain Services Infrastructure} (EBSI), the \textit{Internet Engineering Task Force} (IETF), \textit{LACChain}, \textit{NIST}, \textit{Sovrin}, \textit{OASIS}, the \textit{OpenID Foundation} (OIDF), and the \textit{World Wide Web Consortium} (W3C).\\
                 
-                There are also a few existing solutions on the market which leverage new standards and protocols for SSI:
+                There are also a few existing solutions on the market which leverage new standards and protocols for \acrshort{ssi}:
                 % TODO resumen de otras, como UPORT
                 \paragraph{Serto/uPort}
-                    Serto\cite{serto} (figure \ref{fig:uport}) formerly known as uPort\cite{uport} is a web-based wallet and identity management system created by ConsenSys\cite{consenSys}. This project allows users (people) to manage their own private and public keys, without the need for intermediaries. It allows these keys to be recovered without the user having to lose their identity. The system consists of a mobile application (wallet), where the user can manage their identity, can receive and issue claims. A claim is nothing more than a data structure where "someone says something about another person". These claims make up the identity of the user, and can be displayed to identify themselves in front of entities. The identity is controlled by the user, without problems of someone questioning the legitimacy or altering the identity data.
+                    Serto\cite{serto} (figure \ref{fig:uport}) formerly known as uPort\cite{uport} is a web-based wallet and identity management system created by ConsenSys\cite{consenSys}. This project allows users (people) to manage their own private and public keys, without the need for intermediaries. It allows these keys to be recovered without the user having to lose their identity. The system consists of a mobile application (wallet), where the user can manage their identity, can receive and issue claims. A claim is nothing more than a data structure where \textit{"someone says something about another person"}. These claims make up the identity of the user, and can be displayed to identify themselves in front of entities. The identity is controlled by the user, without problems of someone questioning the legitimacy or altering the identity data.
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=.2\textwidth]{serto-logo.png}\hfill
