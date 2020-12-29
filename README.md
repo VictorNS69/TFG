@@ -12,16 +12,23 @@ Install **_LaTex_**
 sudo apt install texlive-full
 ```
 
-Install **_rubber_**
+## Generate the file
 
-```bash
-sudo apt install rubber
-```
-
-## Compile
-
-Just run the _Makefile_
+Just run the _Makefile_ with:
 
 ```bash
 make
+```
+More info:
+```bash
+This Makefile generates the file TFG_VICTOR_NIEVES_SANCHEZ.pdf.
+Author: Víctor Nieves Sánchez
+Mail: vnievess@gmail.com
+
+help:			Show this help.
+compile: 		Compiles the main .tex.
+generate_bibliography:	Generates the bibliography. 
+generate_glossary:	Generates the glossary and the list of acronyms.
+recompile_and_rename:	Recompiles the .text and renames the PDF file.
+clean:			Clean output files.
 ```
