@@ -449,6 +449,27 @@
             \end{itemize}
             To send several requests at the same time, the client may send an Array with all the request objects. It is called batch. The response from the server should be another Array containing the response objects after all the requests have been processed. The server may process the batch as a set of concurrent tasks. Also, the response objects may be returned in any order within the Array. Thanks to the id server and client will match the context between requests and responses.
             
+        \subsection{JSON Web Tokens}
+            In the RFC-7519\cite{rcf-jwt}, the \acrfull{jwt} is defined as:
+            \begin{quote}
+                \textit{\acrfull{jwt} is a compact claims representation format intended for space constrained environments such as HTTP Authorization headers and URI query parameters.  \acrfull{jwts} encode claims to be transmitted as a JSON object that is used as the payload of a \acrfull{jws} structure or as the plaintext of a \acrfull{jwe} structure, enabling the claims to be digitally signed or integrity protected with a \acrfull{mac} and/or encrypted. \acrshort{jwts} are always represented using the \acrshort{jws} Compact Serialization or the \acrshort{jwe} Compact Serialization.} 
+           \end{quote}
+          
+          Basically a \acrshort{jwt} is a JSON that has three parts:
+          \begin{itemize}
+              \item \textbf{Header}: provides important information about the token.
+              \item \textbf{Payload}: it contains the actual information that will be transmitted to the application. The information is provided as key-value pairs. The keys are called claims.
+              \item \textbf{Signature}: It is created using the Base64 encoding of the header and payload, as well as the specified signing or encryption method. The structure is defined by \acrfull{jws}.
+          \end{itemize}
+          Below (figure \ref{fig:jwt-ex}) we can see an example of signed and unsigned \acrshort{jwt}.
+          \begin{figure}[h]
+                \centering
+                \includegraphics[width=1\textwidth]{jwt-example.png}
+                \caption{Example of signed and unsigned \acrshort{jwt}}
+                \label{fig:jwt-ex}
+          \end{figure}
+
+        
         \subsection{Self-Sovereign Identity}
             The idea of the \acrlong{ssi} was born to solve the problems with the current physical and digital identifications.\\
             Some of the physical IDs problems are:
@@ -631,7 +652,73 @@
 \newpage
 
 \section{Alastria ID}
-% TODO cuerpo del trabajo
+    As we have seen, Alastria is a Spanish blockchain consortium, in which multiple companies and organizations are collaborating in different Github repositories\footnote{https://github.com/alastria}, promoting the implementation of a new digital identity model known as \acrlong{ssi}. In Alastria this implementation is called Alastria ID. Its mission is to reach all sectors and contribute to the creation of an innovation ecosystem that is as diverse as possible. \\
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1.0\textwidth]{pilares_alastria.png}
+        \caption{Alastria ID model}
+        \label{fig:pilares_alastria}
+    \end{figure}
+                    
+    As the figure \ref{fig:pilares_alastria} obtained from the Alastria main website\footnote{https://alastria.io/en/id-alastria/} represents, the Alastria ID model is based in the 10 key principles of the \acrshort{ssi}. It is designed to be legally binding, and its three fundamental pillars are:
+    \begin{itemize}
+        \item \textbf{Security}: identity information must be kept secure. This means protection, persistence and minimization.
+        \item \textbf{Controllability}: the user must have control of who can see and have access to their data. This means existence, persistence, control and consent.
+        \item \textbf{Portability}: the user must be able to use their data wherever they want and not be subject to a single provider. This means interoperability, transparency and access.
+    \end{itemize}
+    
+    \subsection{Actors}
+        In the model several actors are defined, with different functionalities.
+         \begin{itemize}
+             \item \textbf{Entity}: Company or organization (legal person). An entity can be one or both:
+             \begin{itemize}
+                 \item \textbf{Service Provider}: Entity which requests information from a subject, so \textbf{it creates Presentation Requests and receives Presentations}.
+                 \item \textbf{Issuer}: It can help anyone to create a new identity. Also this kind of entity can emits certified information about a subject, so \textbf{it creates Credentials}.
+             \end{itemize}
+             \item \textbf{Subject}: Person (natural or legal) who \textbf{has information certified by an Issuer and sends it to a Service Provider}, so it receives credentials and creates presentations. It is the information owner. This information is saved and controlled from a wallet.
+             \item \textbf{Admin}: It is the \textbf{identity} (account) \textbf{that deployed the Smart Contracts}. \textbf{It is only used to create the first entity} (Issuer). \textbf{All other identities must be created by Issuers}.
+        \end{itemize}
+        In the next figure (\ref{fig:roles-ala}) we can see a visual explanation of the data flow between the different actors.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{roles-ala.png}
+            \caption{Data flow between different actors in Alastria}
+            \label{fig:roles-ala}
+        \end{figure}
+
+    \subsection{Alastria ID Specification}
+        In this section we are going to see the different objects defined by Alastria for the model.
+        \subsubsection{DID}
+            As we have seen previously, the \acrfull{dids} are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a DID that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
+            \begin{itemize}
+                \item It will include the type of network in which the \acrshort{did} has been registered.
+                \item It will also include the blockchain network and the network ID where the \acrshort{did} is registered.
+            \end{itemize}
+            
+            Alastria \acrshort{dids} have the following format (listing \ref{lst:did_format}):
+            \lstinputlisting[label={lst:did_format}, caption=DID format]{examples/codeSnippets/did_format.txt}
+            Where:
+            \begin{itemize}
+                \item \textbf{"ala"}: specifies that this is a \acrshort{did} for Alastria.
+                \item \textbf{"network"}: specifies the technology used on that network. 
+                \item \textbf{"net-id"}: defines the specific Alastria blockchain network instance.
+            \end{itemize}
+            Possible examples of \acrshort{dids} are (listing \ref{lst:did_ex}):
+            \lstinputlisting[label={lst:did_ex}, caption=Examples of DIDs]{examples/codeSnippets/did_examples.txt}
+
+        
+    \subsection{Example: Rent a car}
+        
+    \subsection{Project structure}
+    
+        \subsubsection{Smart Contracts}
+        
+        \subsubsection{Node Library}
+        
+        \subsubsection{Library examples}
+        
+        \subsubsection{Wallet}
 
 \newpage
 \section{Conclusions}

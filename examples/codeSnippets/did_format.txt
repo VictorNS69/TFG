@@ -1,0 +1,5 @@
+did                = "did:ala:" network ":" specific-idstring
+
+network            = ("quor" / "fabr") ":" net-id
+
+specific-idstring  = depends on the network, see below
