@@ -689,7 +689,7 @@
 
     \subsection{Alastria ID Specification}
         In this section we are going to see the different objects defined by Alastria for the model.
-        \subsubsection{DID}
+        \subsubsection{DIDs}
             As we have seen previously, the \acrfull{dids} are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a \acrshort{did} that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
             \begin{itemize}
                 \item It will include the type of network in which the \acrshort{did} has been registered.
@@ -707,11 +707,48 @@
             Possible examples of \acrshort{dids} are (listing \ref{lst:did_ex}):
             \lstinputlisting[label={lst:did_ex}, caption=Examples of \acrshort{dids}]{examples/codeSnippets/did_examples.txt}
 
+        \subsubsection{Artifacts}
+        
+            \paragraph{Alastria Token (AT)}
+            
+            \paragraph{Alastria Session (AS)}
+            
+            \paragraph{Alastria Identity Creation (AIC)}
+            
+            \paragraph{Credential}
+            
+            \paragraph{Presentation Request (PR)}
+            
+            \paragraph{Presentation}
         
     \subsection{Example: Rent a car}
         
     \subsection{Project structure}
-    
+    TODO
+    % TODO no me gusta
+        \begin{table}[h]
+        \centering
+            \begin{tabular}{||p{0.2\linewidth} | p{0.5\linewidth} | p{0.4\linewidth}||} 
+                 \hline
+                 Repository Name & URL  & Description \\ [0.5ex] 
+                 \hline\hline
+                 alastria-wallet & \url{https://github.com/alastria/alastria-wallet} & IONIC application for the final users to opearate with their Alastria Identity \\ 
+                 \hline
+                 alastria-identity & \url{https://github.com/alastria/alastria-identity} & It contains the truffle project with the Smart Contracts written in Solidity \\
+                 \hline
+                 alastria-identity-lib & \url{https://github.com/alastria/alastria-identity-lib} & Library written in TypeScript to facilitate interaction with Smart Contracts \\
+                 \hline
+                 alastria-identity-example & \url{https://github.com/alastria/alastria-identity-example} & Examples of use to interact with the library\\
+                 \hline
+                 alastria-JSON-objects &  \url{https://github.com/alastria/alastria-identity-JSON-objects} & Alastria ID Model specification JSON objects verification \\ 
+                 \hline
+                 alastria-identity-entity & \url{https://github.com/alastria/alastria-identity-entity} & Example of an entity application with Alastria ID \\ 
+                 \hline
+                 alastria-node & \url{https://github.com/alastria/alastria-node} & Scripts for the installation of a blockchain node in Alastria\\ [1ex] 
+                 \hline
+            \end{tabular}
+            \caption{Main repositories in Alastria's GitHub}
+        \end{table}
         \subsubsection{Smart Contracts}
         
         \subsubsection{Node Library}
@@ -719,6 +756,10 @@
         \subsubsection{Library examples}
         
         \subsubsection{Wallet}
+
+\newpage
+\section{Security audit}
+% TODO
 
 \newpage
 \section{Conclusions}
