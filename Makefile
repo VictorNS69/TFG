@@ -27,7 +27,7 @@ recompile_and_rename:	## Recompiles the .text and renames the PDF file.
 			@echo Recompile file.
 			pdflatex $(MAIN_FILE).tex 2>&1 > /dev/null
 			@echo Rename final file.
-			mv $(MAIN_FILE).pdf "TFG_VICTOR_NIEVES_SANCHEZ.pdf"
+			mv $(MAIN_FILE).pdf $(FINAL_NAME)
 
 clean:			## Clean output files.
 			@echo Removes compiled files.
