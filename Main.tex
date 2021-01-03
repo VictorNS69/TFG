@@ -152,7 +152,7 @@
         
 \section{State of the Art}
     \subsection{Blockchain}
-        Blockchain\cite{Bitcoin2015}\cite{blockchain-hype}\cite{blockchain-tech} is a type of DLT (Distributed Ledger Technology) which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
+        Blockchain\cite{Bitcoin2015}\cite{blockchain-hype}\cite{blockchain-tech} is a type of \acrfull{dlt} which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
         \begin{itemize}
             \item \textbf{Decentralization}. The information is not stored by a single entity, in fact, everyone in the network owns the information and can access it. Decentralization means that there is no core authority to dictate the truth to the other participants. Also, in a decentralized network, if you want to interact with another participant, you can do it directly without going through a third party.
             \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below (figure \ref{fig:alastria_block_explorer}) we can see the public transaction in the Alastria network, but we are not able to know the accounts “from” and “to”.
@@ -192,7 +192,7 @@
             Also, there are two more types of blockchain networks on the rise.
             \begin{itemize}
                 \item \textbf{Consortium} or \textbf{hybrid networks}. These networks are private and permissioned, operated by known entities such as stakeholders of a given industry regrouped in a consortium or exploiting a shared platform. Some known examples are \textit{Hyperledger} \textit{Fabric}, \textit{R3 Corda} and \textit{Multichain}.
-                \item \textbf{Blockchain as a Service} (BaaS). These are cloud platforms hosted by a service provider to deploy blockchain applications. The service provider manages the blockchain network while the customer defines the business logic. Some of the examples are \textit{Amazon (AWS)} and \textit{Oracle} blockchain platforms.
+                \item \textbf{\acrfull{baas}}. These are cloud platforms hosted by a service provider to deploy blockchain applications. The service provider manages the blockchain network while the customer defines the business logic. Some of the examples are \textit{\acrfull{aws}} and \textit{Oracle} blockchain platforms.
             \end{itemize}
             
             \subsubsection{Uses of blockchain}
@@ -224,24 +224,24 @@
         \end{itemize}
         
         \subsubsection{Ether}
-            Ether (ETH) is the native cryptocurrency used on the Ethereum network and is used to compensate miners who secure transactions. It is used to pay for gas, a unit of computation used in transactions and other state transitions.
-            Ether also has many current use cases, such as a store of value, a medium of exchange, and a unit of account.
+            \acrfull{eth} is the native cryptocurrency used on the Ethereum network and is used to compensate miners who secure transactions. It is used to pay for gas, a unit of computation used in transactions and other state transitions.
+            \acrlong{eth} also has many current use cases, such as a store of value, a medium of exchange, and a unit of account.
             
         \subsubsection{Ethereum Accounts}
-            An Ethereum account or simply an “account” is the combination of an Ethereum address and it’s private key. An account can hold balance (Ether) and can send transactions. In Ethereum there are 2 types of accounts.
+            An Ethereum account or simply an “account” is the combination of an Ethereum address and it’s private key. An account can hold balance (\acrlong{eth}) and can send transactions. In Ethereum there are 2 types of accounts.
             \begin{itemize}
-                \item \textbf{Externally owned accounts} (EOA). These accounts are a combination of public address and private key. This accounts:
+                \item \textbf{\acrfull{eoa}}. These accounts are a combination of public address and private key. This accounts:
                 \begin{itemize}
-                    \item Has an ether balance
+                    \item Has an \acrlong{eth} balance
                     \item Can send transactions to Smart Contracts
-                    \item Can send and receive ether to/from another account
+                    \item Can send and receive \acrlong{eth} to/from another account
                     \item Is controlled by private keys
                     \item Has no associated code
                 \end{itemize}
                 \item \textbf{Contract accounts}: These accounts don’t have a corresponding private key. These accounts are generated when a Smart Contract is deployed in the blockchain. They are normally called “contracts” instead of contract accounts. A contract:
                 \begin{itemize}
-                    \item Has an ether balance
-                    \item They can receive ether just like EOA
+                    \item Has an \acrlong{eth} balance
+                    \item They can receive \acrlong{eth} just like \acrshort{eoa}
                     \item Has associated code
                     \item Code execution is triggered by transactions or calls received from other contracts or accounts
                     \item When executed can manipulate its own persistent storage
@@ -258,36 +258,36 @@
         \subsubsection{Ethereum stack}
             Like any software stack, the complete "Ethereum stack"\cite{ethereumStack} will vary from project to project depending on your business goals. However, the typical layers are:
             \paragraph{Ethereum Virtual Machine (EVM)}
-                The Ethereum Virtual Machine\cite{evm}, normally known as EVM is a software designed to emulate a machine with certain capabilities that make the Ethereum blockchain possible. We can program instructions for the EVM, using a series of opcodes, which we can then compile and translate into a specific bytecode or language that the EVM can understand and execute.\\
+                The \acrlong{evm}\cite{evm}, normally known as \acrshort{evm} is a software designed to emulate a machine with certain capabilities that make the Ethereum blockchain possible. We can program instructions for the \acrshort{evm}, using a series of opcodes, which we can then compile and translate into a specific bytecode or language that the \acrshort{evm} can understand and execute.\\
                 
-                The opcodes perform standard stack operations like \textit{XORAND}, \textit{ADD}, \textit{SUB}, etc. The EVM also implements a number of blockchain-specific stack operations, such as \textit{ADDRESS}, \textit{BALANCE}, \textit{SHA3}, \textit{BLOCKHASH}, etc. More specific information can be found at the official documentation\cite{opcodes}.\\
+                The opcodes perform standard stack operations like \textit{XORAND}, \textit{ADD}, \textit{SUB}, etc. The \acrshort{evm} also implements a number of blockchain-specific stack operations, such as \textit{ADDRESS}, \textit{BALANCE}, \textit{SHA3}, \textit{BLOCKHASH}, etc. More specific information can be found at the official documentation\cite{opcodes}.\\
                 
-                To make programming easier for the virtual machine, a specialized high-level language called Solidity was created. This programming language is used to create Smart Contracts. Solidity first transforms opcodes and then these to bytecode. This bytecode is finally executed by the EVM to perform the specified operations of a  Smart Contract. All this means that the EVM can function as a real computer, executing from the simplest to the most complex operations.\\
+                To make programming easier for the virtual machine, a specialized high-level language called Solidity was created. This programming language is used to create Smart Contracts. Solidity first transforms opcodes and then these to bytecode. This bytecode is finally executed by the \acrshort{evm} to perform the specified operations of a  Smart Contract. All this means that the \acrshort{evm} can function as a real computer, executing from the simplest to the most complex operations.\\
                 
                 In the following sections we will talk in detail about the Smart Contracts and Solidity.
                 
             \paragraph{EVM Characteristics}
-                The EVM has a series of unique characteristics\cite{ethereumGavin}\cite{ethereumDocu}:
+                The \acrshort{evm} has a series of unique characteristics\cite{ethereumGavin}\cite{ethereumDocu}:
                 \begin{itemize}
-                    \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, EVM is capable of executing unreliable codes without disastrous consequences.
-                    \item The EVM is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the EVM are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can’t be modified or altered.
+                    \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, \acrshort{evm} is capable of executing unreliable codes without disastrous consequences.
+                    \item The \acrshort{evm} is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the \acrshort{evm} are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can’t be modified or altered.
                     \item Applications can be executed on the same blockchain network, without affecting other operations.
-                    \item EVM is able to follow the “rules” of Smart Contracts.
-                    \item The EVM has the ability to execute a series of well-defined opcodes.
+                    \item \acrshort{evm} is able to follow the “rules” of Smart Contracts.
+                    \item The \acrshort{evm} has the ability to execute a series of well-defined opcodes.
                 \end{itemize}
                 
             \paragraph{How does it work?}
-                The figure \ref{fig:blockchain_stack} defines how the EVM works\cite{queEsEvm}.
+                The figure \ref{fig:blockchain_stack} defines how the \acrshort{evm} works\cite{queEsEvm}.
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=1\textwidth]{evm-stack.jpeg}
-                    \caption{EVM stack schema}
+                    \caption{\acrshort{evm} stack schema}
                     \label{fig:blockchain_stack}
                 \end{figure}
 
-                The Smart Contracts made with Solidity are compiled and converted to opcodes. These opcodes are transformed to bytecode, so it does facilitate the performance of the EVM tasks.\\
+                The Smart Contracts made with Solidity are compiled and converted to opcodes. These opcodes are transformed to bytecode, so it does facilitate the performance of the \acrshort{evm} tasks.\\
 
-                Thus, each transaction and operation that is carried out on the Ethereum blockchain goes through this process, and its execution is carried out by the EVM, which at the end records everything on the Ethereum blockchain, leaving a public record of those operations. 
+                Thus, each transaction and operation that is carried out on the Ethereum blockchain goes through this process, and its execution is carried out by the \acrshort{evm}, which at the end records everything on the Ethereum blockchain, leaving a public record of those operations. 
 
         \subsubsection{Smart Contracts}
             Sam Richards\cite{smartContracts}, a Software Engineer working on Ethereum defines the Smart Contract as 
@@ -307,7 +307,7 @@
             
             Solidity (figure \ref{fig:solidity_logo}) defines itself as an object-oriented, high-level language for implementing Smart Contracts. Smart Contracts are programs which govern the behaviour of accounts within the Ethereum state.\\
             
-            Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the Ethereum Virtual Machine (EVM). Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
+            Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the \acrfull{evm}. Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
 
             Below is an example\footnote{Source code from AlastriaIdentityIssuer.sol\cite{AlastriaIdentityIssuer}}
  of a Smart Contract written in Solidity\footnote{More details about Solidity can be found in the official documentation\cite{solidity}} (listing  \ref{lst:AlastriaIdentityIssuer}).
@@ -323,7 +323,7 @@
                 \item \textbf{Light node}. Stores the header chain and requests everything else. Can verify the validity of the data against the state roots in the block headers and it is useful for low capacity devices, such as embedded devices or mobile phones, which can't afford to store gigabytes of blockchain data.
                 \item \textbf{Archive node}. Stores everything kept in the full node and builds an archive of historical states. These nodes can be handy for services like block explorers, wallet vendors, and chain analytics.
             \end{itemize}
-            By connecting your application to an Ethereum node via JSON RPC, your application is able to read data from the blockchain as well as broadcast new transactions to the network.
+            By connecting your application to an Ethereum node via \acrshort{json} \acrshort{rpc}, your application is able to read data from the blockchain as well as broadcast new transactions to the network.
 
         \subsubsection{Ethereum Client APIs}
             While APIs are not a necessary piece of the stack, they abstract away much of the complexity of interacting directly with Ethereum nodes and Smart contracts.\\
@@ -334,41 +334,41 @@
             The final part of the stack is the user-facing applications, primarily web and mobile apps.  They are made for users so they do not need to know the application they're using is built using a blockchain. Also the end user applications are made to hide the complexity from the user.
             
         \subsubsection{Ethereum 2.0 (Eth2)}
-            Eth2\cite{eth2} is a long-planned upgrade to the Ethereum network, it will reduce energy consumption, allow the network to process more transactions, and increase security.  Ethereum will become a proof-of-stake blockchain and introduce shard chains. Shard chains are like parallel blockchains that sit within Ethereum and take on a portion of the network's processing work.\\
+            \acrshort{eth2}\cite{eth2} is a long-planned upgrade to the Ethereum network, it will reduce energy consumption, allow the network to process more transactions, and increase security.  Ethereum will become a proof-of-stake blockchain and introduce shard chains. Shard chains are like parallel blockchains that sit within Ethereum and take on a portion of the network's processing work.\\
             
             The phase 1 of Ethereum 2.0 is supposed to happen in 2021. The roadmap can be checked in the official website\cite{eth2Roadmap}.
             
 
     \subsection{JSON-RPC}
-        JSON-RPC is a remote procedure call protocol (RPC) encoded in JSON. It is a simple protocol that defines only a few data types and commands. JSON-RPC allows for notifications (data sent to the server that does not require a response) and for multiple asynchronous calls. It uses JSON \textit{RFC-4627}\cite{rfc4627} as data format.\\
+        JSON-RPC is a \acrfull{rpc} encoded in \acrshort{json}. It is a simple protocol that defines only a few data types and commands. JSON-RPC allows for notifications (data sent to the server that does not require a response) and for multiple asynchronous calls. It uses \acrshort{json} \textit{RFC-4627}\cite{rfc4627} as data format.\\
         
         The first officially released specification was \textit{JSON-RPC 1.0}\cite{json-rpc-1} published in 2005, but the last official specification is \textit{JSON-RPC 2.0}\cite{json-rpc-2} published in 2010 with several improvements.
         
         \subsubsection{JSON}
-            JavaScript Object Notation mostly known as JSON is a lightweight data-interchange format. It is human readable and easy to write. Also, it is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language independent but uses conventions that are familiar to several languages such as \textit{C}, \textit{C++}, \textit{Java}, \textit{JavaScript}, \textit{Perl}, \textit{Python} and many others.\\
+            \acrlong{json} mostly known as \acrshort{json} is a lightweight data-interchange format. It is human readable and easy to write. Also, it is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language Standard ECMA-262 3rd Edition - December 1999. \acrshort{json} is a text format that is completely language independent but uses conventions that are familiar to several languages such as \textit{C}, \textit{C++}, \textit{Java}, \textit{JavaScript}, \textit{Perl}, \textit{Python} and many others.\\
                         
-            JSON is built on two structures\cite{jsonSchema}:
+            \acrshort{json} is built on two structures\cite{jsonSchema}:
             \begin{itemize}
                 \item A collection of name-value pairs (figure \ref{fig:json_objects}). In various languages, this is realized as an Object, Record, Struct, Dictionary, ...
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.6\textwidth]{json-objects.png}
-                    \caption{JSON objects schema}
+                    \caption{\acrshort{json} objects schema}
                     \label{fig:json_objects}
                 \end{figure}
                 \item An ordered list of values (figure \ref{fig:json_arrays}). In most languages, this is realized as an Array, Vector, List, ...
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.6\textwidth]{json-arrays.png}
-                    \caption{JSON array schema}
+                    \caption{\acrshort{json} array schema}
                     \label{fig:json_arrays}
                 \end{figure}
             \end{itemize}
 
         \subsubsection{RPC}
-            A remote procedure call (RPC)\cite{rpc} is when a computer program causes a procedure to execute in a different address space (commonly on another computer), which is coded as if it were a local procedure call. That is, the programmer writes essentially the same code whether the program will run locally or in a remote machine.\\
+            A r\acrfull{rpc}\cite{rpc} is when a computer program causes a procedure to execute in a different address space (commonly on another computer), which is coded as if it were a local procedure call. That is, the programmer writes essentially the same code whether the program will run locally or in a remote machine.\\
             
-            The transparency is one of the great strengths of RPC, because the application software does not contain any communication code, it is independent of:
+            The transparency is one of the great strengths of \acrshort{rpc}, because the application software does not contain any communication code, it is independent of:
             \begin{itemize}
                 \item The communication hardware and protocols used
                 \item The operative system
@@ -376,32 +376,32 @@
             \end{itemize}
             
             \paragraph{How RPC works}
-                From the point of view of a remote call, the calling program is known as client, and the subroutine it calls is known as the server\cite{rpcInOS}\cite{howRPC}. When the client calls the server, the RPC system must take care of:
+                From the point of view of a remote call, the calling program is known as client, and the subroutine it calls is known as the server\cite{rpcInOS}\cite{howRPC}. When the client calls the server, the \acrshort{rpc} system must take care of:
                 \begin{itemize}
                     \item Taking all the parameters which are passed to the subroutine and transferring them to the remote node
                     \item Having the subroutine executed on the remote node
                     \item Transferring back all the parameters which are returned to the calling routine
                 \end{itemize}
                 
-                In the next figure (figure \ref{fig:rpc_schema}) we can see the typical RPC communication schema.
+                In the next figure (figure \ref{fig:rpc_schema}) we can see the typical \acrshort{rpc} communication schema.
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.7\textwidth]{rpc.png}
-                    \caption{RPC schema}
+                    \caption{\acrshort{rpc} schema}
                     \label{fig:rpc_schema}
                 \end{figure}
                 The most common method of doing this is by the use of stub modules (figure \ref{fig:rpc_mechanism}). The client is linked to a client stub module. This is a subroutine which looks like the remote subroutine, but on the inside, it is almost empty. All it does is take the values of the parameters which are passed to it, and put them in a message. This is known as marshalling.\\
 
-                The client stub then uses a routine in the RPC Run-Time System (RTS) to send the message off and wait for a reply message. When the reply arrives, the stub unmarshals the parameters that were returned in the reply message, putting their values into the variables of the calling program. The client stub then returns to the calling program just like a normal subroutine.\\
+                The client stub then uses a routine in the \acrshort{rpc} \acrfull{rts} to send the message off and wait for a reply message. When the reply arrives, the stub unmarshals the parameters that were returned in the reply message, putting their values into the variables of the calling program. The client stub then returns to the calling program just like a normal subroutine.\\
 
-                The server stub (located in the remote machine) is called by the RPC RTS when the message arrives from the client. The server stub performs the unmarshall of the parameters passed to the subroutine, calling the subroutine, and marshalling the return parameters. 
+                The server stub (located in the remote machine) is called by the \acrshort{rpc} \acrshort{rts} when the message arrives from the client. The server stub performs the unmarshall of the parameters passed to the subroutine, calling the subroutine, and marshalling the return parameters. 
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.7\textwidth]{rpc-mecha.png}
-                    \caption{RPC mechanism}
+                    \caption{\acrshort{rpc} mechanism}
                     \label{fig:rpc_mechanism}
                 \end{figure}
-                All the communication details are handled by the RPC RTS, so the stubs contain only the code which is specific to the application involved\cite{rpc2}.
+                All the communication details are handled by the \acrshort{rpc} \acrshort{rts}, so the stubs contain only the code which is specific to the application involved\cite{rpc2}.
                 \begin{itemize}
                     \item In order to produce stub modules, it is need to know
                     \item The names of the procedures in the package (set of procedures)
@@ -410,21 +410,21 @@
                     \item The direction in which each parameter is transferred
                 \end{itemize}
         \subsubsection{JSON-RPC 1.0}
-            The general mechanism consists of two peers establishing a data connection\cite{json-rpc-1}. Peers may invoke methods provided by the older peer. To invoke a remote method, a request serialized using JSON is sent. The request is a single JSON Object with three properties: 
+            The general mechanism consists of two peers establishing a data connection\cite{json-rpc-1}. Peers may invoke methods provided by the older peer. To invoke a remote method, a request serialized using \acrshort{json} is sent. The request is a single \acrshort{json} Object with three properties: 
             \begin{itemize}
                 \item \textbf{method}: The name of the invoked method.
                 \item \textbf{params}: The params passed as arguments to the method. It is an Array of Objects.
                 \item \textbf{id}: The request id. It can be of any type. It is used to match the response with the reply. If it is a notification request, it must be Null.
             \end{itemize}
-            The request must be replied unless it is a notification (does not need a response). The response is also a single Object serialized using JSON and has this properties:
+            The request must be replied unless it is a notification (does not need a response). The response is also a single Object serialized using \acrshort{json} and has this properties:
             \begin{itemize}
                 \item \textbf{result}: The Object returned by the invoked method. It is Null in case there was an error.
                 \item \textbf{error}: An error Object if there was an error while invoking the method. It is Null if there was no error.
                 \item \textbf{id}: The id of the request that was sent. 
             \end{itemize}
-            JSON-RPC does not require a certain transport protocol, but TCP/IP socket streams are encouraged. The request and the response are sent to the peers through byte streams.\\
+            JSON-RPC does not require a certain transport protocol, but \acrshort{tcp}/IP socket streams are encouraged. The request and the response are sent to the peers through byte streams.\\
 
-            Also HTTP can be used as the communication transport. The request must be sent as an \textit{HTTP POST} with all the serialized Objects. Once the client has received the response, it must reply with another \textit{HTTP POST}. A non-valid request will result in closing the connection.
+            Also \acrshort{http} can be used as the communication transport. The request must be sent as an \textit{\acrshort{http} POST} with all the serialized Objects. Once the client has received the response, it must reply with another \textit{\acrshort{http} POST}. A non-valid request will result in closing the connection.
         \subsubsection{JSON-RPC 2.0}
             This specification\cite{json-rpc-2} works almost the same way as the JSON-RPC 1.0 but it has several upgrades.\\
             
@@ -435,7 +435,7 @@
                 \item \textbf{params}: A Structured value (Object or Array) with the parameter values passed as arguments to the method.
                 \item \textbf{id}: It is a String, Number or \textit{Null} identifier. If it is not included, it is assumed to be a notification. Normally it should not be \textit{Null} because this specification uses a value of \textit{Null} for responses with unknown id. Also, JSON-RPC 1.0 uses \textit{Null} for notifications, and it causes confusion in handling.
             \end{itemize}
-            Similarly, the response from the server is expressed as a single JSON Object with the following properties:
+            Similarly, the response from the server is expressed as a single \acrshort{json} Object with the following properties:
             \begin{itemize}
                 \item \textbf{jsonrpc}: As in the request, it must exactly be “2.0”
                 \item \textbf{result}: It is required on success, but must not exist if there was an error.
@@ -452,10 +452,10 @@
         \subsection{JSON Web Tokens}
             In the RFC-7519\cite{rcf-jwt}, the \acrfull{jwt} is defined as:
             \begin{quote}
-                \textit{\acrfull{jwt} is a compact claims representation format intended for space constrained environments such as HTTP Authorization headers and URI query parameters.  \acrfull{jwts} encode claims to be transmitted as a JSON object that is used as the payload of a \acrfull{jws} structure or as the plaintext of a \acrfull{jwe} structure, enabling the claims to be digitally signed or integrity protected with a \acrfull{mac} and/or encrypted. \acrshort{jwts} are always represented using the \acrshort{jws} Compact Serialization or the \acrshort{jwe} Compact Serialization.} 
+                \textit{\acrfull{jwt} is a compact claims representation format intended for space constrained environments such as \acrshort{http} Authorization headers and URI query parameters.  \acrfull{jwts} encode claims to be transmitted as a \acrshort{json} object that is used as the payload of a \acrfull{jws} structure or as the plaintext of a \acrfull{jwe} structure, enabling the claims to be digitally signed or integrity protected with a \acrfull{mac} and/or encrypted. \acrshort{jwts} are always represented using the \acrshort{jws} Compact Serialization or the \acrshort{jwe} Compact Serialization.} 
            \end{quote}
           
-          Basically a \acrshort{jwt} is a JSON that has three parts:
+          Basically a \acrshort{jwt} is a \acrshort{json} that has three parts:
           \begin{itemize}
               \item \textbf{Header}: provides important information about the token.
               \item \textbf{Payload}: it contains the actual information that will be transmitted to the application. The information is provided as key-value pairs. The keys are called claims.
@@ -520,7 +520,7 @@
                     \end{itemize}
             
                 \paragraph{Verifiable Credentials}
-                    According to the World Wide Web Consortium \textit{(W3C)}\cite{w3c-vc}\footnote{\label{footnote-w3c}More information about Verifiable Credentials and Verifiable Presentations can be found in the main web page of W3C\cite{w3c-vc}}:
+                    According to the World Wide Web Consortium \textit{\acrshort{w3c}}\cite{w3c-vc}\footnote{\label{footnote-w3c}More information about Verifiable Credentials and Verifiable Presentations can be found in the main web page of \acrshort{w3c}\cite{w3c-vc}}:
                     \begin{quote}
                         \textit{A verifiable credential can represent all of the same information that a physical credential represents. The addition of technologies, such as digital signatures, makes verifiable credentials more tamper-evident and more trustworthy than their physical counterparts.}
                     \end{quote}
@@ -528,12 +528,12 @@
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=1.0\textwidth]{ssi-vc.png}
-                        \caption{The roles and information in a \acrshort{ssi} ecosystem by W3C}
+                        \caption{The roles and information in a \acrshort{ssi} ecosystem by \acrshort{w3c}}
                         \label{fig:ssi-vc}
                     \end{figure}
                 
                 \paragraph{Verifiable Presentations}
-                    According to W3C\cite{w3c-vc}\footref{footnote-w3c}:
+                    According to \acrshort{w3c}\cite{w3c-vc}\footref{footnote-w3c}:
                     \begin{quote}
                         \textit{A verifiable presentation expresses data from one or more verifiable credentials, and is packaged in such a way that the authorship of the data is verifiable. If verifiable credentials are presented directly, they become verifiable presentations. Data formats derived from verifiable credentials that are cryptographically verifiable, but do not of themselves contain verifiable credentials, might also be verifiable presentations.}
                         
@@ -543,16 +543,16 @@
                     \begin{figure}[ht] 
                         \centering
                         \includegraphics[width=0.5\textwidth]{ssi-vp.png}
-                        \caption{Basic components of a verifiable presentation by W3C}
+                        \caption{Basic components of a verifiable presentation by \acrshort{w3c}}
                         \label{fig:ssi-vp}
                     \end{figure}
                 %\newpage % TODO: que no corte el texto de DIDs
                 \paragraph{Decentralized Identifiers (DIDs)}
-                    According to W3C\cite{w3c-did}\footnote{More information about the DIDs can be found in the main web page of W3C\cite{w3c-did}}:
+                    According to \acrshort{w3c}\cite{w3c-did}\footnote{More information about the \acrshort{dids} can be found in the main web page of \acrshort{w3c}\cite{w3c-did}}:
                     \begin{quote}
-                        \textit{Decentralized identifiers (DIDs) are a new type of identifier that enables verifiable, decentralized digital identity. A DID identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the DID decides that it identifies. In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a DID, the design enables the controller of a DID to prove control over it without requiring permission from any other party. DIDs are URIs that associate a DID subject with a DID document allowing trustable interactions associated with that subject.}
+                        \textit{\acrfull{dids} are a new type of identifier that enables verifiable, decentralized digital identity. A \acrshort{did} identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the \acrshort{did} decides that it identifies. In contrast to typical, federated identifiers, \acrshort{dids} have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a \acrshort{did}, the design enables the controller of a \acrshort{did} to prove control over it without requiring permission from any other party. \acrshort{dids} are URIs that associate a \acrshort{did} subject with a \acrshort{did} document allowing trustable interactions associated with that subject.}
                         
-                        \textit{Each DID document can express cryptographic material, verification methods, or service endpoints, which provide a set of mechanisms enabling a DID controller to prove control of the DID. Service endpoints enable trusted interactions associated with the DID subject. A DID document might contain the DID subject itself, if the DID subject is an information resource such as a data model.}
+                        \textit{Each \acrshort{did} document can express cryptographic material, verification methods, or service endpoints, which provide a set of mechanisms enabling a \acrshort{did} controller to prove control of the \acrshort{did}. Service endpoints enable trusted interactions associated with the \acrshort{did} subject. A \acrshort{did} document might contain the \acrshort{did} subject itself, if the \acrshort{did} subject is an information resource such as a data model.}
                     \end{quote}
                     
                 \paragraph{Wallets}
@@ -564,7 +564,7 @@
                         \item Guarantee that only authorized entities can access to it.
                         \item Ensure security and data encryption.
                         \item Provide recovery for keys and credentials.
-                        \item Be connected to the blockchain where the DID was registered.
+                        \item Be connected to the blockchain where the \acrshort{did} was registered.
                         \item Provide mechanism for subjects and issuers to change the status of their credentials.
                         \item Provide mechanism for the owner to erase all the data associated with them.
                     \end{itemize}
@@ -584,7 +584,7 @@
                     \end{figure}
 
             \subsubsection{Use cases}
-                \acrlong{ssi} is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and GDPR\cite{gdpr} fines.
+                \acrlong{ssi} is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and \acrshort{gdpr}\cite{gdpr} fines.
 
             \subsubsection{Alastria}
                 Alastria (figure \ref{fig:alastria_logo}) is the world’s first nation-wide, multi-sectorial, enterprise grade, permissioned blockchain network. A non-profit association open to all types of companies and organizations with the mission to contribute to the creation of a diverse innovation ecosystem. Alastria is technology agnostic and offers the networks promoted by its partners as well as a user centric Digital Identity model, the Alastria ID, focused on ensuring the legal validity of the transactions on the networks.
@@ -603,14 +603,14 @@
                         \label{fig:alastria_id_logo}
                     \end{figure}
                 
-                    The Identity Commission of Alastria ID\cite{alastria-context} has taken a further step in the typical functionalities of this tool. It has followed the recommendations of the ID of the World Wide Web Consortium\cite{w3c} (W3C), the international community that develops Internet standards. It has even been improved. Alastria ID has been developed in accordance with the demanding European data protection regulations GDPR\cite{gdpr} (General Data Protection Regulation), and eIDAS\cite{eidas} (European system for the recognition of electronic identities).\\
+                    The Identity Commission of Alastria ID\cite{alastria-context} has taken a further step in the typical functionalities of this tool. It has followed the recommendations of the ID of the \acrfull{w3c}\cite{w3c}, the international community that develops Internet standards. It has even been improved. Alastria ID has been developed in accordance with the demanding \acrfull{gdpr}\cite{gdpr} (General Data Protection Regulation), and \acrfull{eidas}\cite{eidas}..\\
 
                     The Alastria Standards Commission, which participates in all international and national standardization bodies, has collaborated in the process of the definition of the Alastria ID. The model specification inspired the Spanish identity standard UNE 71307\cite{une-71307} and the decentralized identity framework of EBSI\cite{ebsi} (European Blockchain Services Infrastructure), the blockchain of European public administrations.\\
                     
                     In the next section we will delve into the peculiarities and details of the different tools created by Alastria to facilitate the use of Alastria ID.
 
             \subsubsection{Other implementations}
-                At present, \acrlong{ssi} is still at an early stage. However, there is already an extensive catalog of projects that show their potential. Different working groups and standardization agencies have been working to develop new standards and protocols that are the base of the \acrshort{ssi} model\cite{ssi-wallets}. Some of these groups are: the \textit{Decentralized Identity Foundation} (DIF), the \textit{European Blockchain Services Infrastructure} (EBSI), the \textit{Internet Engineering Task Force} (IETF), \textit{LACChain}, \textit{NIST}, \textit{Sovrin}, \textit{OASIS}, the \textit{OpenID Foundation} (OIDF), and the \textit{World Wide Web Consortium} (W3C).\\
+                At present, \acrlong{ssi} is still at an early stage. However, there is already an extensive catalog of projects that show their potential. Different working groups and standardization agencies have been working to develop new standards and protocols that are the base of the \acrshort{ssi} model\cite{ssi-wallets}. Some of these groups are: the \textit{\acrfull{dif}}, the \textit{\acrfull{ebsi}}, the \textit{\acrfull{ietf}}, \textit{LACChain}, \textit{NIST}, \textit{Sovrin}, \textit{OASIS}, the \textit{\acrfull{oidf}}, and the \textit{\acrfull{w3c}}.\\
                 
                 There are also a few existing solutions on the market which leverage new standards and protocols for \acrshort{ssi}:
                 % TODO resumen de otras, como UPORT
@@ -646,7 +646,7 @@
                         \label{fig:indy}
                     \end{figure}
                     
-                    The proposal is based on having multiple DIDs for each user. Every time an agent is operated to give the user's credentials, a new DID will be generated.\\
+                    The proposal is based on having multiple \acrshort{dids} for each user. Every time an agent is operated to give the user's credentials, a new \acrshort{did} will be generated.\\
                     
                 There are also other solutions\cite{ssi-wallets} like \textit{Evernym}, \textit{KayTrust} (by Everis) and \textit{Rem} (by World Data).
 \newpage
@@ -690,14 +690,14 @@
     \subsection{Alastria ID Specification}
         In this section we are going to see the different objects defined by Alastria for the model.
         \subsubsection{DID}
-            As we have seen previously, the \acrfull{dids} are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a DID that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
+            As we have seen previously, the \acrfull{dids} are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a \acrshort{did} that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
             \begin{itemize}
                 \item It will include the type of network in which the \acrshort{did} has been registered.
                 \item It will also include the blockchain network and the network ID where the \acrshort{did} is registered.
             \end{itemize}
             
             Alastria \acrshort{dids} have the following format (listing \ref{lst:did_format}):
-            \lstinputlisting[label={lst:did_format}, caption=DID format]{examples/codeSnippets/did_format.txt}
+            \lstinputlisting[label={lst:did_format}, caption=\acrshort{did} format]{examples/codeSnippets/did_format.txt}
             Where:
             \begin{itemize}
                 \item \textbf{"ala"}: specifies that this is a \acrshort{did} for Alastria.
@@ -705,7 +705,7 @@
                 \item \textbf{"net-id"}: defines the specific Alastria blockchain network instance.
             \end{itemize}
             Possible examples of \acrshort{dids} are (listing \ref{lst:did_ex}):
-            \lstinputlisting[label={lst:did_ex}, caption=Examples of DIDs]{examples/codeSnippets/did_examples.txt}
+            \lstinputlisting[label={lst:did_ex}, caption=Examples of \acrshort{dids}]{examples/codeSnippets/did_examples.txt}
 
         
     \subsection{Example: Rent a car}
