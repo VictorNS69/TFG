@@ -2,7 +2,7 @@ MAIN_FILE=Main
 FINAL_NAME=TFG_VICTOR_NIEVES_SANCHEZ.pdf
 
 
-default: compile generate_bibliography generate_glossary recompile_and_rename
+default: compile generate_bibliography generate_glossary recompile_and_rename clean
 
 help:			## Show this help.
 			@echo This Makefile generates the file $(FINAL_NAME).
