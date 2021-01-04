@@ -18,6 +18,7 @@
 \input{Acronyms.tex}
 
 \input{./assets/solidity-highlighting.tex} % Resaltado de solidity
+\input{./assets/json-highlighting.tex} % Resaltado de json
 
 \sectionfont{\MakeUppercase} % Secciones en mayúsculas
 \bibliography{Bibliography.bib}
@@ -708,13 +709,62 @@
             \lstinputlisting[label={lst:did_ex}, caption=Examples of \acrshort{dids}]{examples/codeSnippets/did_examples.txt}
 
         \subsubsection{Artifacts}
-        
+            Alastria Artifacts are currently coded as \acrshort{jwt} objects, so they follow the \acrshort{jwt} specification previously explained.
+            
+            The header has the following arguments:
+            \begin{itemize}
+                \item \textbf{"alg"}: the hashing algorithm.
+                \item \textbf{"typ"}: type of the object. It will always be \textit{"\acrshort{jwt}"}.
+                \item \textbf{"kid"}: it is an optional attribute. It is the identifier of the public key of the issuer of the \acrshort{jwt}. It may not be the key the \acrshort{jwt} was signed with.
+                \item \textbf{"jwk"}: it is an optional attribute. It is the public key used to sign the \acrshort{jwt}.
+            \end{itemize}
+            For the payload, there are some common attributes, but they are all optional.
+            \begin{itemize}
+                \item \textbf{"jti"}: \acrshort{jwt} unique identifier.
+                \item \textbf{"iat"}: "issued at". Token issue date.
+                \item \textbf{"nbf"}: "not before". Token activation date.
+                \item \textbf{"exp"}: token expiration date.
+            \end{itemize}
+            The different artifacts, their specific payloads and their utility will be explained below.
+
             \paragraph{Alastria Token (AT)}
-            
+                It is a token that allows an issuer to identify a subject that does not have a \acrshort{did} or does not know it yet. This object is used by other objects, such as \acrfull{aic} and \acrfull{as}.
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"gwu"}: Gateway URL.
+                    \item \textbf{"cbu"}: Callback URL.
+                    \item \textbf{"iss"}: \acrshort{did} of the token issuer.
+                    \item \textbf{"ani"}: Alastria network identifier.
+                \end{itemize}
+                In the next listing (listing \ref{lst:at_ex}) we can see an example of a decoded \acrlong{at}.
+                \lstinputlisting[language=json,label={lst:at_ex}, caption=Decoded \acrlong{at} example]{examples/codeSnippets/at.json}
+
             \paragraph{Alastria Session (AS)}
-            
+                It is a token that is used to authenticate users when they want to do an on-boarding with Alastria ID.
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"@context"}: an array of URLs with the allowed specification.
+                    \item \textbf{"iss"}: \acrshort{did} of the token issuer. It is usually a subject.
+                    \item \textbf{"alastriaToken"}: the signed \acrlong{at} issued by the entity.
+                    \item \textbf{"pku"}: public key of the token issuer.
+                \end{itemize}
+                In the next listing (listing \ref{lst:as_ex}) we can see an example of a decoded \acrlong{as}.
+                \lstinputlisting[language=json,label={lst:as_ex}, caption=Decoded \acrlong{as} example]{examples/codeSnippets/as.json}
+                
             \paragraph{Alastria Identity Creation (AIC)}
-            
+                It is a token used only in identity creation (\acrshort{did}).
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"createAlastriaTX"}: it is the signed transaction of the \textit{"createAlastriaIdentity"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol\#L59}} function from the \textit{AlastriaIdentityManager} smart contract, signed by the subject.
+                    \item \textbf{"alastriaToken"}: verified \acrlong{at}, signed by the issuer entity.
+                    \item \textbf{"publicKey"}: subject's Public Key.
+                \end{itemize}
+                In the next listing (listing \ref{lst:aic_ex}) we can see an example of a decoded \acrlong{aic}.
+                \lstinputlisting[language=json,label={lst:aic_ex}, caption=Decoded \acrlong{aic} example]{examples/codeSnippets/aic.json}
+                
             \paragraph{Credential}
             
             \paragraph{Presentation Request (PR)}
@@ -724,36 +774,29 @@
     \subsection{Example: Rent a car}
         
     \subsection{Project structure}
-    TODO
-    % TODO no me gusta
-        \begin{table}[h]
-        \centering
-            \begin{tabular}{||p{0.2\linewidth} | p{0.5\linewidth} | p{0.4\linewidth}||} 
-                 \hline
-                 Repository Name & URL  & Description \\ [0.5ex] 
-                 \hline\hline
-                 alastria-wallet & \url{https://github.com/alastria/alastria-wallet} & IONIC application for the final users to opearate with their Alastria Identity \\ 
-                 \hline
-                 alastria-identity & \url{https://github.com/alastria/alastria-identity} & It contains the truffle project with the Smart Contracts written in Solidity \\
-                 \hline
-                 alastria-identity-lib & \url{https://github.com/alastria/alastria-identity-lib} & Library written in TypeScript to facilitate interaction with Smart Contracts \\
-                 \hline
-                 alastria-identity-example & \url{https://github.com/alastria/alastria-identity-example} & Examples of use to interact with the library\\
-                 \hline
-                 alastria-JSON-objects &  \url{https://github.com/alastria/alastria-identity-JSON-objects} & Alastria ID Model specification JSON objects verification \\ 
-                 \hline
-                 alastria-identity-entity & \url{https://github.com/alastria/alastria-identity-entity} & Example of an entity application with Alastria ID \\ 
-                 \hline
-                 alastria-node & \url{https://github.com/alastria/alastria-node} & Scripts for the installation of a blockchain node in Alastria\\ [1ex] 
-                 \hline
-            \end{tabular}
-            \caption{Main repositories in Alastria's GitHub}
-        \end{table}
+        In this section we will talk about the structure of the first \acrlong{mvp} of Alastria ID (\textit{\acrshort{mvp}1})\cite{ala-mvp1}.\\
+        
+        The \acrshort{mvp}1 is divided into four main parts, as the figure \ref{fig:ala_structure} shows. Although those are not the only parts that are part of the MVP1. There are another series of components that are very important for the ecosystem, such as:
+        \begin{itemize}
+            \item \textbf{Alastria Node}\footnote{\url{https://github.com/alastria/alastria-node}}: easy documentation and scripts to guide the installation of a blockchain node in the main testnet of Alastria. There are also other guides for different networks, like \textit{Besu}\footnote{\url{https://github.com/alastria/alastria-node-besu}} or \textit{Fabric}\footnote{\url{https://github.com/alastria/alastria-node-fabric}}.
+            \item \textbf{Alastria's lib examples}\footnote{\url{https://github.com/alastria/alastria-identity-example}}: use case files to show how to interact with the TypeScript library. This repository is divided according to the different use case that can be done with Alastria ID. There are examples for: creating tokens, creating identities (\acrshort{dids}), creating entities, creating issuers and service providers, creating and deleting credentials and presentations, authentication with Alastria ID, etc.
+            \item \textbf{Alastria's objects verification}\footnote{\url{https://github.com/alastria/alastria-identity-JSON-objects}}: this project validates \acrshort{json} objects to see that they are following the specification proposed by Alastria.
+        \end{itemize}
+        There are still many repositories to mention, which are somehow auxiliary, or are still work in progress.
+        
+        % TODO: mover encima de la ref?
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\textwidth]{alastria-mvp1.jpg}
+            \caption{Alastria ID MVP1 structure}
+            \label{fig:ala_structure}
+        \end{figure}
+
         \subsubsection{Smart Contracts}
         
-        \subsubsection{Node Library}
+        \subsubsection{TypeScript Library}
         
-        \subsubsection{Library examples}
+        \subsubsection{Entity}
         
         \subsubsection{Wallet}
 

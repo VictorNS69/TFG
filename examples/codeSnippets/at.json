@@ -1,0 +1,18 @@
+{
+  "header": {
+    "alg": "ES256K",
+    "typ": "JWT",
+    "jwk": "0x03fdd57adec3d438ea237fe46b33ee1e016eda6b585c3e27ea66686c2ea5358479",
+    "kid": "did:ala:quor:redT:5a6d79a6240ce5724f551922a2d1addee9fcfa4c#keys-1"
+  },
+  "payload": {
+    "iss": "did:ala:quor:redT:5a6d79a6240ce5724f551922a2d1addee9fcfa4c",
+    "exp": 3600000,
+    "nbf": 1609763242885,
+    "jti": "entity/alastria-token/1609763242885",
+    "iat": 1609763243300,
+    "gwu": "http://localhost:22000",
+    "cbu": "http://localhost:8097/api/v1/alastria/did",
+    "ani": "redT"
+  }
+}

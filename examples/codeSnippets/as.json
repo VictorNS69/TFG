@@ -1,0 +1,16 @@
+{
+  "header": {
+    "alg": "ES256K",
+    "typ": "JWT",
+    "jwk": "0x03fdd57adec3d438ea237fe46b33ee1e016eda6b585c3e27ea66686c2ea5358479"
+  },
+  "payload": {
+    "@context": ["https://alastria.github.io/identity/artifacts/v1"],
+    "iss": "did:ala:quor:redT:dc4eeee191cf4b1adeee4e91b25dec6dd8ec79c4",
+    "pku": "0x2e507af01167c98a6accc0cd46ab2a256dd6b6c69ec1c0c28f80fb62e1f7d70233768b0c58dbbdac1fc358b8141c075a520483cf9779e4ea98d13df2833f3767",
+    "iat": 1585128712,
+    "nbf": 1585139712,
+    "alastriaToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NksifQ.eyJuYmYiOjE1ODUxMjg2MTA3OTAsImd3dSI6Imh0dHA6Ly93d3cuaXNzdWVyX3NvY2lvLmNvbSIsImNidSI6Imh0dHA6Ly93d3cuYmFja2VuZF9pc3N1ZXIuY29tL2NhbGxiYWNrL2lkZW50aXR5IiwiaXNzIjoiZGlkOmFsYTpxdW9yOnJlZFQ6NzVmZGM2ZGVjYTFlMmUzZjc3ODcyOTNiZThkZjMxMjBiNzE4MDE3NiIsImV4cCI6MTU4NTIxNTAxMDc5MCwiYW5pIjoicmVkVCIsImlhdCI6MTU4NTEyODYxMDc5MCwianRpIjoiemUyOTh5NDJzYmEifQ.8XYpVTQRmWyoVXrJ9VdR4s2XM4HquruiKMLmmjl0-oR3qB2mAXSuyflbpqKQfzCgLBCBClKJ26VzGDGeVwtTpw",
+    "jti": "ze298y42sba"
+  }
+}
