@@ -1,0 +1,29 @@
+{
+  "header": {
+    "alg": "ES256K",
+    "typ": "JWT",
+    "kid": "did:ala:quor:redT:d2f868f056ef3a48bbc8d446dfed411e9bf93ab0#keys-1"
+  },
+  "payload": {
+    "jti": "xyz1234",
+    "iss": "did:ala:quor:redT:d8bcafdb61cd719b69d3d5c8e09c4404379ee4c8",
+    "aud": "did:ala:quor:redT:d2f868f056ef3a48bbc8d446dfed411e9bf93ab0",
+    "iat": 1590054921,
+    "exp": 2347012356,
+    "nbf": 1590054921,
+    "vp": {
+      "@context": [
+        "https://w3id.org/did/v1",
+        "JWT"
+      ],
+      "type": [
+        "VerifiablePresentation"
+      ],
+      "procUrl": "https://www.empresa.com/alastria/businessprocess/4583",
+      "procHash": "0x68747470733a2f2f7777772e656d70726573612e636f6d2f616c6173747269612f627573696e65737370726f636573732f34353833",
+      "verifiableCredential": [
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NksiLCJraWQiOiJkaWQ6YWxhOnF1b3I6cmVkVDowMGY0NzFjNzVjMTRjOWVlOWIxNmU0ZDY0ZjhhY2I0N2E3YmYyYzRhI2tleXMtMSJ9.eyJqdGkiOiJ4eXoxMjM0IiwiaXNzIjoiZGlkOmFsYTpxdW9yOnJlZFQ6MDBmNDcxYzc1YzE0YzllZTliMTZlNGQ2NGY4YWNiNDdhN2JmMmM0YSIsInN1YiI6ImRpZDphbGE6cXVvcjpyZWRUOmQ4YmNhZmRiNjFjZDcxOWI2OWQzZDVjOGUwOWM0NDA0Mzc5ZWU0YzgiLCJpYXQiOjE1OTAwNTQ4ODUsImV4cCI6MTU2Mzc4MzM5MiwibmJmIjoxNTYzNzgyNzkyLCJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3czaWQub3JnL2RpZC92MSIsIkpXVCJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiQWxhc3RyaWFFeGFtcGxlQ3JlZGVudGlhbCJdLCJjcmVkZW50aWFsU3ViamVjdCI6eyJsZXZlbE9mQXNzdXJhbmNlIjoiMyIsImRuaV9udW1lcm8iOiI2OSJ9fX0.DgsSA6EK_oDClYxZog7Rs3fMeXevezXRwlv31qsf4zThJi_quvXEXi9GpaNtw8yl3E1HwR2lkA62xvsfkLqlmw"
+      ]
+    }
+  }
+}

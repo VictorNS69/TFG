@@ -310,8 +310,7 @@
             
             Solidity\cite{solidityGit} was influenced by \textit{C++}, \textit{Python} and \textit{JavaScript} and is designed to target the \acrfull{evm}. Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.\\
 
-            Below is an example\footnote{Source code from AlastriaIdentityIssuer.sol\cite{AlastriaIdentityIssuer}}
- of a Smart Contract written in Solidity\footnote{More details about Solidity can be found in the official documentation\cite{solidity}} (listing  \ref{lst:AlastriaIdentityIssuer}).
+            Below is an example of a Smart Contract\footnote{Source code from \url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}} written in Solidity\footnote{More details about Solidity can be found in the official documentation\cite{solidity}} (listing  \ref{lst:AlastriaIdentityIssuer}).
             
             \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer.sol, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
 
@@ -367,7 +366,7 @@
             \end{itemize}
 
         \subsubsection{RPC}
-            A r\acrfull{rpc}\cite{rpc} is when a computer program causes a procedure to execute in a different address space (commonly on another computer), which is coded as if it were a local procedure call. That is, the programmer writes essentially the same code whether the program will run locally or in a remote machine.\\
+            A \acrfull{rpc}\cite{rpc} is when a computer program causes a procedure to execute in a different address space (commonly on another computer), which is coded as if it were a local procedure call. That is, the programmer writes essentially the same code whether the program will run locally or in a remote machine.\\
             
             The transparency is one of the great strengths of \acrshort{rpc}, because the application software does not contain any communication code, it is independent of:
             \begin{itemize}
@@ -732,8 +731,8 @@
                 
                 This object has the following payload:
                 \begin{itemize}
-                    \item \textbf{"gwu"}: Gateway URL.
-                    \item \textbf{"cbu"}: Callback URL.
+                    \item \textbf{"gwu"}: Gateway \acrshort{url}.
+                    \item \textbf{"cbu"}: Callback \acrshort{url}.
                     \item \textbf{"iss"}: \acrshort{did} of the token issuer.
                     \item \textbf{"ani"}: Alastria network identifier.
                 \end{itemize}
@@ -745,7 +744,7 @@
                 
                 This object has the following payload:
                 \begin{itemize}
-                    \item \textbf{"@context"}: an array of URLs with the allowed specification.
+                    \item \textbf{"@context"}: an array of \acrshort{url}s with the allowed specification.
                     \item \textbf{"iss"}: \acrshort{did} of the token issuer. It is usually a subject.
                     \item \textbf{"alastriaToken"}: the signed \acrlong{at} issued by the entity.
                     \item \textbf{"pku"}: public key of the token issuer.
@@ -766,16 +765,137 @@
                 \lstinputlisting[language=json,label={lst:aic_ex}, caption=Decoded \acrlong{aic} example]{examples/codeSnippets/aic.json}
                 
             \paragraph{Credential}
-            
+                A credential is a piece of information said and verified by an Issuer on a Subject. That is, it is created by an Issuer and received by a Subject. It should be noted that in Alastria when talking about credentials, they are talking about verifiable credentials (explained previously) that are the only ones that are useful in the context of \acrlong{ssi}.
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"sub"}: the subject. It is to whom the credential is addressed.
+                    \item \textbf{"iss"}: the issuer (normally with the issuer role) of the credential.
+                    \item \textbf{"vc"}: "VerifiableCredential". It is a \acrshort{json} that contains the credential data and some metadata. The content is:
+                    \begin{itemize}
+                        \item \textbf{"@context"}: an array of \acrshort{url}s with the allowed specification.
+                        \item \textbf{"type"}: the type of the object. At a minimum it must have \textit{"VerifiableCredential"} and \textit{"AlastriaVerifiableCredential"}. additionally it can have more.
+                        \item \textbf{"credentialSubject"}: a \acrshort{json} with the credential data itself. This attribute is also a \acrshort{json} with an optional attribute \textbf{"levelOfAssurance"}, which is the minimum \acrlong{loa} that the credential must meet (it will be explained later); and the rest of the fields correspond to the standard claim names in \acrshort{jwt}.
+                    \end{itemize}
+                \end{itemize}
+                In the following listing (listing \ref{lst:cred_ex}) we can see an example of a Credential issued to certify the issuance of a title for a person.
+                \lstinputlisting[language=json,label={lst:cred_ex}, caption=Decoded Credential example]{examples/codeSnippets/credential.json}
+
             \paragraph{Presentation Request (PR)}
-            
+                A Presentation Request, normally known as \textit{"PR"} is a token to request a set of credentials, it is requested normally by a Service Provider. It means that is issued by a Service Provider and received by a Subject, in order to provide a specific service to the subject.
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"cbu"}: the callback \acrshort{url}.
+                    \item \textbf{"pr"}: \textit{"Presentation Request"}. It is a \acrshort{json} that contains the presentation request data and its metadata. It's content is:
+                    \begin{itemize}
+                        \item \textbf{"type"}: the type of object. At a minimum it must have \textit{"VerifiablePresentation"} and \textit{"AlastriaVerifiablePresentation"}. Additionally it can have more.
+                        \item \textbf{"@context"}: an array of \acrshort{url}s with the allowed specification.
+                        \item \textbf{"procUrl"}: \acrshort{url} of the external document that explains the use that will be given to the credentials.
+                        \item \textbf{"procHash"}: hash of the external document that explains the use that will be given to the credentials.
+                        \item \textbf{"data"}: \acrshort{json} array containing the presentation request data. Each \acrshort{json} is only for one credential, and has the following format:
+                        \begin{itemize}
+                            \item \textbf{"@context"}: allowed credential specification.
+                            \item \textbf{"field\_name"}: Credential requested.
+                            \item "\textbf{required"}: a boolean that indicates whether it is a mandatory field or not.
+                            \item \textbf{"levelOfAssurance"}: it is the minimum \acrfull{loa} that the credential must meet. This will be explained later
+                        \end{itemize}
+                    \end{itemize}
+                \end{itemize}
+                In the following listing (listing \ref{lst:pr_ex}) we can see an example of a Presentation Request issued to request a person's data for a COVID test.
+                \lstinputlisting[language=json,label={lst:pr_ex}, caption=Decoded Presentation Request example]{examples/codeSnippets/pr.json}
+                
             \paragraph{Presentation}
+                A Presentation is the response to a Presentation Request. It is emitted by a subject for a Service Provider, it means that the object is signed by the subject. It consists of the collection of one or more credentials issued by one or more Issuers.
+                
+                This object has the following payload:
+                \begin{itemize}
+                    \item \textbf{"iss"}: it is the Issuer of the Presentation. In most cases, it is a Subject.
+                    \item \textbf{"aud"}: "Audience". He is the recipient of the presentation. It is normally a Service Provider.
+                    \item \textbf{"vp"}: "Verifiable Presentation". It is a \acrshort{json} that contains the presentation data and its metadata. It consists in:
+                    \begin{itemize}
+                        \item \textbf{"type"}: the type of the object. At a minimum it must have \textit{"VerifiablePresentation"} and \textit{"AlastriaVerifiablePresentation"}. Additionally it can have more.
+                        \item \textbf{"@context"}: allowed presentation specification.
+                        \item \textbf{"procUrl"}: \acrshort{url} of the external document that explains the use that will be given to the credentials.
+                        \item \textbf{"procHash"}: hash of the external document that explains the use that will be given to the credentials.
+                        \item \textbf{"verifiableCredential"}: an array of signed Credentials (signed \acrshort{jwts}).
+                    \end{itemize}
+                \end{itemize}
+                In the next listing (listing \ref{lst:pres_ex}) we can see an example of a decoded Presentation.\\
+                \lstinputlisting[language=json,label={lst:pres_ex}, caption=Decoded Presentation example]{examples/codeSnippets/presentation.json}
+            
+            At the moment no more objects have been defined, but if it is necessary to explain some peculiarities of the model with respect to the previous objects.
+            
+            \paragraph{Level Of Assurance (LOA)}
+                The Credentials and Presentation Requests can have an attribute called \textit{"levelOfAssurance}, which is the \acrfull{loa}. It corresponds to the \acrshort{eidas} assurance levels\footnote{\url{https://www.eid.as/\#article8}} (\textit{“Low”}, \textit{“Substantial”}, \textit{“High”}), plus an additional lower level \textit{“Self”} for self-asserted data. 
+                
+                The actual level depends on the entity making the Credential and the process used by the entity to verify the attribute. If the field does not exist in the Credential, the verifier will have to use the knowledge that it has about the issuing entity in order to assess the risks associating with accepting that credential.
+                
+            \paragraph{Private Sharing Multi Hashes (PSMHash)}
+                Mostly known as \acrshort{psmh} is a hash operation where the \acrshort{did} and the Credential or Presentation are concatenated. This means, that each credential/presentation has two ways of being identified. By the \acrshort{psmh} of the Subject or by the \acrshort{psmh} of the entity.
+                
+                The figure \ref{fig:psmh} shows an schema for the \acrshort{psmh} for the Credentials and the Presentations.
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.5\textwidth]{psmhash-credential.png}\hfill
+                    \includegraphics[width=.5\textwidth]{psmhash-presentation.png}
+                    \caption{\acrshort{psmh} schema for Credentials and Presentations}
+                    \label{fig:psmh}
+                \end{figure}
+                
+                With the \acrshort{psmh} is guaranteed that only the parties involved can "understand" those hashes when they are issued on the blockchain, since it is not the Credential or Presentation itself (the \acrshort{jwts}) that is transacted on the blockchain, but their \acrshort{psmh}es.
+  
+            \paragraph{Credential and Presentation States}
+                As explained in the previous paragraph, both the Credentials and the Presentations have two ways of being identified, therefore, each of the \acrshort{psmh} has an associated status in the blockchain.
+                
+                For \textbf{Credentials}, the possible states are:
+                \begin{itemize}
+                    \item \textbf{"0"} or \textbf{"Valid"}: state the Credential has when issued by an Issuer.
+                    \item \textbf{"1"} or \textbf{"AskIssuer"}: this state implies that the Issuer of the Credential wants to be asked what the real state of that Credential is.
+                    \item \textbf{"2"} or \textbf{"Revoked}: state of the Credential when the issuer revokes it for any reason.
+                    \item \textbf{"3"} or \textbf{"DeletedBySubject"}: state when the Subject has removed the Credential.
+                \end{itemize}
+                
+                Similarly, \textbf{Presentations} have the following states:
+                \begin{itemize}
+                  \item \textbf{"0"} or \textbf{"Valid"}: state the Presentation has when issued by a Subject.
+                  \item \textbf{"1"} or \textbf{"Received"}: state that the Presentation gets when it is received by a Service Provider.
+                  \item \textbf{"2"} or \textbf{"AskDeletion"}: State that the Subject puts when he wants the Presentation to be eliminated and therefore the Credentials that it contains are not used.
+                  \item \textbf{"3"} or \textbf{"DeletionConfirmation"}: state that the Service Provider puts in the Presentation when confirming the deletion requested by the Subject previously.
+                \end{itemize}
+            
+    \subsection{Example: Renting a car}
+        In this section, an Alastria ID use case will be explained, which is the example that has been carried out in \acrshort{mvp}1\cite{mvp1-car}.\\
         
-    \subsection{Example: Rent a car}
+        In this example, a user (Subject) wants to rent a car, for this, the rental company (Service Provider) asks the user through a Presentation Request for three data: 1) the driving license, 2) his credit card and 3) prove that the user is over 25 years old. 
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\textwidth]{ala-rent-car.png}
+            \caption{Renting a car with Alastria ID}
+            \label{fig:ex-car}
+        \end{figure}
+        The user must send this information to the rental company, and for this he uses Alastria ID and asks the Issuers at that time to certify that the user complies with these conditions. So the user asks the bank for his credit card, asks the traffic authority for his driving license and the town hall to verify he is over 25 years old. Each one of the Issuers (bank, traffic authority and town hall) sends the requested Credentials, and the user stores them in his wallet. The user, having all the needed data in the wallet, creates a Presentation in response to the Presentation Request above. The user sends the Presentation to the rental company. The rental company receives and validates it. Finally, it proceeds to provide the car to the user. All this process can be done directly online without the need for prior registration or verification of the original documents by the rental company. This example can be seen graphically in the figure \ref{fig:ex-car}.\\
+
+        All these information flows between the different actors are registered in the blockchain with different Smart Contracts (figure \ref{fig:rent-cycle}): the Issuer when issuing the Credential calls a Smart Contract to register the issuance, the user (Subject) registers in the blockchain that he has received the same Credential; the user "wraps" the Credentials in a Presentation, indicating why they are delivered and the validity date, signs it and records that he has sent the Presentation; Finally, the Service Provider verifies that the Credentials are valid, consulting the record made by their Issuers, and then records that it has received the Presentation.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\textwidth]{rent-car-data-lifecycle.png}
+            \caption{Alastria ID data life cycle}
+            \label{fig:rent-cycle}
+        \end{figure}
+        
+        Registration in the blockchain facilitates the process of checking the validity of the Credentials without the need for direct contact between the rental Service Provider and the Issuers, improving the comfort and privacy of the user (Subject), while reducing the cost and increasing the guarantees for the company.\\
+
+        In addition, registration in the blockchain facilitates the revocation of Credentials by Issuers and the withdrawal (request for deletion) of personal data from users (Subjects).
         
     \subsection{Project structure}
         In this section we will talk about the structure of the first \acrlong{mvp} of Alastria ID (\textit{\acrshort{mvp}1})\cite{ala-mvp1}.\\
-        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\textwidth]{alastria-mvp1.jpg}
+            \caption{Alastria ID MVP1 structure}
+            \label{fig:ala_structure}
+        \end{figure}
         The \acrshort{mvp}1 is divided into four main parts, as the figure \ref{fig:ala_structure} shows. Although those are not the only parts that are part of the MVP1. There are another series of components that are very important for the ecosystem, such as:
         \begin{itemize}
             \item \textbf{Alastria Node}\footnote{\url{https://github.com/alastria/alastria-node}}: easy documentation and scripts to guide the installation of a blockchain node in the main testnet of Alastria. There are also other guides for different networks, like \textit{Besu}\footnote{\url{https://github.com/alastria/alastria-node-besu}} or \textit{Fabric}\footnote{\url{https://github.com/alastria/alastria-node-fabric}}.
@@ -784,25 +904,72 @@
         \end{itemize}
         There are still many repositories to mention, which are somehow auxiliary, or are still work in progress.
         
-        % TODO: mover encima de la ref?
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.7\textwidth]{alastria-mvp1.jpg}
-            \caption{Alastria ID MVP1 structure}
-            \label{fig:ala_structure}
-        \end{figure}
-
         \subsubsection{Smart Contracts}
+            Smart Contracts are the core part of the project, since everything is based on blockchain.\\
+            
+            It should be mentioned that these Contracts are those created in the first phase of the project (\acrshort{mvp}1). They are not definitive since they have some weaknesses, such as that role governance is not well defined, and they are not Upgradable Smart Contracts.\\
+            
+            The Smart Contracts are distributed as follows:
+            \begin{itemize}
+                \item \textbf{Identity Smart Contracts}: this set of Smart Contracts are responsible for generating \acrshort{dids}, managing the different roles of the model (Issuers, Service Providers and Subjects) and making calls between the other Contracts to achieve the correct functioning of the implementation.
+                \begin{itemize}
+                    \item \textbf{"AlastriaIdentityManager.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol}}: this is the main Contract, in charge of creating and managing identities. Contracts \textit{"AlastriaIdentityIssuer.sol"} and \textit{"AlastriaIdentityServiceProvider.sol"} assign roles, and this one creates the identities (\acrshort{dids}). This is the only Contract that is deployed, since it inherits the rest of the "identity" Contracts and is in charge of deploying the "registry" Contracts (figure \ref{fig:mvp1-contracts}).
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[width=1.0\textwidth]{SCs-Diagram.png}
+                        \caption{Alastria ID MVP1 Smart Contracts diagram}
+                        \label{fig:mvp1-contracts}
+                    \end{figure}
+                    \item \textbf{"AlastriaIdentityIssuer.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}}: this Smart Contract is used to endow the entity with the ability to create identities (\acrshort{dids}) and issue Credentials within the blockchain (remember that we are talking about \acrshort{psmh}es, not \acrshort{jwts}). To do this, the entity is simply saved in a mapping of issuers and the \acrshort{loa} level, using the library \textit{Eidas.sol}.
+                    \item \textbf{"AlastriaIdentityServiceProvider.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityServiceProvider.sol}}: similar to the previous Smart Contract, its functionality is to provide the entities with the role of Service Provider. To do this, it stores the entities in a mapping.
+                    \item \textbf{"AlastriaIdentityEntity.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityEntity.sol}}: it stores entity information, such as name, cif, logo \acrshort{url}, \acrshort{did}, \acrshort{url} of the Alastria Open Access and a flag to know if the entity is active or not.
+                    \item \textbf{"AlastriaProxy.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaProxy.sol}}: this Contract, as its name indicates, acts as a proxy for the account \acrshort{eoa} that is carrying out the transaction. Since any call (except for a few) will always go through the account's proxy. It is responsible for emitting an event of what is being used.
+                \end{itemize}
+                \item \textbf{Registry Smart Contracts}: these are in charge of managing the Credentials and the Presentations with their respective states, also it manages the public keys of the different \acrshort{dids}.
+                \begin{itemize}
+                    \item \textbf{"AlastriaCredentialRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaCredentialRegistry.sol}}: it is responsible for managing and modifying the different \acrshort{psmh}es of the Credentials through the different states. It should be mentioned that a Credential cannot transits to a "lower" or previous state.
+                    \item \textbf{"AlastriaPresentationRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPresentationRegistry.sol}} : this smart contract is analogous to the \textit{"AlastriaCredentialRegistry.sol"} but with the Presentations. Neither the Presentation can transits to a "lower" or previous state.
+                    \item \textbf{"AlastriaPublicKeyRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPublicKeyRegistry.sol}}: stores the public keys of the different identities on the network. It has functionalities to add, modify, delete and verify the public keys.
+                \end{itemize}
+                \item \textbf{Auxiliary libraries}: standard Smart Contracts designed as libraries that are used to facilitate certain actions or improve functionalities of the previous Smart Contracts.
+                \begin{itemize}
+                    \item \textbf{"Eidas.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/libs/Eidas.sol}}: Smart Contract created to comply with the regulations of \acrfull{eidas}.
+                    \item \textbf{"Owned.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/libs/Owned.sol}}: This is a standard that OpenZeppelin\cite{openzeppelin} has developed that simplifies authorization and control of access to different functions that are implemented in the Smart Contracts.
+                \end{itemize}
+            \end{itemize}
         
         \subsubsection{TypeScript Library}
+            This library\footnote{\url{https://github.com/alastria/alastria-identity-lib}} written in \textit{TypeScript} has been created to facilitate interaction with Smart Contracts previously mentioned.\\
+            
+            This library has three different modules:
+            \begin{itemize}
+                \item \textbf{User functions}: It helps to manage the wallet and the identity user. Also helps when signing transactions.
+                \item \textbf{Blockchain functions}: It encapsulates the Alastria ID Smart Contracts, so that only functions have to be called with TypeScript, without needing to know how to write in Solidity in order to work with the Smart Contracts. This module is divided as are the Smart Contracts. So, for example, the \textit{"AlastriaPublicKeyRegistry.sol"} can be found in the file \textit{"publicKeyRegistryTransactionFactory.ts"}\footnote{\url{https://github.com/alastria/alastria-identity-lib/blob/master/src/txFactory/publicKeyRegistryTransactionFactory.ts}}. It is the same for the rest of the main Smart Contracts.
+                \item \textbf{Tokens functions}: It manages the different \acrshort{jwts} explained previously, guaranteeing that they are well built and are valid. It also allows the signing and decoding of said \acrshort{jwts}.
+            \end{itemize}
+            
+        \subsubsection{Wallet}
+            The Alastria ID wallet\footnote{\url{https://github.com/alastria/alastria-wallet}}, is a mobile application written in \textit{Ionic} to implement the different user stories of Alastria ID. This wallet is a \acrfull{poc}, which means it is not a valid wallet for a project in production. This is because it does many things in a "fake way" since the objective was not to be a commercial product.\\
+            
+            In the secure part of the wallet (called \textit{secure storage}) the keys are generated and stored that users use to sign and verify such signatures. Herein lies one of the main problems of this wallet, since it is not a \textit{multidivice wallet}, that is, each pair of keys is only and only for one device (wallet). Another of the main problems is that the key recovery or modification flow has not yet been defined, so if the wallet is removed from the device, the identity would be lost.\\
+            
+            To finish this section, we will explain what and how are the keys that are stored in the wallet are. This keys are called \textit{keystores}. This \textit{keystores} is nothing other than an \acrfull{eoa} used to interact with the blockchain. The listing \ref{lst:keystore} shows an example of a \textit{keystore}.
+            \lstinputlisting[language=json,label={lst:keystore}, caption=Keystore example]{examples/codeSnippets/keystore.json}
         
         \subsubsection{Entity}
-        
-        \subsubsection{Wallet}
-
+            It is called "Entity" to an example implementation to simulate an entity\footnote{\url{https://github.com/alastria/alastria-identity-entity}}. This entity has both roles, Issuer and Service Provider. It is designed to interact with the wallet to perform the full \acrshort{poc} for the \acrshort{mvp}1. It contains a \textit{Mongo} database that is used to store certain information.\\
+            
+            This implementation is divided into two parts: the backend and the frontend.
+            \begin{itemize}
+                \item \textbf{Backend}: written with \textit{Swagger} and \textit{NodeJS} and it is in charge of interacting with the Smart Contracts, making use of the previously mentioned \textit{TypeScript} library. The following operations can be performed: create an identity (\acrshort{did}), issue Credentials and receive Presentations, as well as check the statuses of both. It stores and reads information in the database.
+                \item \textbf{Frontend}: developed with \textit{Angular}, \textit{JavaScript} and \textit{Nginx}. It is the facade to interact with the backend and offer a better user experience than by using scripts. Currently it can be checked online\footnote{As it is a temporary demo, it may no longer be operational \url{http://34.244.47.233/login}}.
+            \end{itemize}
 \newpage
 \section{Security audit}
 % TODO
+
+\newpage
+\section{PoC Attack}
 
 \newpage
 \section{Conclusions}

@@ -1,0 +1,58 @@
+{
+  "header": {
+    "alg": "ES256K",
+    "typ": "JWT"
+  },
+  "payload": {
+    "jti": "covid/pr/7864",
+    "iss": "did:alastria:quorum:testnet1:3eabc53a851fc5039eae2146083cdc42a87aeeacf848efb9924a381cc4b2b5d1",
+    "iat": 1525465044,
+    "cbu": "https://www.medic-uni.com/covid?jtipr=7864",
+    "pr": {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://alastria.github.io/identity/credentials/v1"
+      ],
+      "type": [
+        "VerifiablePresentationRequest",
+        "AlastriaVerifiablePresentationRequest"
+      ],
+      "procHash": "H398sjHd...kldjUYn475n",
+      "procUrl": "https://www.example-company.com/alastria/businessprocess/4583",
+      "data": [
+        {
+          "@context": [
+            "https://alastria.github.io/identity/covid/v1"
+          ],
+          "levelOfAssurance": 3,
+          "required": true,
+          "field_name": "covid_test"
+        },
+        {
+          "@context": [
+            "https://alastria.github.io/identity/examples/v1"
+          ],
+          "levelOfAssurance": 2,
+          "required": true,
+          "field_name": "phone_number"
+        },
+        {
+          "@context": [
+            "https://alastria.github.io/identity/examples/v1"
+          ],
+          "levelOfAssurance": 2,
+          "required": true,
+          "field_name": "full_name"
+        },
+        {
+          "@context": [
+            "https://alastria.github.io/identity/examples/v1"
+          ],
+          "levelOfAssurance": 0,
+          "required": false,
+          "field_name": "email"
+        }
+      ]
+    }
+  }
+}
