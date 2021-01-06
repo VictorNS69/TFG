@@ -88,18 +88,16 @@
     
     \subsection{Context}
         \subsubsection{Blockchain}
-            % TODO añadir más con María
             Blockchain\cite{blockchain-sum}\cite{blockchainGartner} is as a large distributed ledger that stores records of transactions. This “ledger” is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
             
             Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
             
         \subsubsection{Self-Sovereign Identity}
-            % TODO añadir más con María
             \acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital and analog identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
             
             Under \acrlong{ssi} model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
             
-            The ten guiding principles of \acrshort{ssi}, defined by Christopher Allen in \textit{The Path to \acrlong{ssi}}\cite{path-to-ssi} are:
+            The ten guiding principles of \acrshort{ssi}, defined by Christopher Allen in \textit{The Path to \acrlong{ssi}}\cite{path-to-ssi} are:\\
             \begin{itemize}
                 \item \textbf{Existence} - Users must have an independent existence.
                 \item \textbf{Control} - Users must control their identities.
@@ -113,30 +111,34 @@
                 \item \textbf{Protection} - The rights of users must be protected.
             \end{itemize}
             
+            The \acrshort{ssi} idea was born to solve the problems that exist with the current digital identity, such as the control of the information offered by the user, elimination of repeated data, improve the user experience in online records, facilitate \acrshort{gdpr} compliance, etc.\\
+            
+            Currently there are multiple initiatives, both national and international, with different models and different proposals for identity wallets. In this thesis we will talk about some models and their proposals.
+            
         \subsubsection{Alastria}
-        Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
-        
-        Alastria has the clear vocation to become a pioneering project of reference in the generation of new Digital Economy models. It promotes an innovation methodology that anticipates the needs of the Society regarding the use of products and services based on decentralized technologies.\\
-        
-        Alastria's mission and vision covers several areas.
-        \begin{itemize}
-            \item Digital Economy: Alastria is a non-profit association that fosters the Digital Economy through the development of Blockchain.
-            \item Blockchain Democratization: Alastria seeks to democratize access to Blockchain by providing the necessary tools to promote access, adoption and use of technology.
-            \item Networks promoted by its members: Alastria is technology agnostic and offers the networks promoted by its members and a Digital Identity model (\textit{Alastria ID}), focused on making the transactions on the Networks with a legal validity. 
-            \item Pioneer Project: Alastria is a pioneering project that encourages innovation, anticipating the possible interest of our Society for the use of services and products based on Blockchain.
-        \end{itemize}
+            Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
+            
+            Alastria has the clear vocation to become a pioneering project of reference in the generation of new Digital Economy models. It promotes an innovation methodology that anticipates the needs of the Society regarding the use of products and services based on decentralized technologies.\\
+            
+            Alastria's mission and vision covers several areas.
+            \begin{itemize}
+                \item Digital Economy: Alastria is a non-profit association that fosters the Digital Economy through the development of Blockchain.
+                \item Blockchain Democratization: Alastria seeks to democratize access to Blockchain by providing the necessary tools to promote access, adoption and use of technology.
+                \item Networks promoted by its members: Alastria is technology agnostic and offers the networks promoted by its members and a Digital Identity model (\textit{Alastria ID}), focused on making the transactions on the Networks with a legal validity. 
+                \item Pioneer Project: Alastria is a pioneering project that encourages innovation, anticipating the possible interest of our Society for the use of services and products based on Blockchain.
+            \end{itemize}
         
         \subsection{Motivation}
-            % TODO añadir más con María https://www.youtube.com/watch?v=QcxrVvRHRmQ
-            Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects.\\
+            Currently, in such a technological society, people have serious problems regarding their digital identity. Each person has several accounts on different web pages, different emails, different passwords ... they are so many that sometimes we forget that we were registered somewhere, and we create a new account (repeated); it is also normal to have inconsistent data in different places, for example in a job portal, which you have not updated after you have found a job.\\
             
-            Also, the idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions.\\
+            It's not just people who have problems with digital identity. Companies also have problems, such as breaches of \acrshort{gdpr}, which leads to a financial penalty for the company. Another problem that companies have, when users try to register on their web pages, that most of the time it is a long and tedious process that can end with the lack of user interest, which implies the loss of a new potential customer.\\
             
-            % TODO lo que puede suponer hacer esto
+            This is where the \acrlong{ssi} comes into play. The idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions, in order to improve the quality of life for the user and facilitate technological interactions between users and companies. This interest in \acrlong{ssi} is accompanied by interest in the Blockchain technology. Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects, as it provides very important features in this digital age. But it is important to note that for \acrlong{ssi} to work, it has to be a well-designed, safe and robust model and project.\\
             
-            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), and also to be part of the \textit{CORE Identity Team} of Alastria. Therefore, and with the intention of studying other implementations for the \textit{\acrshort{ssi}}, and to improve the current implementation proposed by Alastria, I have chosen this topic.
-            % TODO Mover a contexto a general y preguntar a alto nivel lo que hacemos a maria
+            But this is not the only reason why I have chosen this topic for my thesis. Also the possibility of working with Alastria, to be able to work on a project with great complexity, open source and in a multi-profile and multi-company environment. It is very motivating for me to be able to learn from something "so big and difficult" and to make a contribution.\\
             
+            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), team with which I won the first place at \textit{Convergence, The Global Blockchain Congress (2019) Hackaton}\cite{iecisa-hackaton},  and also to be part of the \textit{CORE Identity Team of Alastria}. Therefore, and with the intention of studying other implementations for the \textit{\acrshort{ssi}}, improve my cybersecurity skills and to improve the current implementation proposed by Alastria, I have chosen this topic.
+
         \subsection{Objectives}
             The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{\acrlong{ssi}} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
             \begin{itemize} 
@@ -148,8 +150,20 @@
             \end{itemize}
             
         \subsection{Document Structure}
-            % TODO
-        \newpage
+            The current document is divided into the following chapters dealing with the different objectives identified in the previous section.\\
+            
+            The second chapter \textit{State of the Art}, contains an introduction to blockchain. It presents the main concepts to understand the technology and typical use cases. Afterwards, \textit{Ethereum} will be explained in detail several concepts as \acrlong{eoa}, Smart Contracts or \acrlong{evm} will be discussed. This chapter also includes the definition of \acrshort{json}-\acrshort{rpc} and \acrfull{jwt}. Finally the concept of \acrlong{ssi} will be studied in detail, showing what it is, how it works and some use cases. Finally, there is a brief discussion of the Alastria proposal, Alastria ID and other proposals that exist today.\\
+            
+            The next chapter, \textit{Alastria ID} exposes in detail the Alastria ID implementation in order to obtain a detailed understanding of the model. This involves exploring the actors, specification and structure of the project.\\
+            
+            Chapter 4, \textit{Security audit} ... 
+            %TODO continuar
+            
+            Chapter 6, \textit{Conclusions}, collects the results of the thesis and compares the different \acrshort{ssi} models together to raise the conclusions of the work carried out. It justifies how the developed project satisfies the existing objectives.\\
+            
+            The final chapter, \textit{Future Work} proposes open research lines that can be applied in a future evolution of the Alastria ID \acrshort{ssi} model, and as a continuation of this thesis.
+
+\newpage
         
 \section{State of the Art}
     \subsection{Blockchain}
@@ -452,7 +466,7 @@
         \subsection{JSON Web Tokens}
             In the RFC-7519\cite{rcf-jwt}, the \acrfull{jwt} is defined as:
             \begin{quote}
-                \textit{\acrfull{jwt} is a compact claims representation format intended for space constrained environments such as \acrshort{http} Authorization headers and URI query parameters.  \acrfull{jwts} encode claims to be transmitted as a \acrshort{json} object that is used as the payload of a \acrfull{jws} structure or as the plaintext of a \acrfull{jwe} structure, enabling the claims to be digitally signed or integrity protected with a \acrfull{mac} and/or encrypted. \acrshort{jwts} are always represented using the \acrshort{jws} Compact Serialization or the \acrshort{jwe} Compact Serialization.} 
+                \textit{\acrfull{jwt} is a compact claims representation format intended for space constrained environments such as \acrshort{http} Authorization headers and URI query parameters.  \acrfull{jwt}s encode claims to be transmitted as a \acrshort{json} object that is used as the payload of a \acrfull{jws} structure or as the plaintext of a \acrfull{jwe} structure, enabling the claims to be digitally signed or integrity protected with a \acrfull{mac} and/or encrypted. \acrshort{jwt}s are always represented using the \acrshort{jws} Compact Serialization or the \acrshort{jwe} Compact Serialization.} 
            \end{quote}
           
           Basically a \acrshort{jwt} is a \acrshort{json} that has three parts:
@@ -548,9 +562,9 @@
                     \end{figure}
                 %\newpage % TODO: que no corte el texto de DIDs
                 \paragraph{Decentralized Identifiers (DIDs)}
-                    According to \acrshort{w3c}\cite{w3c-did}\footnote{More information about the \acrshort{dids} can be found in the main web page of \acrshort{w3c}\cite{w3c-did}}:
+                    According to \acrshort{w3c}\cite{w3c-did}\footnote{More information about the \acrshort{did}s can be found in the main web page of \acrshort{w3c}\cite{w3c-did}}:
                     \begin{quote}
-                        \textit{\acrfull{dids} are a new type of identifier that enables verifiable, decentralized digital identity. A \acrshort{did} identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the \acrshort{did} decides that it identifies. In contrast to typical, federated identifiers, \acrshort{dids} have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a \acrshort{did}, the design enables the controller of a \acrshort{did} to prove control over it without requiring permission from any other party. \acrshort{dids} are URIs that associate a \acrshort{did} subject with a \acrshort{did} document allowing trustable interactions associated with that subject.}
+                        \textit{\acrfull{did}s are a new type of identifier that enables verifiable, decentralized digital identity. A \acrshort{did} identifies any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) that the controller of the \acrshort{did} decides that it identifies. In contrast to typical, federated identifiers, \acrshort{did}s have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a \acrshort{did}, the design enables the controller of a \acrshort{did} to prove control over it without requiring permission from any other party. \acrshort{did}s are URIs that associate a \acrshort{did} subject with a \acrshort{did} document allowing trustable interactions associated with that subject.}
                         
                         \textit{Each \acrshort{did} document can express cryptographic material, verification methods, or service endpoints, which provide a set of mechanisms enabling a \acrshort{did} controller to prove control of the \acrshort{did}. Service endpoints enable trusted interactions associated with the \acrshort{did} subject. A \acrshort{did} document might contain the \acrshort{did} subject itself, if the \acrshort{did} subject is an information resource such as a data model.}
                     \end{quote}
@@ -646,7 +660,7 @@
                         \label{fig:indy}
                     \end{figure}
                     
-                    The proposal is based on having multiple \acrshort{dids} for each user. Every time an agent is operated to give the user's credentials, a new \acrshort{did} will be generated.\\
+                    The proposal is based on having multiple \acrshort{did}s for each user. Every time an agent is operated to give the user's credentials, a new \acrshort{did} will be generated.\\
                     
                 There are also other solutions\cite{ssi-wallets} like \textit{Evernym}, \textit{KayTrust} (by Everis) and \textit{Rem} (by World Data).
 \newpage
@@ -690,13 +704,13 @@
     \subsection{Alastria ID Specification}
         In this section we are going to see the different objects defined by Alastria for the model.
         \subsubsection{DIDs}
-            As we have seen previously, the \acrfull{dids} are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a \acrshort{did} that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
+            As we have seen previously, the \acrfull{did}s are a type of identifier that allows the verification of decentralized identities. It should be noted that all entities, regardless of their role, have a \acrshort{did} that identifies them. At Alastria, the W3C standard is followed with a few minor differences.
             \begin{itemize}
                 \item It will include the type of network in which the \acrshort{did} has been registered.
                 \item It will also include the blockchain network and the network ID where the \acrshort{did} is registered.
             \end{itemize}
             
-            Alastria \acrshort{dids} have the following format (listing \ref{lst:did_format}):
+            Alastria \acrshort{did}s have the following format (listing \ref{lst:did_format}):
             \lstinputlisting[label={lst:did_format}, caption=\acrshort{did} format]{examples/codeSnippets/did_format.txt}
             Where:
             \begin{itemize}
@@ -704,8 +718,8 @@
                 \item \textbf{"network"}: specifies the technology used on that network. 
                 \item \textbf{"net-id"}: defines the specific Alastria blockchain network instance.
             \end{itemize}
-            Possible examples of \acrshort{dids} are (listing \ref{lst:did_ex}):
-            \lstinputlisting[label={lst:did_ex}, caption=Examples of \acrshort{dids}]{examples/codeSnippets/did_examples.txt}
+            Possible examples of \acrshort{did}s are (listing \ref{lst:did_ex}):
+            \lstinputlisting[label={lst:did_ex}, caption=Examples of \acrshort{did}s]{examples/codeSnippets/did_examples.txt}
 
         \subsubsection{Artifacts}
             Alastria Artifacts are currently coded as \acrshort{jwt} objects, so they follow the \acrshort{jwt} specification previously explained.
@@ -818,7 +832,7 @@
                         \item \textbf{"@context"}: allowed presentation specification.
                         \item \textbf{"procUrl"}: \acrshort{url} of the external document that explains the use that will be given to the credentials.
                         \item \textbf{"procHash"}: hash of the external document that explains the use that will be given to the credentials.
-                        \item \textbf{"verifiableCredential"}: an array of signed Credentials (signed \acrshort{jwts}).
+                        \item \textbf{"verifiableCredential"}: an array of signed Credentials (signed \acrshort{jwt}s).
                     \end{itemize}
                 \end{itemize}
                 In the next listing (listing \ref{lst:pres_ex}) we can see an example of a decoded Presentation.\\
@@ -843,7 +857,7 @@
                     \label{fig:psmh}
                 \end{figure}
                 
-                With the \acrshort{psmh} is guaranteed that only the parties involved can "understand" those hashes when they are issued on the blockchain, since it is not the Credential or Presentation itself (the \acrshort{jwts}) that is transacted on the blockchain, but their \acrshort{psmh}es.
+                With the \acrshort{psmh} is guaranteed that only the parties involved can "understand" those hashes when they are issued on the blockchain, since it is not the Credential or Presentation itself (the \acrshort{jwt}s) that is transacted on the blockchain, but their \acrshort{psmh}es.
   
             \paragraph{Credential and Presentation States}
                 As explained in the previous paragraph, both the Credentials and the Presentations have two ways of being identified, therefore, each of the \acrshort{psmh} has an associated status in the blockchain.
@@ -899,7 +913,7 @@
         The \acrshort{mvp}1 is divided into four main parts, as the figure \ref{fig:ala_structure} shows. Although those are not the only parts that are part of the MVP1. There are another series of components that are very important for the ecosystem, such as:
         \begin{itemize}
             \item \textbf{Alastria Node}\footnote{\url{https://github.com/alastria/alastria-node}}: easy documentation and scripts to guide the installation of a blockchain node in the main testnet of Alastria. There are also other guides for different networks, like \textit{Besu}\footnote{\url{https://github.com/alastria/alastria-node-besu}} or \textit{Fabric}\footnote{\url{https://github.com/alastria/alastria-node-fabric}}.
-            \item \textbf{Alastria's lib examples}\footnote{\url{https://github.com/alastria/alastria-identity-example}}: use case files to show how to interact with the TypeScript library. This repository is divided according to the different use case that can be done with Alastria ID. There are examples for: creating tokens, creating identities (\acrshort{dids}), creating entities, creating issuers and service providers, creating and deleting credentials and presentations, authentication with Alastria ID, etc.
+            \item \textbf{Alastria's lib examples}\footnote{\url{https://github.com/alastria/alastria-identity-example}}: use case files to show how to interact with the TypeScript library. This repository is divided according to the different use case that can be done with Alastria ID. There are examples for: creating tokens, creating identities (\acrshort{did}s), creating entities, creating issuers and service providers, creating and deleting credentials and presentations, authentication with Alastria ID, etc.
             \item \textbf{Alastria's objects verification}\footnote{\url{https://github.com/alastria/alastria-identity-JSON-objects}}: this project validates \acrshort{json} objects to see that they are following the specification proposed by Alastria.
         \end{itemize}
         There are still many repositories to mention, which are somehow auxiliary, or are still work in progress.
@@ -911,21 +925,21 @@
             
             The Smart Contracts are distributed as follows:
             \begin{itemize}
-                \item \textbf{Identity Smart Contracts}: this set of Smart Contracts are responsible for generating \acrshort{dids}, managing the different roles of the model (Issuers, Service Providers and Subjects) and making calls between the other Contracts to achieve the correct functioning of the implementation.
+                \item \textbf{Identity Smart Contracts}: this set of Smart Contracts are responsible for generating \acrshort{did}s, managing the different roles of the model (Issuers, Service Providers and Subjects) and making calls between the other Contracts to achieve the correct functioning of the implementation.
                 \begin{itemize}
-                    \item \textbf{"AlastriaIdentityManager.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol}}: this is the main Contract, in charge of creating and managing identities. Contracts \textit{"AlastriaIdentityIssuer.sol"} and \textit{"AlastriaIdentityServiceProvider.sol"} assign roles, and this one creates the identities (\acrshort{dids}). This is the only Contract that is deployed, since it inherits the rest of the "identity" Contracts and is in charge of deploying the "registry" Contracts (figure \ref{fig:mvp1-contracts}).
+                    \item \textbf{"AlastriaIdentityManager.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol}}: this is the main Contract, in charge of creating and managing identities. Contracts \textit{"AlastriaIdentityIssuer.sol"} and \textit{"AlastriaIdentityServiceProvider.sol"} assign roles, and this one creates the identities (\acrshort{did}s). This is the only Contract that is deployed, since it inherits the rest of the "identity" Contracts and is in charge of deploying the "registry" Contracts (figure \ref{fig:mvp1-contracts}).
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=1.0\textwidth]{SCs-Diagram.png}
                         \caption{Alastria ID MVP1 Smart Contracts diagram}
                         \label{fig:mvp1-contracts}
                     \end{figure}
-                    \item \textbf{"AlastriaIdentityIssuer.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}}: this Smart Contract is used to endow the entity with the ability to create identities (\acrshort{dids}) and issue Credentials within the blockchain (remember that we are talking about \acrshort{psmh}es, not \acrshort{jwts}). To do this, the entity is simply saved in a mapping of issuers and the \acrshort{loa} level, using the library \textit{Eidas.sol}.
+                    \item \textbf{"AlastriaIdentityIssuer.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}}: this Smart Contract is used to endow the entity with the ability to create identities (\acrshort{did}s) and issue Credentials within the blockchain (remember that we are talking about \acrshort{psmh}es, not \acrshort{jwt}s). To do this, the entity is simply saved in a mapping of issuers and the \acrshort{loa} level, using the library \textit{Eidas.sol}.
                     \item \textbf{"AlastriaIdentityServiceProvider.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityServiceProvider.sol}}: similar to the previous Smart Contract, its functionality is to provide the entities with the role of Service Provider. To do this, it stores the entities in a mapping.
                     \item \textbf{"AlastriaIdentityEntity.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityEntity.sol}}: it stores entity information, such as name, cif, logo \acrshort{url}, \acrshort{did}, \acrshort{url} of the Alastria Open Access and a flag to know if the entity is active or not.
                     \item \textbf{"AlastriaProxy.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaProxy.sol}}: this Contract, as its name indicates, acts as a proxy for the account \acrshort{eoa} that is carrying out the transaction. Since any call (except for a few) will always go through the account's proxy. It is responsible for emitting an event of what is being used.
                 \end{itemize}
-                \item \textbf{Registry Smart Contracts}: these are in charge of managing the Credentials and the Presentations with their respective states, also it manages the public keys of the different \acrshort{dids}.
+                \item \textbf{Registry Smart Contracts}: these are in charge of managing the Credentials and the Presentations with their respective states, also it manages the public keys of the different \acrshort{did}s.
                 \begin{itemize}
                     \item \textbf{"AlastriaCredentialRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaCredentialRegistry.sol}}: it is responsible for managing and modifying the different \acrshort{psmh}es of the Credentials through the different states. It should be mentioned that a Credential cannot transits to a "lower" or previous state.
                     \item \textbf{"AlastriaPresentationRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPresentationRegistry.sol}} : this smart contract is analogous to the \textit{"AlastriaCredentialRegistry.sol"} but with the Presentations. Neither the Presentation can transits to a "lower" or previous state.
@@ -943,9 +957,9 @@
             
             This library has three different modules:
             \begin{itemize}
-                \item \textbf{User functions}: It helps to manage the wallet and the identity user. Also helps when signing transactions.
-                \item \textbf{Blockchain functions}: It encapsulates the Alastria ID Smart Contracts, so that only functions have to be called with TypeScript, without needing to know how to write in Solidity in order to work with the Smart Contracts. This module is divided as are the Smart Contracts. So, for example, the \textit{"AlastriaPublicKeyRegistry.sol"} can be found in the file \textit{"publicKeyRegistryTransactionFactory.ts"}\footnote{\url{https://github.com/alastria/alastria-identity-lib/blob/master/src/txFactory/publicKeyRegistryTransactionFactory.ts}}. It is the same for the rest of the main Smart Contracts.
-                \item \textbf{Tokens functions}: It manages the different \acrshort{jwts} explained previously, guaranteeing that they are well built and are valid. It also allows the signing and decoding of said \acrshort{jwts}.
+                \item \textbf{User functions}: it helps to manage the wallet and the identity user. Also helps when signing transactions.
+                \item \textbf{Blockchain functions}: it encapsulates the Alastria ID Smart Contracts, so that only functions have to be called with TypeScript, without needing to know how to write in Solidity in order to work with the Smart Contracts. This module is divided as are the Smart Contracts. So, for example, the \textit{"AlastriaPublicKeyRegistry.sol"} can be found in the file \textit{"publicKeyRegistryTransactionFactory.ts"}\footnote{\url{https://github.com/alastria/alastria-identity-lib/blob/master/src/txFactory/publicKeyRegistryTransactionFactory.ts}}. It is the same for the rest of the main Smart Contracts.
+                \item \textbf{Tokens functions}: it manages the different \acrshort{jwt}s explained previously, guaranteeing that they are well built and are valid. It also allows the signing and decoding of said \acrshort{jwt}s.
             \end{itemize}
             
         \subsubsection{Wallet}

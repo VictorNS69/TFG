@@ -2,4 +2,4 @@ did                = "did:ala:" network ":" specific-idstring
 
 network            = ("quor" / "fabr") ":" net-id
 
-specific-idstring  = depends on the network, see below
+specific-idstring  = address of the proxy Contract generated in the identity creation
