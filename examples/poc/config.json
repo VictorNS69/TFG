@@ -1,0 +1,7 @@
+{
+    "node": "http://63.33.206.111/rpc",
+    "accountPwd": "TFG_VICTOR_NIEVES",
+    "entity": "did:ala:quor:redT:8a81b552db0ff2904c611145fa09aaa6b928b87f",
+    "attacker": "did:ala:quor:redT:c778223c9f15f72aff5dfd0222e76dfdcde597b6",
+    "subjectPublicKey": "0x56b05e1bb099328396285006e3667d5d5b000ea7abeb7a7a49afe403c293a90c5cfb9a4b35de58857ac14529c95a8645874bba142aeaba51a3de35dd289ad290"
+}
