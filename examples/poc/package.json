@@ -1,0 +1,35 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "description": "PoC vulnerability",
+  "main": "poc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorNS69/TFG.git"
+  },
+  "keywords": [
+    "blockchain",
+    "alastria",
+    "identity",
+    "self-sovereign-identity",
+    "ssi",
+    "blockchain",
+    "quorum",
+    "ethereum",
+    "solidity",
+    "hacking",
+    "cybersecurity"
+  ],
+  "author": "Victor Nieves Sanchez",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/VictorNS69/TFG/issues"
+  },
+  "homepage": "https://github.com/VictorNS69/TFG",
+  "dependencies": {
+    "alastria-identity-lib": "github:alastria/alastria-identity-lib#master"
+  }
+}
