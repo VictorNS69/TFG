@@ -1,0 +1,263 @@
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: AlastriaIdentityIssuer
+Function name: updateIdentityIssuerEidasLevel(address,uint8)
+PC address: 727
+Estimated Gas Usage: 275 - 370
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:27
+
+_level.atLeastLow
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: updateIdentityIssuerEidasLevel(address,uint8), txdata: 0x449636100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: updateIdentityIssuerEidasLevel(address,uint8)
+PC address: 990
+Estimated Gas Usage: 8941 - 64638
+Read of persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:17
+
+issuers[_identityIssuer].active
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x80000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: updateIdentityIssuerEidasLevel(address,uint8), txdata: 0x44963610000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: updateIdentityIssuerEidasLevel(address,uint8)
+PC address: 1111
+Estimated Gas Usage: 8941 - 64638
+Write to persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:46
+
+identityIssuer.level = _level
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x80000000000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: updateIdentityIssuerEidasLevel(address,uint8), txdata: 0x44963610000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1221
+Estimated Gas Usage: 319 - 414
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:27
+
+_level.atLeastLow
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: addIdentityIssuer(address,uint8), txdata: 0x889776a80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1484
+Estimated Gas Usage: 15820 - 92367
+Read of persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:22
+
+issuers[_identityIssuer].active
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1576
+Estimated Gas Usage: 15820 - 92367
+Read of persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:17
+
+issuers[_identityIssuer].active
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2000080, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a800000000000000000000000002, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1674
+Estimated Gas Usage: 15820 - 92367
+Read of persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:40
+
+identityIssuer.level = _level
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1697
+Estimated Gas Usage: 15820 - 92367
+Write to persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:40
+
+identityIssuer.level = _level
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1712
+Estimated Gas Usage: 15820 - 92367
+Read of persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:41
+
+identityIssuer.active = true
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2000080, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x40, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a800000000000000000000000002, value: 0x0
+
+==== State access after external call ====
+SWC ID: 107
+Severity: Low
+Contract: AlastriaIdentityIssuer
+Function name: addIdentityIssuer(address,uint8)
+PC address: 1726
+Estimated Gas Usage: 15820 - 92367
+Write to persistent state following external call
+The contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityIssuer.sol:41
+
+identityIssuer.active = true
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x1, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: addIdentityIssuer(address,uint8), txdata: 0x889776a8, value: 0x0
+
+

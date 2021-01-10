@@ -1,0 +1,53 @@
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Eidas
+Function name: atLeast(Eidas.EidasLevel,Eidas.EidasLevel)
+PC address: 268
+Estimated Gas Usage: 256 - 351
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/libs/Eidas.sol:36
+
+uint(_level)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x40709050000000ffd, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: atLeast(Eidas.EidasLevel,Eidas.EidasLevel), txdata: 0xf26414830000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Eidas
+Function name: atLeastLow(Eidas.EidasLevel)
+PC address: 280
+Estimated Gas Usage: 254 - 349
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: /tmp/libs/Eidas.sol:36
+
+uint(_eidasLevel)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x40048000400c20000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: atLeastLow(Eidas.EidasLevel), txdata: 0x0fa78bf70000000000000000000000000000000000000000000000000000000000000009, value: 0x0
+
+
