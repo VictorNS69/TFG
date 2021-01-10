@@ -1,0 +1,239 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setUrlLogo(address,string)
+PC address: 219
+Estimated Gas Usage: 12742 - 56415
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:82
+
+function setUrlLogo(address _addressEntity, string _url_logo) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].url_logo = _url_logo;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x8000d, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setUrlLogo(address,string), txdata: 0x0ff72ef2000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setCifEntity(address,string)
+PC address: 356
+Estimated Gas Usage: 7661 - 31334
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:73
+
+function setCifEntity(address _addressEntity, string _cif) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].cif = _cif;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x800000d0204, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setCifEntity(address,string), txdata: 0x1e5f6f01000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setUrlCreateAID(address,string)
+PC address: 493
+Estimated Gas Usage: 17856 - 81622
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:91
+
+function setUrlCreateAID(address _addressEntity, string _url_createAID) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].url_createAID = _url_createAID;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x8, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setUrlCreateAID(address,string), txdata: 0x4b7a1859000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setUrlCreateAID(address,string)
+PC address: 514
+Estimated Gas Usage: 7716 - 31296
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:91
+
+function setUrlCreateAID(address _addressEntity, string _url_createAID) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].url_createAID = _url_createAID;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x2000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setUrlCreateAID(address,string), txdata: 0x4b7a1859000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe80, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setUrlAOA(address,string)
+PC address: 1390
+Estimated Gas Usage: 7782 - 31362
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:100
+
+function setUrlAOA(address _addressEntity, string _url_AOA) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].url_AOA = _url_AOA;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x100000, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: setUrlAOA(address,string), txdata: 0x8e672cf7000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe80, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setNameEntity(address,string)
+PC address: 1935
+Estimated Gas Usage: 17966 - 81732
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:64
+
+function setNameEntity(address _addressEntity, string _name) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].name = _name;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x10, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [ATTACKER], function: setNameEntity(address,string), txdata: 0xeb5c426c000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdc, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: AlastriaIdentityEntity
+Function name: setNameEntity(address,string)
+PC address: 1956
+Estimated Gas Usage: 7826 - 31406
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: /tmp/identityManager/AlastriaIdentityEntity.sol:64
+
+function setNameEntity(address _addressEntity, string _name) public onlyIdentityEntity(_addressEntity) {
+        entities[_addressEntity].name = _name;
+    }
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x80000001, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [CREATOR], function: setNameEntity(address,string), txdata: 0xeb5c426c000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe80, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: Low
+Contract: AlastriaIdentityEntity
+Function name: setNameEntity(address,string)
+PC address: 5244
+Estimated Gas Usage: 7826 - 31406
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x198404b4810fc1a1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setNameEntity(address,string), txdata: 0xeb5c426c000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe80, value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: Low
+Contract: AlastriaIdentityEntity
+Function name: setUrlAOA(address,string)
+PC address: 5258
+Estimated Gas Usage: 7782 - 31362
+The arithmetic operator can overflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation.  This issue is reported for internal compiler generated code.
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x1, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+Account: [SOMEGUY], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , value: 0x0
+Caller: [SOMEGUY], function: setUrlAOA(address,string), txdata: 0x8e672cf7000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffe80, value: 0x0
+
+
