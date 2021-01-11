@@ -6,10 +6,19 @@
 
 ## Requirements
 
-Install **_LaTex_**
+1. Install **_LaTex_**.
 
 ```bash
 sudo apt install texlive-full
+```
+2. Install the **_pgf-pie_** package.
+First, you need to download the _.zip_ from: http://mirror.ctan.org/graphics/pgf/contrib/pgf-pie.zip, then:
+```bash
+unzip pgf-pie.zip
+mkdir -p ~/texmf/tex/latex/pgf-pie
+cp pgf-pie/pgf-pie.sty ~/texmf/tex/latex/pgf-pie/
+mkdir -p ~/texmf/doc/latex/pgf-pie
+cp pgf-pie/pgf-pie-manual.pdf ~/texmf/doc/latex/pgf-pie/
 ```
 
 ## Generate the file
