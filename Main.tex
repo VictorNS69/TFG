@@ -326,7 +326,7 @@
 
             Below is an example of a Smart Contract\footnote{Source code from \url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityIssuer.sol}} written in Solidity\footnote{More details about Solidity can be found in the official documentation\cite{solidity}} (listing  \ref{lst:AlastriaIdentityIssuer}).
             
-            \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer.sol, language=Solidity]{examples/SmartContracts/AlastriaIdentityIssuer.sol}
+            \lstinputlisting[label={lst:AlastriaIdentityIssuer}, caption=Source code from AlastriaIdentityIssuer.sol, language=Solidity]{examples/alastriaSCs/identityManager/AlastriaIdentityIssuer.sol}
 
         \subsubsection{Ethereum Nodes}
             A Node refers to a piece of software which is an implementation of Ethereum that verifies all transactions in each block, keeping the network secure and the data accurate. They collectively store the state of the Ethereum blockchain and reach consensus on transactions to mutate the blockchain state.\\
@@ -857,23 +857,23 @@
                 
                 With the \acrshort{psmh} is guaranteed that only the parties involved can "understand" those hashes when they are issued on the blockchain, since it is not the Credential or Presentation itself (the \acrshort{jwt}s) that is transacted on the blockchain, but their \acrshort{psmh}es.
   
-            \paragraph{Credential and Presentation States}
+            \paragraph{Status of Credentials and Presentations}
                 As explained in the previous paragraph, both the Credentials and the Presentations have two ways of being identified, therefore, each of the \acrshort{psmh} has an associated status in the blockchain.
                 
-                For \textbf{Credentials}, the possible states are:
+                For \textbf{Credentials}, the possible statuses are:
                 \begin{itemize}
-                    \item \textbf{"0"} or \textbf{"Valid"}: state the Credential has when issued by an Issuer.
-                    \item \textbf{"1"} or \textbf{"AskIssuer"}: this state implies that the Issuer of the Credential wants to be asked what the real state of that Credential is.
-                    \item \textbf{"2"} or \textbf{"Revoked}: state of the Credential when the issuer revokes it for any reason.
-                    \item \textbf{"3"} or \textbf{"DeletedBySubject"}: state when the Subject has removed the Credential.
+                    \item \textbf{"0"} or \textbf{"Valid"}: status the Credential has when issued by an Issuer.
+                    \item \textbf{"1"} or \textbf{"AskIssuer"}: this status implies that the Issuer of the Credential wants to be asked what the real status of that Credential is.
+                    \item \textbf{"2"} or \textbf{"Revoked}: status of the Credential when the issuer revokes it for any reason.
+                    \item \textbf{"3"} or \textbf{"DeletedBySubject"}: status when the Subject has removed the Credential.
                 \end{itemize}
                 
-                Similarly, \textbf{Presentations} have the following states:
+                Similarly, \textbf{Presentations} have the following statuses:
                 \begin{itemize}
-                  \item \textbf{"0"} or \textbf{"Valid"}: state the Presentation has when issued by a Subject.
-                  \item \textbf{"1"} or \textbf{"Received"}: state that the Presentation gets when it is received by a Service Provider.
-                  \item \textbf{"2"} or \textbf{"AskDeletion"}: State that the Subject puts when he wants the Presentation to be eliminated and therefore the Credentials that it contains are not used.
-                  \item \textbf{"3"} or \textbf{"DeletionConfirmation"}: state that the Service Provider puts in the Presentation when confirming the deletion requested by the Subject previously.
+                  \item \textbf{"0"} or \textbf{"Valid"}: status the Presentation has when issued by a Subject.
+                  \item \textbf{"1"} or \textbf{"Received"}: status that the Presentation gets when it is received by a Service Provider.
+                  \item \textbf{"2"} or \textbf{"AskDeletion"}: status that the Subject puts when he wants the Presentation to be eliminated and therefore the Credentials that it contains are not used.
+                  \item \textbf{"3"} or \textbf{"DeletionConfirmation"}: status that the Service Provider puts in the Presentation when confirming the deletion requested by the Subject previously.
                 \end{itemize}
             
     \subsection{Example: Renting a car}
@@ -937,10 +937,10 @@
                     \item \textbf{"AlastriaIdentityEntity.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityEntity.sol}}: it stores entity information, such as name, cif, logo \acrshort{url}, \acrshort{did}, \acrshort{url} of the Alastria Open Access and a flag to know if the entity is active or not.
                     \item \textbf{"AlastriaProxy.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaProxy.sol}}: this Contract, as its name indicates, acts as a proxy for the account \acrshort{eoa} that is carrying out the transaction. Since any call (except for a few) will always go through the account's proxy. It is responsible for emitting an event of what is being used.
                 \end{itemize}
-                \item \textbf{Registry Smart Contracts}: these are in charge of managing the Credentials and the Presentations with their respective states, also it manages the public keys of the different \acrshort{did}s.
+                \item \textbf{Registry Smart Contracts}: these are in charge of managing the Credentials and the Presentations with their respective statuses, also it manages the public keys of the different \acrshort{did}s.
                 \begin{itemize}
-                    \item \textbf{"AlastriaCredentialRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaCredentialRegistry.sol}}: it is responsible for managing and modifying the different \acrshort{psmh}es of the Credentials through the different states. It should be mentioned that a Credential cannot transits to a "lower" or previous state.
-                    \item \textbf{"AlastriaPresentationRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPresentationRegistry.sol}} : this smart contract is analogous to the \textit{"AlastriaCredentialRegistry.sol"} but with the Presentations. Neither the Presentation can transits to a "lower" or previous state.
+                    \item \textbf{"AlastriaCredentialRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaCredentialRegistry.sol}}: it is responsible for managing and modifying the different \acrshort{psmh}es of the Credentials through the different statuses. It should be mentioned that a Credential cannot transits to a "lower" or previous status.
+                    \item \textbf{"AlastriaPresentationRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPresentationRegistry.sol}} : this smart contract is analogous to the \textit{"AlastriaCredentialRegistry.sol"} but with the Presentations. Neither the Presentation can transits to a "lower" or previous status.
                     \item \textbf{"AlastriaPublicKeyRegistry.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/registry/AlastriaPublicKeyRegistry.sol}}: stores the public keys of the different identities on the network. It has functionalities to add, modify, delete and verify the public keys.
                 \end{itemize}
                 \item \textbf{Auxiliary libraries}: standard Smart Contracts designed as libraries that are used to facilitate certain actions or improve functionalities of the previous Smart Contracts.
@@ -978,6 +978,24 @@
             \end{itemize}
 \newpage
 \section{Security audit}
+    In this section a security audit of the Smart Contracts and the \textit{TypeScript} library will be performed. Various tools will be used and the vulnerabilities found will be listed along with their level of criticality.
+    
+    \subsection{Audit of the Smart Contracts}
+        The objective of this subsection is to perform a security analysis of the Smart Contracts from the  \acrshort{mvp}1 in order to detect vulnerabilities, with the aim of improving the quality of the Contracts.\\
+        
+        For this purpose, two analyses will be made. One with the tool \textit{Mythril}\footnote{\url{https://github.com/ConsenSys/mythril}}. \textit{Mythril} (figure \ref{fig:myth}) is a security analysis tool for \acrshort{evm} bytecode. It detects security vulnerabilities in Smart Contracts built for \textit{Ethereum}, \textit{Hedera}, \textit{Quorum}, \textit{Vechain}, \textit{Roostock}, \textit{Tron} and other \acrshort{evm}-compatible blockchains. It uses symbolic execution, \acrshort{smt} solving and taint analysis to detect a variety of security vulnerabilities.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.3\textwidth]{mythril_logo.png}
+            \caption{Mythril logo}
+            \label{fig:myth}
+        \end{figure}
+        
+        In addition, a dead code analysis will be done, to detect failures in the code of the Smart Contracts.
+        
+        \subsubsection{Mythril analysis}
+            
+        
 %1) objetivo de la sección
 % TODO
 %1- SC
