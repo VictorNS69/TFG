@@ -22,7 +22,7 @@ timestamp=$(date "+%Y-%m-%d")
 for d in $SCDIR/*/ ; do
 	for f in $d* ; do
 		contract=`echo ${f} | awk -F/ '{print $NF}'`
-        docker logs $contract > reports/audit_${contract}_${timestamp}.txt
+        	docker logs $contract > reports/audit_${contract}_${timestamp}.txt
     done
 done
 echo Reports obtained successfully
