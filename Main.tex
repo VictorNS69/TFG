@@ -12,14 +12,15 @@
 \graphicspath{ {images/} } % Directorio imágenes
 \usepackage{listings} % Formateo código
 \usepackage{scrextend}
+\usepackage{longtable}
+\usepackage{pgfplots} % Graficas de barras
+\usepackage{pgf-pie} % Graficas de tartas
 % Lista de acronimos
 \usepackage[acronym]{glossaries}
 \makeglossaries
 \input{Acronyms.tex}
-
 \input{./assets/solidity-highlighting.tex} % Resaltado de solidity
 \input{./assets/json-highlighting.tex} % Resaltado de json
-
 \sectionfont{\MakeUppercase} % Secciones en mayúsculas
 \bibliography{Bibliography.bib}
 
@@ -82,6 +83,7 @@
 
 \newpage
 \pagenumbering{arabic} % Numeración árabe en la primera sección
+\UseRawInputEncoding % UTF-8 Listings
 
 \section{Introduction}
     This section presents the context of the thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
@@ -994,8 +996,151 @@
         In addition, a dead code analysis will be done, to detect failures in the code of the Smart Contracts.
         
         \subsubsection{Mythril analysis}
+            In the \acrshort{mvp}1 of Alastria ID, eight Smart Contracts have been designed and two libraries have been used.\\
             
+            To facilitate the audit, some scripts have been designed in \textit{Shell Script}. The first script called \textit{audit.sh} (listing \ref{lst:audit.sh}) performs the analysis with the \textit{Mythril} tool. A docker container has been created for each contract and the analysis has been carried out in this container. This analysis has been programmed to last a maximum of two hours.
         
+            \lstinputlisting[label={lst:audit.sh}, caption=audit.sh source code, language=bash]{examples/mythrilAudit/audit.sh}
+        
+            In order to obtain the reports after the completion of \textit{audit.sh}, another script has been made, called \textit{getReports.sh} (listing \ref{lst:getReports.sh}). This script copies the logs of the different containers created into different files, so that they are more comfortable to handle and read.\\
+            
+            \lstinputlisting[label={lst:getReports.sh}, caption=getReports.sh source code, language=bash]{examples/mythrilAudit/getReports.sh}
+            
+            After the analysis, and the study of the reports, the following results have been obtained:
+            \paragraph{AlastriaCredentialRegistry.sol}
+                The following table (table \ref{tab:AlastriaCredentialRegistry}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaCredentialRegistry}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.52\linewidth} | p{0.3\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-101}{101} & High & addSubjectCredential (bytes32, string) & The arithmetic operator can overflow.\\ 
+                    \hline
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & issuerCredentialList (address, uint256)\newline getCredentialStatus (uint8, uint8)\newline getCredentialStatus (uint8, uint8)\newline subjectCredentialList (address, uint256)\newline updateCredentialStatus (bytes32, uint8)\newline & An assertion violation was triggered.\\ [1ex] 
+                    \hline
+                    \caption{AlastriaCredentialRegistry.sol audit report}
+                    \label{tab:AlastriaCredentialRegistry}
+                \end{longtable}
+
+            \newpage
+
+            \paragraph{AlastriaIdentityEntity.sol}
+                The following table (table \ref{tab:AlastriaIdentityEntity}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaIdentityEntity}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.5\linewidth} | p{0.3\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-101}{101} & High & setUrlLogo (address, string)\newline setCifEntity (address, string)\newline setUrlCreateAID (address, string)\newline setUrlCreateAID (address, string)\newline setUrlAOA (address, string)\newline setNameEntity (address, string)\newline setNameEntity (address, string)\newline & The arithmetic operator can overflow. \\ [1ex] 
+                    \hline
+                    \caption{AlastriaIdentityEntity.sol audit report}
+                    \label{tab:AlastriaIdentityEntity}
+                \end{longtable}
+                
+            \paragraph{AlastriaIdentityIssuer.sol}
+                The following table (table \ref{tab:AlastriaIdentityIssuer}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaIdentityIssuer}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.45\linewidth} | p{0.35\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & updateIdentityIssuerEidasLevel\newline (address, uint8)\newline addIdentityIssuer (address, uint8) & An assertion violation was triggered.\\
+                    \hline
+                    \href{https://swcregistry.io/docs/SWC-107}{107} & Low & updateIdentityIssuerEidasLevel\newline (address, uint8)\newline addIdentityIssuer (address, uint8) & Read of persistent state following external call.\\ [1ex] 
+                    \hline
+                    \caption{AlastriaIdentityIssuer.sol audit report}
+                    \label{tab:AlastriaIdentityIssuer}
+                \end{longtable}
+                
+            \paragraph{AlastriaIdentityManager.sol}
+                No vulnerabilities were found in \textit{AlastriaIdentityManager.sol} after the audit.
+                
+            \paragraph{AlastriaIdentityServiceProvider.sol}
+                No vulnerabilities were found in \textit{AlastriaIdentityServiceProvider.sol} after the audit.
+                
+            \paragraph{AlastriaPresentationRegistry.sol}
+                No vulnerabilities were found in \textit{AlastriaPresentationRegistry.sol} after the audit.
+                
+            \paragraph{AlastriaProxy.sol}
+                The following table (table \ref{tab:AlastriaProxy}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaIdentityIssuer}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.45\linewidth} | p{0.35\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-107}{107} & Low & forward (address, uint256, bytes) & A call to a user-supplied address is executed. An external message call to an address specified by the caller is executed.\\ [1ex] 
+                    \hline
+                    \caption{AlastriaProxy.sol audit report}
+                    \label{tab:AlastriaProxy}
+                \end{longtable}
+                
+            \paragraph{AlastriaPublicKeyRegistry.sol}
+                The following table (table \ref{tab:AlastriaPublicKeyRegistry}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaPublicKeyRegistry}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.45\linewidth} | p{0.35\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & publicKeyList (address, uint256) & An assertion violation was triggered.\\ [1ex] 
+                    \hline
+                    \caption{AlastriaPublicKeyRegistry.sol audit report}
+                    \label{tab:AlastriaPublicKeyRegistry}
+                \end{longtable}
+        
+            \paragraph{Eidas.sol}
+                The following table (table \ref{tab:Eidas}) summarizes the vulnerabilities found in the Smart Contract \textit{Eidas}.
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.50\linewidth} | p{0.30\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & atLeast\newline (Eidas.EidasLevel, Eidas.EidasLevel)\newline atLeastLow (Eidas.EidasLevel) & An assertion violation was triggered.\\ [1ex] 
+                    \hline
+                    \caption{Eidas.sol audit report}
+                    \label{tab:Eidas}
+                \end{longtable}
+                
+            \paragraph{Owned.sol}
+                No vulnerabilities were found in \textit{Owned.sol} after the audit.\\
+
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \begin{axis}[
+                     width=15cm,
+                     height=8cm,
+                     symbolic x coords={AlastriaCredentialRegistry, AlastriaIdentityEntity, AlastriaIdentityIssuer, AlastriaIdentityManager, AlastriaIdentityServiceProvider, AlastriaPresentationRegistry, AlastriaProxy, AlastriaPublicKeyRegistry, Eidas, Owned},
+                     x tick label style={rotate=55, font=\small,,anchor=east},
+                     xtick=data,
+                     ymin=0,
+                     ymax=8,
+                     ylabel=Vulnerabilities,
+                     ybar,
+                     bar width=30pt,
+                     ]
+                    \addplot coordinates {
+                        (AlastriaCredentialRegistry, 6)
+                        (AlastriaIdentityEntity, 7)
+                        (AlastriaIdentityIssuer, 4)
+                        (AlastriaIdentityManager, 0)
+                        (AlastriaIdentityServiceProvider, 0)
+                        (AlastriaPresentationRegistry, 0)
+                        (AlastriaProxy, 1)
+                        (AlastriaPublicKeyRegistry, 1)
+                        (Eidas, 2)
+                        (Owned, 0)};
+                    \end{axis}
+                \end{tikzpicture}
+                \caption{Number of vulnerabilities by Smart Contract}
+                \label{fig:bars-scs}
+            \end{figure}
+            
+            In conclusion to the analysis, we can see that Smart Contracts \textit{AlastriaIdentityEntity} and \textit{AlastriaCredentialRegistry} are the ones that have found the most vulnerabilities, with seven and six respectively (figure \ref{fig:bars-scs}). In relation to the vulnerabilities found, we see that \textbf{47.6\% are high}, another \textbf{47.6\% are medium} and\textbf{ 4.8\% are low} (figure \ref{fig:pie-scs}).
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \pie{47.6/High, 47.6/Medium, 4.8/Low}
+                \end{tikzpicture}
+                \caption{Criticality of the Smart Contracts vulnerabilities}
+                \label{fig:pie-scs}
+            \end{figure}
+        
+        \subsubsection{Dead code analysis}
+            In this part of the audit, no tools have been used. The objective of this analysis has been to read the contracts carefully and, having understood and assimilated the Alastria ID model, to detect programming errors, requirements errors or functional errors that differ from the theoretical implementation of the model.
 %1) objetivo de la sección
 % TODO
 %1- SC
@@ -1039,3 +1184,4 @@
 \printbibliography[heading=bibnumbered] % Última sección, numerada, para la bibliografía
 
 \end{document}
+
