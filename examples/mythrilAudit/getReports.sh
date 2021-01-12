@@ -8,7 +8,7 @@
 # and stores them in "reports/"
 #
 #
-# Author: Víctor Nieves Sánchez
+# Author: Victor Nieves Sanchez
 # email: vnievess@gmail.com
 #
 

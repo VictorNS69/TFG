@@ -11,7 +11,7 @@
 # Example: docker logs AlastriaProxy.sol
 #
 #
-# Author: Víctor Nieves Sánchez
+# Author: Victor Nieves Sanchez
 # email: vnievess@gmail.com
 #
 

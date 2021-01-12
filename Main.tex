@@ -15,12 +15,14 @@
 \usepackage{longtable}
 \usepackage{pgfplots} % Graficas de barras
 \usepackage{pgf-pie} % Graficas de tartas
+\usepackage{multirow} % multiples filas en las tablas
 % Lista de acronimos
 \usepackage[acronym]{glossaries}
 \makeglossaries
 \input{Acronyms.tex}
 \input{./assets/solidity-highlighting.tex} % Resaltado de solidity
 \input{./assets/json-highlighting.tex} % Resaltado de json
+\input{./assets/javascript-highlighting.tex} % Resaltado de JS
 \sectionfont{\MakeUppercase} % Secciones en mayúsculas
 \bibliography{Bibliography.bib}
 
@@ -1015,9 +1017,15 @@
                     \hline\hline
                     \href{https://swcregistry.io/docs/SWC-101}{101} & High & addSubjectCredential (bytes32, string) & The arithmetic operator can overflow.\\ 
                     \hline
-                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & issuerCredentialList (address, uint256)\newline getCredentialStatus (uint8, uint8)\newline getCredentialStatus (uint8, uint8)\newline subjectCredentialList (address, uint256)\newline updateCredentialStatus (bytes32, uint8)\newline & An assertion violation was triggered.\\ [1ex] 
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & issuerCredentialList (address, uint256) & An assertion violation was triggered.\\
+                    \cline{3-3}
+                    & & getCredentialStatus (uint8, uint8) &\\ 
+                    \cline{3-3} 
+                    & & subjectCredentialList (address, uint256) &\\
+                    \cline{3-3}
+                    & & updateCredentialStatus (bytes32, uint8) &\\ [1ex] 
                     \hline
-                    \caption{AlastriaCredentialRegistry.sol audit report}
+                    \caption{AlastriaCredentialRegistry.sol Mythrill audit report}
                     \label{tab:AlastriaCredentialRegistry}
                 \end{longtable}
 
@@ -1029,9 +1037,17 @@
                     \hline
                     \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
                     \hline\hline
-                    \href{https://swcregistry.io/docs/SWC-101}{101} & High & setUrlLogo (address, string)\newline setCifEntity (address, string)\newline setUrlCreateAID (address, string)\newline setUrlCreateAID (address, string)\newline setUrlAOA (address, string)\newline setNameEntity (address, string)\newline setNameEntity (address, string)\newline & The arithmetic operator can overflow. \\ [1ex] 
+                    \href{https://swcregistry.io/docs/SWC-101}{101} & High & setUrlLogo (address, string) & The arithmetic operator can overflow. \\
+                    \cline{3-3}
+                    & & setCifEntity (address, string)  &\\
+                    \cline{3-3}
+                    & & setUrlCreateAID (address, string) &\\
+                    \cline{3-3}
+                    & & setUrlAOA (address, string) &\\
+                    \cline{3-3}
+                    & & setNameEntity (address, string) &\\[1ex] 
                     \hline
-                    \caption{AlastriaIdentityEntity.sol audit report}
+                    \caption{AlastriaIdentityEntity.sol Mythrill audit report}
                     \label{tab:AlastriaIdentityEntity}
                 \end{longtable}
                 
@@ -1041,11 +1057,16 @@
                     \hline
                     \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
                     \hline\hline
-                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & updateIdentityIssuerEidasLevel\newline (address, uint8)\newline addIdentityIssuer (address, uint8) & An assertion violation was triggered.\\
+                    \href{https://swcregistry.io/docs/SWC-107}{107} & Low & updateIdentityIssuerEidasLevel\newline (address, uint8) & Read of persistent state following external call.\\
+                    \cline{3-3}
+                    & & addIdentityIssuer (address, uint8) &\\[1ex]
                     \hline
-                    \href{https://swcregistry.io/docs/SWC-107}{107} & Low & updateIdentityIssuerEidasLevel\newline (address, uint8)\newline addIdentityIssuer (address, uint8) & Read of persistent state following external call.\\ [1ex] 
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & updateIdentityIssuerEidasLevel\newline (address, uint8) & An assertion violation was triggered.\\
+                    \cline{3-3}
+                    & & addIdentityIssuer (address, uint8) &\\
+                    \cline{3-3}
                     \hline
-                    \caption{AlastriaIdentityIssuer.sol audit report}
+                    \caption{AlastriaIdentityIssuer.sol Mythrill audit report}
                     \label{tab:AlastriaIdentityIssuer}
                 \end{longtable}
                 
@@ -1059,14 +1080,14 @@
                 No vulnerabilities were found in \textit{AlastriaPresentationRegistry.sol} after the audit.
                 
             \paragraph{AlastriaProxy.sol}
-                The following table (table \ref{tab:AlastriaProxy}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaIdentityIssuer}.
+                The following table (table \ref{tab:AlastriaProxy}) summarizes the vulnerabilities found in the Smart Contract \textit{AlastriaIdentityIssuer}.\newline
                 \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.45\linewidth} | p{0.35\linewidth}||}
                     \hline
                     \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
                     \hline\hline
                     \href{https://swcregistry.io/docs/SWC-107}{107} & Low & forward (address, uint256, bytes) & A call to a user-supplied address is executed. An external message call to an address specified by the caller is executed.\\ [1ex] 
                     \hline
-                    \caption{AlastriaProxy.sol audit report}
+                    \caption{AlastriaProxy.sol Mythrill audit report}
                     \label{tab:AlastriaProxy}
                 \end{longtable}
                 
@@ -1078,7 +1099,7 @@
                     \hline\hline
                     \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & publicKeyList (address, uint256) & An assertion violation was triggered.\\ [1ex] 
                     \hline
-                    \caption{AlastriaPublicKeyRegistry.sol audit report}
+                    \caption{AlastriaPublicKeyRegistry.sol Mythrill audit report}
                     \label{tab:AlastriaPublicKeyRegistry}
                 \end{longtable}
         
@@ -1088,9 +1109,11 @@
                     \hline
                     \textbf{\acrshort{swc} ID} & \textbf{Severity} & \textbf{Functions} & \textbf{Description} \\ [0.5ex] 
                     \hline\hline
-                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & atLeast\newline (Eidas.EidasLevel, Eidas.EidasLevel)\newline atLeastLow (Eidas.EidasLevel) & An assertion violation was triggered.\\ [1ex] 
+                    \href{https://swcregistry.io/docs/SWC-110}{110} & Medium & atLeast\newline (Eidas.EidasLevel, Eidas.EidasLevel) & An assertion violation was triggered.\\
+                    \cline{3-3}
+                    & & atLeastLow (Eidas.EidasLevel) &\\[1ex] 
                     \hline
-                    \caption{Eidas.sol audit report}
+                    \caption{Eidas.sol Mythrill audit report}
                     \label{tab:Eidas}
                 \end{longtable}
                 
@@ -1104,17 +1127,17 @@
                      width=15cm,
                      height=8cm,
                      symbolic x coords={AlastriaCredentialRegistry, AlastriaIdentityEntity, AlastriaIdentityIssuer, AlastriaIdentityManager, AlastriaIdentityServiceProvider, AlastriaPresentationRegistry, AlastriaProxy, AlastriaPublicKeyRegistry, Eidas, Owned},
-                     x tick label style={rotate=55, font=\small,,anchor=east},
+                     x tick label style={rotate=55, font=\small,anchor=east},
                      xtick=data,
                      ymin=0,
-                     ymax=8,
+                     ymax=6,
                      ylabel=Vulnerabilities,
                      ybar,
                      bar width=30pt,
                      ]
                     \addplot coordinates {
-                        (AlastriaCredentialRegistry, 6)
-                        (AlastriaIdentityEntity, 7)
+                        (AlastriaCredentialRegistry, 5)
+                        (AlastriaIdentityEntity, 5)
                         (AlastriaIdentityIssuer, 4)
                         (AlastriaIdentityManager, 0)
                         (AlastriaIdentityServiceProvider, 0)
@@ -1129,45 +1152,192 @@
                 \label{fig:bars-scs}
             \end{figure}
             
-            In conclusion to the analysis, we can see that Smart Contracts \textit{AlastriaIdentityEntity} and \textit{AlastriaCredentialRegistry} are the ones that have found the most vulnerabilities, with seven and six respectively (figure \ref{fig:bars-scs}). In relation to the vulnerabilities found, we see that \textbf{47.6\% are high}, another \textbf{47.6\% are medium} and\textbf{ 4.8\% are low} (figure \ref{fig:pie-scs}).
-            \begin{figure}[h]
+            In conclusion to the analysis, we can see that Smart Contracts \textit{AlastriaCredentialRegistry} and \textit{AlastriaIdentityEntity} are the ones that have found the most vulnerabilities, with five each one (figure \ref{fig:bars-scs}). In relation to the vulnerabilities found, we see that \textbf{33\% (6) are high}, another \textbf{55\% (9) are medium} and \textbf{17\% (3) are low} (figure \ref{fig:pie-scs}).\\
+            \begin{figure}[h!]
                 \centering
                 \begin{tikzpicture}
-                    \pie{47.6/High, 47.6/Medium, 4.8/Low}
+                    \pie{33/High, 50/Medium, 17/Low}
                 \end{tikzpicture}
                 \caption{Criticality of the Smart Contracts vulnerabilities}
                 \label{fig:pie-scs}
             \end{figure}
         
+            Below are some points to mitigate the vulnerabilities found.\\
+            
+            An \textbf{arithmetic overflow (\acrshort{swc} \href{https://swcregistry.io/docs/SWC-101}{101})} means that it is possible to cause an integer overflow or underflow in an arithmetic operation. This means that you can store in a variable a value larger than its limit. This can be solved by checking if it is possible to overflow or underflow before performing the operation. It is advisable to use standard libraries already defined that mitigate this attack. An example of a standard library is \textit{SafeMath.sol}\footnote{\url{https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/math/SafeMath.sol}}, developed by \textit{OpenZeppelin}.\\
+            
+            In relation to the \textbf{reentrancy (\acrshort{swc} \href{https://swcregistry.io/docs/SWC-107}{107})}, an external message call to an address specified by the caller can be executed. The callee account might contain arbitrary code and could re-enter any function within this contract. Reentering the contract in an intermediate state may lead to unexpected behavior. To mitigate this, you have t make sure that no state modifications are executed after the call and/or reentrancy guards are in place. Also, with this vulnerability, the contract account state is accessed after an external call to a fixed address. To prevent reentrancy issues, consider accessing the state only before the call, especially if the callee is untrusted. Alternatively, a reentrancy lock can be used to prevent untrusted callees from re-entering the contract in an intermediate state.\\
+            
+            Finally, about the \textbf{assert violation (\acrshort{swc} \href{https://swcregistry.io/docs/SWC-110}{110})}, \textit{Solidity} \textit{assert()} statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use \textit{require()} instead of \textit{assert()} if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+
+        
         \subsubsection{Dead code analysis}
-            In this part of the audit, no tools have been used. The objective of this analysis has been to read the contracts carefully and, having understood and assimilated the Alastria ID model, to detect programming errors, requirements errors or functional errors that differ from the theoretical implementation of the model.
-%1) objetivo de la sección
-% TODO
-%1- SC
-%objetivo tal
-%HERRAMIENTAS utilzadas (myth y análisis de código muerto)
-%CÓMO LO HE HECHO
-%RESUMEN REPORT (TABLAS Y TEXTO)
-
-%2- Lib node
-%objetivo tal
-%HERRAMIENTAS utilzadas (myth y análisis de código muerto)
-%CÓMO LO HE HECHO
-%RESUMEN REPORT (TABLAS Y TEXTO)
-
-
+            In this part of the audit, no tools have been used. The objective of this analysis has been to read the contracts carefully and, having understood and assimilated the Alastria ID model, to detect programming errors, requirements errors or functional errors that differ from the theoretical implementation of the model.\\
+            
+            After a detailed study, and without entering into design analysis (the quality of code, structure of the project or naming of functions and variables has not been evaluated), a vulnerability has been detected regarding the permissions of who can call which function. This is summarized in the following table (table \ref{tab:dead-code-issuer}):
+            \begin{longtable}{||p{0.5\linewidth} | p{0.5\linewidth}||}
+                \hline
+                \textbf{Function}  & \textbf{Modifiers}\\ [0.5ex] 
+                \hline\hline
+                updateIdentityIssuerEidasLevel\newline (address \_identityIssuer,\newline Eidas.EidasLevel \_level) & alLeastLow (\_level)\newline onlyIdentityIssuer (\_identityIssuer)\\ 
+                \hline
+                deleteIdentityIssuer\newline (address \_identityIssuer) & onlyIdentityIssuer (\_identityIssuer)\\[1ex] 
+                \hline
+                \caption{AlastriaIdentityIssuer.sol dead code analysis}
+                \label{tab:dead-code-issuer}
+            \end{longtable}
+            The vulnerability lies in the fact that a misuse of modifiers is being made.  In the two functions listed, the modifier \textit{"onlyIdentityIssuer (\_identityIssuer)"} is used. That modifier evaluates whether or not the input argument \textit{(\_identityIssuer)} is an Issuer. The error is that the modifier's argument \textit{(\_identityIssuer)} is the same as the function's input argument, when the model want to evaluate if the \textit{msg.sender} (the one who calls the function) is or is not an Issuer.\\
+            
+            Bearing in mind that the role of Issuer is that which allows you to create identities (\acrshort{did}s), this vulnerability has been classified as "high" (8.9 overall score) and the following attack vector has been calculated\footnote{The detailed score can be checked \href{https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:H/E:F/RL:O/RC:R/CR:X/IR:H/AR:H/MAV:N/MAC:L/MPR:N/MUI:N/MS:C/MC:X/MI:H/MA:H&version=3.1}{here}} (figure \ref{fig:stats-aii}).\\
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.1\textwidth]{stats-aii.png}
+                \caption{\acrshort{cvss} stats for AlastriaIdentityIssuer.sol}
+                \label{fig:stats-aii}
+            \end{figure}
+            
+            With the intention of visualizing and understanding the criticality of this vulnerability, later in the document a \acrfull{poc} will be done, more specifically, exploiting the function "\textit{deleteIdentityIssuer}".\\
+            
+            Something similar happens with the Smart Contract AlastriaIdentityEntity (table \ref{tab:dead-code-entity}):
+            
+            \begin{longtable}{||p{0.5\linewidth} | p{0.5\linewidth}||}
+                \hline
+                \textbf{Function}  & \textbf{Modifiers}\\ [0.5ex] 
+                \hline\hline
+                setNameEntity\newline (address \_addressEntity, string \_name) & onlyIdentityEntity (\_addressEntity)\\
+                \hline
+                setCifEntity\newline (address \_addressEntity,\newline string \_cif) & onlyIdentityEntity (\_addressEntity)\\
+                \hline
+                setUrlLogo\newline (address \_addressEntity,\newline string \_url\_logo) & onlyIdentityEntity (\_addressEntity)\\
+                \hline
+                setUrlCreateAID\newline (address \_addressEntity,\newline string \_url\_createAID) & onlyIdentityEntity (\_addressEntity)\\
+                \hline
+                setUrlAOA\newline (address \_addressEntity,\newline string \_url\_AOA)  & onlyIdentityIssuer (\_identityIssuer)\\[1ex] 
+                \hline
+                \caption{AlastriaIdentityEntity.sol dead code analysis}
+                \label{tab:dead-code-entity}
+            \end{longtable}
+            The same error occurs as the one mentioned above. The modifier \textit{"onlyIdentityEntity (\_addressEntity)"} must be with \textit{"onlyIdentityEntity (msg.sender)"} instead of the current one.\\
+            
+            The vulnerability, although it no longer affects the creation of identities (\acrshort{did}s), remains at a "high" level (8.9), but it has a different attack vector\footnote{The detailed score can be checked \href{https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N/E:F/RL:O/RC:R/CR:H/IR:X/AR:X/MAV:N/MAC:L/MPR:N/MUI:N/MS:C/MC:H/MI:X/MA:X&version=3.1}{here}} (figure \ref{fig:stats-aii}).\\
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.1\textwidth]{stats-aie.png}
+                \caption{\acrshort{cvss} stats for AlastriaIdentityEntity.sol}
+                \label{fig:stats-aie}
+            \end{figure}
+        \subsection{Audit of the TypeScript Library}
+            % TODO
+            %2- Lib node
+            %objetivo tal
+            %HERRAMIENTAS utilzadas (myth y análisis de código muerto)
+            %CÓMO LO HE HECHO
+            %RESUMEN REPORT (TABLAS Y TEXTO)
 
 \newpage
 \section{PoC Attack}
-% TODO hacer
-% vamos a atacar la vulne xxxx encontrada en el apartado anterior
-% 1) graficamente qué pueden hacer entidad y atacante y explicación
-% 2) grafico flujo ataque
-%    explicación flujo + códigos
-% 3) criticidad: (CONCLUSIÓN) del ataque. calcular vector e impacto          
-%      https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+    As mentioned previously, in this section we are going to present a \acrfull{poc} by exploiting a vulnerability found in the section adobe, more specifically the vulnerability found in the dead code analysis, in the function \textit{"deleteIdentityIssuer"}. The \acrshort{poc} agents will be explained, then it will be shown graphically what they should be able to do and what they really can do. Later, the attack flow will be explained and the code written to perform it. Finally, the criticality of the attack will be discussed again, as well as the reasons and consequences of what it would mean to reach production with such a vulnerability.
 
+    \subsection{Agents and permissions}
+        In the following figure (figure \ref{fig:poc-actors}) shows the different agents and it's permissions before the \acrshort{poc}.\\ 
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc-actors.png}
+            \caption{\acrshort{poc} agents and permissions}
+            \label{fig:poc-actors}
+        \end{figure}
+        
+        The entity will have the roles of Issuer and Service Provider, but we will only focus on the Issuer role. We will also have an attacker, with the same permissions as a Subject. This means that, the only thing the attacker has is it's own \acrshort{did} (has no more privileges). As we can see, the entity, which can be a bank or a traffic authority, can create Credentials, Presentations, consult public keys and create identities (\acrshort{did}s) among other things. The creation of identities is what interests us in this \acrshort{poc}. We see that the attacker has the ability to delete Issuers, which he should not be able to do. By exploiting this vulnerability, we will stop an entity from being an Issuer, and therefore, from being able to create new identities, as we see graphically in the figure \ref{fig:poc-actors-after}.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.1\textwidth]{poc-actors-after.png}
+            \caption{\acrshort{poc} agents and permissions after de attack}
+            \label{fig:poc-actors-after}
+        \end{figure}
+    
+    \subsection{Attack flow}
+        The figure \ref{fig:poc-flow} shows the flow that will be followed to carry out this attack.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.1\textwidth]{poc-flow.png}
+            \caption{Attack flow}
+            \label{fig:poc-flow}
+        \end{figure}
+        
+        The \acrshort{poc} consists of five parts. First, a script written in \textit{NodeJS} (listing \ref{lst:checkIssuers.js}) has been created, which checks whether the entity and the attacker have the role of Issuer. In the first step (1) it will check that the entity is an Issuer, but the attacker is not.\\
+        \lstinputlisting[label={lst:checkIssuers.js}, caption=checkIssuers.js source code, language=ES6]{examples/poc/checkIssuers.js}
+        
+        Then it will be tested that the entity can correctly create new identities (2), for this we will use the script, also written in \textit{NodeJS} \textit{"issueDid.js"} (listing \ref{lst:issueDid.js}). After the execution, it will be possible to see the new \acrshort{did} created.\\
+        \lstinputlisting[label={lst:issueDid.js}, caption=issueDid.js source code, language=ES6]{examples/poc/issueDid.js}
+        
+        The third step is the attack itself (3). At this point, the attacker (who we know is not an Issuer) will remove the entity from the Issuers list. Thus getting the entity to stop providing the service of creating identities, which can mean a lack of integrity and availability. This script is also written in \textit{NodeJS} (listing \ref{lst:attacker.js}).\\
+        \lstinputlisting[label={lst:attacker.js}, caption=attacker.js source code, language=ES6]{examples/poc/attacker.js}
+        
+        Having carried out the attack successfully, only the last steps are missing, which basically is to repeat the first two to verify that the entity has stopped being able to provide the service. First we will check if the entity and the attacker are Issuers (4) but we will see that now neither of them has that role. This will be done by running the script \textit{checkIssuers.js} (listing \ref{lst:checkIssuers.js}) again. \\
+        
+        Finally, we will try to create a new identity (5) with the \textit{issueDid.js} script, but we will not be able to generate a \acrshort{did} this time and checking the inability of the service.\\
+        
+        To be able to re-establish the service in the entity, we would need a second entity with the role of Issuer, and that would add the first entity as Issuer. But even so, the same problem would still exist, and any malicious Subject (attacker) could carry out the attack again.
+        
+    \subsection{The attack}
+        In this section will follow the order established in the previous section, and will show screenshots of the executions described above. The figure \ref{fig:poc-tree} shows the general structure of this project, with the different files needed (the dependencies generated after \textit{npm install} have been omitted).\\
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.4\textwidth]{poc/tree.png}
+            \caption{\acrshort{poc} tree}
+            \label{fig:poc-tree}
+        \end{figure}
+        
+        As already mentioned, we first visualize the roles of the entity and the attacker (1). The figure \ref{fig:poc-1} shows the output of the \textit{checkIssuers.js} script (listing \ref{lst:checkIssuers.js}). We can easily verify that the entity is an Issuer, but the attacker is not.\\
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc/1.png}
+            \caption{checkIssuers.js output before the attack}
+            \label{fig:poc-1}
+        \end{figure}
+        
+        Then, from the entity we created a new identity (2) with the help of \textit{issueDid.js} (listing \ref{lst:issueDid.js}). We check that there is no problem when performing the service (figure \ref{fig:poc-2}).\\
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc/2.png}
+            \caption{issueDid.js output before the attack}
+            \label{fig:poc-2}
+        \end{figure}
+        
+        The third step is the attacker's turn (3), where using the \textit{attacker.js} script (listing \ref{lst:attacker.js}). This output (figure \ref{fig:poc-3}) does not provide anything interesting, except the hash of the transaction made.\\
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc/3.png}
+            \caption{attacker.js output}
+            \label{fig:poc-3}
+        \end{figure}
+        
+        To verify that the attack has been successful (4), we run the Issuer status check on the entity and the attacker again (figure \ref{fig:poc-4}). This time we see that the entity (\acrshort{did} "did:ala:quor:redT:8a81b552db0ff2904c611145fa09aaa6b928b87f") is not an Issuer.\\
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc/4.png}
+            \caption{checkIssuers.js output after the attack}
+            \label{fig:poc-4}
+        \end{figure}
+        
+        The last check that is made, is to try again to create an identity. We run again \textit{issueDid.js} (listing \ref{lst:issueDid.js}), but now in the output (figure \ref{fig:poc-5}) we see an error \textit{"ERROR prepare: Error: Transaction has been reverted by the EVM"}. This error indicates that the \textit{"prepare"} transaction, that is the first one of two that is made for the identity creation, has failed. This is because now the entity does not satisfy the modifier of the function \textit{prepareAlastriaID} of the Smart Contract \textit{AlastriaIdentityManager.sol}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol\#L52}}. The modifier requires that the function caller has the Issuer role.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{poc/5.png}
+            \caption{issueDid.js output after the attack}
+            \label{fig:poc-5}
+        \end{figure}
+        
+    \subsection{Criticity and Impact}
+        In section \textit{4.1.2 Dead code analysis}, this vulnerability has been given \acrshort{cvss} score of 8.9 ("high"). This criticality is due to the critical service that the entity performs, such as creating identities (\acrshort{did}s). To give an example, it would be as if a bank (the entity) could not register new users. This loss of service would imply the loss of new clients, which could be a great economic loss for the entity in a real environment.\\
 
+        This vulnerability could also cause concern to the rest of the entities in the blockchain network, since they would find themselves working in an ecosystem that would not be safe.\\
+        
+        Fortunately, this vulnerability has been found in the \acrshort{mvp}1, and the team in charge of correcting this bug has already been notified. Therefore, it will be corrected in the next phase of the Alastria ID model.\\
+        
+        After the study carried out in this thesis, a series of improvements to the model, that are not within the scope of this thesis, have also been found. This improvements have already been notified and are being treated in the different Alastria working groups, such as the quality and structure of the code and the governance of roles, that in the next version of Alastria ID will improve.
+        
 \newpage
 \section{Conclusions}
 % TODO hacer
