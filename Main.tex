@@ -92,7 +92,7 @@
     
     \subsection{Context}
         \subsubsection{Blockchain}
-            Blockchain\cite{blockchain-sum}\cite{blockchainGartner} is as a large distributed ledger that stores records of transactions. This “ledger” is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
+            Blockchain\cite{blockchain-sum}\cite{blockchainGartner} is as a large distributed ledger that stores records of transactions. This "ledger" is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
             
             Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
             
@@ -160,8 +160,9 @@
             
             The next chapter, \textit{Alastria ID} exposes in detail the Alastria ID implementation in order to obtain a detailed understanding of the model. This involves exploring the actors, specification and structure of the project.\\
             
-            Chapter 4, \textit{Security audit} ... 
-            %TODO continuar
+            In chapter 4, \textit{Security audit}, security audits will be conducted. For the Smart Contracts, an analysis will be performed with the \textit{Mythrill} tool and also a dead code analysis. For the \textit{TypeScript} library will also be analyzed with the audit provided by \acrshort{npm} and the \textit{nodejsscan} tool.\\
+            
+            After the audit, in chapter 5 \textit{\acrshort{poc} attack}, a \acrlong{poc} will be made on one of the vulnerabilities detected in chapter 4. Several scripts will be made and the impact that this vulnerability would have in a real environment will be commented.\\
             
             Chapter 6, \textit{Conclusions}, collects the results of the thesis and compares the different \acrshort{ssi} models together to raise the conclusions of the work carried out. It justifies how the developed project satisfies the existing objectives.\\
             
@@ -174,7 +175,7 @@
         Blockchain\cite{Bitcoin2015}\cite{blockchain-hype}\cite{blockchain-tech} is a type of \acrfull{dlt} which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
         \begin{itemize}
             \item \textbf{Decentralization}. The information is not stored by a single entity, in fact, everyone in the network owns the information and can access it. Decentralization means that there is no core authority to dictate the truth to the other participants. Also, in a decentralized network, if you want to interact with another participant, you can do it directly without going through a third party.
-            \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below (figure \ref{fig:alastria_block_explorer}) we can see the public transaction in the Alastria network, but we are not able to know the accounts “from” and “to”.
+            \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below (figure \ref{fig:alastria_block_explorer}) we can see the public transaction in the Alastria network, but we are not able to know the accounts "from" and "to".
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=1.1\textwidth]{Alastria-block-exporer.png}
@@ -247,7 +248,7 @@
             \acrlong{eth} also has many current use cases, such as a store of value, a medium of exchange, and a unit of account.
             
         \subsubsection{Ethereum Accounts}
-            An Ethereum account or simply an “account” is the combination of an Ethereum address and it’s private key. An account can hold balance (\acrlong{eth}) and can send transactions. In Ethereum there are 2 types of accounts.
+            An Ethereum account or simply an "account" is the combination of an Ethereum address and it's private key. An account can hold balance (\acrlong{eth}) and can send transactions. In Ethereum there are 2 types of accounts.
             \begin{itemize}
                 \item \textbf{\acrfull{eoa}}. These accounts are a combination of public address and private key. This accounts:
                 \begin{itemize}
@@ -257,7 +258,7 @@
                     \item Is controlled by private keys
                     \item Has no associated code
                 \end{itemize}
-                \item \textbf{Contract accounts}: These accounts don’t have a corresponding private key. These accounts are generated when a Smart Contract is deployed in the blockchain. They are normally called “contracts” instead of contract accounts. A contract:
+                \item \textbf{Contract accounts}: These accounts don't have a corresponding private key. These accounts are generated when a Smart Contract is deployed in the blockchain. They are normally called "contracts" instead of contract accounts. A contract:
                 \begin{itemize}
                     \item Has an \acrlong{eth} balance
                     \item They can receive \acrlong{eth} just like \acrshort{eoa}
@@ -289,9 +290,9 @@
                 The \acrshort{evm} has a series of unique characteristics\cite{ethereumGavin}\cite{ethereumDocu}:
                 \begin{itemize}
                     \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, \acrshort{evm} is capable of executing unreliable codes without disastrous consequences.
-                    \item The \acrshort{evm} is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the \acrshort{evm} are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can’t be modified or altered.
+                    \item The \acrshort{evm} is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the \acrshort{evm} are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can't be modified or altered.
                     \item Applications can be executed on the same blockchain network, without affecting other operations.
-                    \item \acrshort{evm} is able to follow the “rules” of Smart Contracts.
+                    \item \acrshort{evm} is able to follow the "rules" of Smart Contracts.
                     \item The \acrshort{evm} has the ability to execute a series of well-defined opcodes.
                 \end{itemize}
                 
@@ -448,14 +449,14 @@
             
             The request Object has the following properties:
             \begin{itemize}
-                \item \textbf{jsonrpc}: The version of the JSON-RPC protocol. It must be exactly “2.0”.
+                \item \textbf{jsonrpc}: The version of the JSON-RPC protocol. It must be exactly "2.0".
                 \item \textbf{method}: A String containing the name of the method.
                 \item \textbf{params}: A Structured value (Object or Array) with the parameter values passed as arguments to the method.
                 \item \textbf{id}: It is a String, Number or \textit{Null} identifier. If it is not included, it is assumed to be a notification. Normally it should not be \textit{Null} because this specification uses a value of \textit{Null} for responses with unknown id. Also, JSON-RPC 1.0 uses \textit{Null} for notifications, and it causes confusion in handling.
             \end{itemize}
             Similarly, the response from the server is expressed as a single \acrshort{json} Object with the following properties:
             \begin{itemize}
-                \item \textbf{jsonrpc}: As in the request, it must exactly be “2.0”
+                \item \textbf{jsonrpc}: As in the request, it must exactly be "2.0"
                 \item \textbf{result}: It is required on success, but must not exist if there was an error.
                 \item \textbf{error}: It is required on error, but must not exist if there was no error. It must be an Object with the following properties:
                 \begin{itemize}
@@ -505,17 +506,17 @@
                 \item The user has no control over what data is being shared and with whom.
                 \item The verification of your credentials is dependent on the availability of the issuer.
                 \item Third party login services have a financial incentive to collect and store your data.
-                \item The user's personal data is stored on the issuer’s servers. Centralized storages of personal data create \textit{“honeypots”}. This data is at risk of breaches, leaks or hacks.
+                \item The user's personal data is stored on the issuer's servers. Centralized storages of personal data create \textit{"honeypots"}. This data is at risk of breaches, leaks or hacks.
             \end{itemize}
 
-            \acrfull{ssi} is a digital identification scheme in which the user acquires the responsibility of managing how and in what quantity their personal data is used. To do this, it allows the creation of digital \textit{“identity cards}” that can be general for any service or specific for each case. \\
+            \acrfull{ssi} is a digital identification scheme in which the user acquires the responsibility of managing how and in what quantity their personal data is used. To do this, it allows the creation of digital \textit{"identity cards"} that can be general for any service or specific for each case. \\
             The main characteristics of \acrlong{ssi} are\cite{ssi-guide}:
             \begin{itemize}
                 \item It is secure and digital peer-to-peer channel is established between Issuer, owner and Verifier.
                 \item When credentials are exchanged not even the \acrlong{ssi} system provider knows what is being exchanged.
                 \item Credentials are tamper-proof through the use of cryptography.
                 \item They are private and under the owner control. \acrshort{ssi} uses Selective Identity disclosure technology.
-                \item The Owner chooses what data they want to “show” and is always in control of the relationship with ID Verifiers.
+                \item The Owner chooses what data they want to "show" and is always in control of the relationship with ID Verifiers.
                 \item Credentials can be verified anywhere, at any time.
                 \item Personal Data is not stored on centralized servers.
                 \item \acrshort{ssi} tries to abolish multiple passwords. You just need to know your wallet password.
@@ -542,7 +543,7 @@
                     \begin{quote}
                         \textit{A verifiable credential can represent all of the same information that a physical credential represents. The addition of technologies, such as digital signatures, makes verifiable credentials more tamper-evident and more trustworthy than their physical counterparts.}
                     \end{quote}
-                    In the figure \ref{fig:ssi-vc}, we can see clearly the relationship between Issuer, Holder and Verifier and how a Verifiable Data Registry (normally a blockchain) is used to verify the credentials’ data without the need to contact the issuing party.
+                    In the figure \ref{fig:ssi-vc}, we can see clearly the relationship between Issuer, Holder and Verifier and how a Verifiable Data Registry (normally a blockchain) is used to verify the credential's data without the need to contact the issuing party.
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=1.0\textwidth]{ssi-vc.png}
@@ -604,7 +605,7 @@
                 \acrlong{ssi} is benefiting several industries\cite{ssi-guide}, some examples are: streamlining bureaucratic procedures, improving a more efficient healthcare system, detecting academic and business fraud, creating a better user experience while onboardings or helping companies avoid personal data breaches and \acrshort{gdpr}\cite{gdpr} fines.
 
             \subsubsection{Alastria}
-                Alastria (figure \ref{fig:alastria_logo}) is the world’s first nation-wide, multi-sectorial, enterprise grade, permissioned blockchain network. A non-profit association open to all types of companies and organizations with the mission to contribute to the creation of a diverse innovation ecosystem. Alastria is technology agnostic and offers the networks promoted by its partners as well as a user centric Digital Identity model, the Alastria ID, focused on ensuring the legal validity of the transactions on the networks.
+                Alastria (figure \ref{fig:alastria_logo}) is the world's first nation-wide, multi-sectorial, enterprise grade, permissioned blockchain network. A non-profit association open to all types of companies and organizations with the mission to contribute to the creation of a diverse innovation ecosystem. Alastria is technology agnostic and offers the networks promoted by its partners as well as a user centric Digital Identity model, the Alastria ID, focused on ensuring the legal validity of the transactions on the networks.
                 \begin{figure}[h]
                     \centering
                     \includegraphics[width=0.5\textwidth]{alastria-logo.png}
@@ -843,7 +844,7 @@
             At the moment no more objects have been defined, but if it is necessary to explain some peculiarities of the model with respect to the previous objects.
             
             \paragraph{Level Of Assurance (LOA)}
-                The Credentials and Presentation Requests can have an attribute called \textit{"levelOfAssurance}, which is the \acrfull{loa}. It corresponds to the \acrshort{eidas} assurance levels\footnote{\url{https://www.eid.as/\#article8}} (\textit{“Low”}, \textit{“Substantial”}, \textit{“High”}), plus an additional lower level \textit{“Self”} for self-asserted data. 
+                The Credentials and Presentation Requests can have an attribute called \textit{"levelOfAssurance}, which is the \acrfull{loa}. It corresponds to the \acrshort{eidas} assurance levels\footnote{\url{https://www.eid.as/\#article8}} (\textit{"Low"}, \textit{"Substantial"}, \textit{"High"}), plus an additional lower level \textit{"Self"} for self-asserted data. 
                 
                 The actual level depends on the entity making the Credential and the process used by the entity to verify the attribute. If the field does not exist in the Credential, the verifier will have to use the knowledge that it has about the issuing entity in order to assess the risks associating with accepting that credential.
                 
@@ -1226,7 +1227,7 @@
                 \caption{\acrshort{cvss} stats for AlastriaIdentityEntity.sol}
                 \label{fig:stats-aie}
             \end{figure}
-        \subsection{Audit of the TypeScript Library}
+        \subsection{Audit of the TypeScript library}
             % TODO
             %2- Lib node
             %objetivo tal
@@ -1235,7 +1236,7 @@
             %RESUMEN REPORT (TABLAS Y TEXTO)
 
 \newpage
-\section{PoC Attack}
+\section{PoC attack}
     As mentioned previously, in this section we are going to present a \acrfull{poc} by exploiting a vulnerability found in the section adobe, more specifically the vulnerability found in the dead code analysis, in the function \textit{"deleteIdentityIssuer"}. The \acrshort{poc} agents will be explained, then it will be shown graphically what they should be able to do and what they really can do. Later, the attack flow will be explained and the code written to perform it. Finally, the criticality of the attack will be discussed again, as well as the reasons and consequences of what it would mean to reach production with such a vulnerability.
 
     \subsection{Agents and permissions}
@@ -1329,7 +1330,7 @@
             \label{fig:poc-5}
         \end{figure}
         
-    \subsection{Criticity and Impact}
+    \subsection{Criticity and impact}
         In section \textit{4.1.2 Dead code analysis}, this vulnerability has been given \acrshort{cvss} score of 8.9 ("high"). This criticality is due to the critical service that the entity performs, such as creating identities (\acrshort{did}s). To give an example, it would be as if a bank (the entity) could not register new users. This loss of service would imply the loss of new clients, which could be a great economic loss for the entity in a real environment.\\
 
         This vulnerability could also cause concern to the rest of the entities in the blockchain network, since they would find themselves working in an ecosystem that would not be safe.\\
