@@ -40,8 +40,13 @@
 \null
 \newpage
 
-\section*{Acknowledgement}
-    /* TODO */
+\begin{otherlanguage}{spanish}
+    \renewcommand{\spanishabstractname}{Agradecimientos}
+    \begin{abstract}
+        % TODO
+    \end{abstract}
+\end{otherlanguage}
+
 \newpage
 
 \pagenumbering{roman} % Numeración romana hasta la primera sección
@@ -61,16 +66,15 @@
     \renewcommand{\spanishabstractname}{Resumen}
     \begin{abstract}
         \normalsize
-        % TODO: mejorar y extender con María
-        El consorcio Alastria fomenta la economía digital a través del desarrollo de tecnologías de registro descentralizado como es Blockchain.\\
-          
-        La tecnología \textit{Blockchain} es una tecnología que, basándose en cálculos criptográficos, ofrece un libro de cuentas distribuido (llamado \textit{ledger}) en el que se apuntan transacciones entre participantes que no tienen una relación de confianza entre si. Las principales características de este \textit{ledger} son que se distribuye entre los múltiples nodos participantes de la red, que es inmutable, no repudiable y que no depende de relaciones de confianza entre participantes ni de una entidad central.\\
+        Alastria, un consorcio que fomenta la economía digital a través del desarrollo de tecnologías de registro descentralizado como es Blockchain, ha definido un modelo de identidad digital llamado \textit{Alastria ID}. El proyecto \textit{Alastria ID} está desplegado como una de las aplicaciones básicas de la infraestructura blockchain promovida por el consorcio dentro de su plataforma. Esta propuesta tecnológica de identidad digital en blockchain tiene como objetivo proporcionar un marco de infraestructura y desarrollo, para llevar a cabo proyectos de Identidad Digital Soberana (\textit{\acrlong{ssi}} en inglés), con plena vigencia legal en la zona euro.\\
         
-        Alastria ha definido un modelo de identidad digital llamado \textit{Alastria ID}. El proyecto \textit{Alastria ID} está desplegado como una de las aplicaciones básicas de la infraestructura blockchain promovida por el consorcio dentro de su plataforma. Esta propuesta tecnológica de identidad digital en blockchain tiene como objetivo proporcionar un marco de infraestructura y desarrollo, para llevar a cabo proyectos de Identidad Digital Soberana (\textit{\acrlong{ssi}} en inglés), con plena vigencia legal en la zona euro.\\
+        La Identidad Digital Soberana es el concepto de que los individuos u organizaciones tienen la propiedad única y excusiva de sus identidades digitales, y son ellos mismos quienes controlan la forma en que se comparten y utilizan sus datos personales.\\
         
-        El objetivo de este trabajo es doble. Por un lado se estudiará el concepto de \textit{\acrfull{ssi}}, así como la implementación de Alastria llamada \textit{Alastria ID} y otras implementaciones que se hayan o se estén definiendo. Por otro lado, se pretende hacer un estudio desde el punto de vista de la seguridad, de la implementación de \textit{Alastria ID}, auditando los distintos artefactos y herramientas que proporciona Alastria, y realizando una prueba de concepto de un potencial ataque.\\
+        Por otro lado, la tecnología \textit{Blockchain} es una tecnología que, basándose en cálculos criptográficos, ofrece un libro de cuentas distribuido (llamado \textit{ledger}) en el que se apuntan transacciones entre participantes que no tienen una relación de confianza entre si. Las principales características de este \textit{ledger} son que se distribuye entre los múltiples nodos participantes de la red, que es inmutable, no repudiable y que no depende de relaciones de confianza entre participantes ni de una entidad central. Por estos motivos, la mayoría de implementaciones de Identidad Digital Soberana están basadas en esta tecnología.\\
         
-        \textbf{Palabras clave:} Blockchain, Alastria, Identidad Soberana, Ethereum, Quorum, Solidity, Hacking, Ciberseguridad\ldots
+        El objetivo de este trabajo es multiple. Por un lado se estudiará el concepto de \textit{\acrfull{ssi}}, así como la implementación de Alastria llamada \textit{Alastria ID} y otras implementaciones y soluciones que existen en la actualidad. Por otro lado, se pretende hacer un estudio desde el punto de vista de la seguridad, de la implementación de \textit{Alastria ID}, auditando los Smart Contracts diseñados en el \acrshort{mvp}1 y la librería que facilita su uso. Por último, se realizrá una prueba de concepto de una de las vulnerabilidades encontradas durante la fase de análisis y se evaluará su criticidad e impacto.\\
+        
+        \textbf{Palabras clave:} Blockchain, Alastria, Identidad Soberana, Ethereum, Quorum, Solidity, Hacking, Ciberseguridad, Auditoría\ldots
     \end{abstract}
 \end{otherlanguage}
 
@@ -97,7 +101,7 @@
             Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
             
         \subsubsection{Self-Sovereign Identity}
-            \acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital and analog identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
+            \acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
             
             Under \acrlong{ssi} model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
             
@@ -115,7 +119,7 @@
                 \item \textbf{Protection} - The rights of users must be protected.
             \end{itemize}
             
-            The \acrshort{ssi} idea was born to solve the problems that exist with the current digital identity, such as the control of the information offered by the user, elimination of repeated data, improve the user experience in online records, facilitate \acrshort{gdpr} compliance, etc.\\
+            The \acrshort{ssi} idea was born to solve the problems that exist with the current digital identity, such as the control of the information offered by the user, elimination of repeated data, improve the user experience in online onboardings, facilitate \acrshort{gdpr} compliance, etc.\\
             
             Currently there are multiple initiatives, both national and international, with different models and different proposals for identity wallets. In this thesis we will talk about some models and their proposals.
             
@@ -1341,15 +1345,28 @@
         
 \newpage
 \section{Conclusions}
-% TODO hacer
+    The Blockchain technology is a revolution because of the many advantages and features it brings with it.  This revolution consists of creating applications based on transparency, trust, immutability and security. On the other hand, new concepts emerge, such as that of \acrlong{ssi}. \acrlong{ssi} has a lot of potential, since it benefits both the user and the company; there are even benefits that have not been discovered yet.
+    
+    The problem with \acrlong{ssi}, as it is something new, implies that there are not many standards defined, so it is not easy to design a new model and even less to implement it. In fact, it is clear from the work done that, despite being the work of several excellent professionals, bugs and vulnerabilities still appear in implementations, and even more so in blockchain-related implementations, as this technology is also relatively new.\\
+    
+    With the study carried out, several models of \acrshort{ssi} have been found, each with its peculiarities and its strengths and weaknesses. \textit{David19} proposes citizen participation to address the current COVID-19 pandemic and future pandemics that may arise. \textit{Serto (uPort)} has implemented a wallet that allows users to manage their identity and exchange claims between participants. Alastria, on the other hand, has implemented an \acrlong{mvp} with the objective of showing the strengths of the \acrshort{ssi} and the Alastria ID model. Alastria has created a project with its own Smart Contracts, a library that facilitates the use of the Contracts for programmers who do not have extensive knowledge of blockchain technology, and demo implementations (not commercial) of a wallet and a entity website. Each project and model has peculiarities that others do not, so now, some associations like Alastria are seeking to improve interoperability with the other implementations and different blockchain networks, in order to create an ecosystem that does not depend on central entities.\\
+    
+    Concluding this work, I believe that Blockchain technology has much to contribute to the technological world and to actual society. Improvements in health, in online transactions, security, in traceability of goods, ... But as it is a new technology, it is possible that the projects are not safe and robust. That is why it is very important to audit all aspects of each blockchain-based implementation. From the typical audits of the machines that host the servers and nodes, to the \acrshort{api}s and front-ends, without forgetting the audits of the Smart Contracts and the code that is written.\\
+    
+    Finally, after having studied and understood in detail the \acrlong{ssi}, I think it is a concept that, already sounds strong, but will sound more in the coming years. It is a concept with enormous potential. Imagine to be able to control your identity and manage it, to be able to have control of who you share your data with, to be able to do onboarding more quickly and efficiently in different entities and web pages; it is something we really need and we don't know it yet.
 
 \newpage
 \section{Future Work}
-% TODO hacer
-%si vamos bien
-%3- entity
-%si voy sobrado
-%4 - wallet
+    In this section we will talk about future steps to be taken, either because they could not be done in this thesis or because they were out of the scope.\\
+    
+    The first thing I would have liked to do is to audit the different main components mentioned in section \textit{3.4 Project Structure}. There are components that are very necessary to audit such as \textit{Alastria Node}, the \textit{Wallet} and the \textit{Entity} demo. Another point that should be studied is the use of other tools for analyzing and searching for vulnerabilities.\\
+    
+    Regarding future steps in Alastria ID, some of them have already begun to be carried out, such as a new governance and role management, as well as a definition for the creation of the "first role". Some code quality improvements to the Alastria working team have also been mentioned, as well as a proposal to change the structure of the \textit{TypeScript} library. Another improvement that could be made to the Alastria ID model is the implementation of the library in different popular languages, such as \textit{Java} and \textit{Python}.\\
+    
+    Finally, one of the ideas I had for the topic of this thesis is to make a malicious wallet. The idea of designing a malicious wallet, or falsifying a real wallet from the market, and studying its impact and how it can compromise the network (blockchain) is something I find very striking. Something that is also interesting and fun is to exploit the common vulnerabilities of Smart Contracts, such as gas theft or self-destruction attacks.\\
+    
+    As we see, there are still many paths that can be studied and improved, both in the theorical model and in the implementation. Regarding audits, it is always a good idea to audit several times, with different tools and by different experts.
+    
 \newpage
 % \nocite{*} % Cita todas las ref (incluidas las no citadas)
 \printbibliography[heading=bibnumbered] % Última sección, numerada, para la bibliografía
