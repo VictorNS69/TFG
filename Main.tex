@@ -5,7 +5,7 @@
 \usepackage[left=3cm, right=3cm, top=3.5cm, bottom=3.5cm]{geometry} % Márgenes recomendados
 \usepackage{times} % Fuente Times New Romans
 \usepackage[english]{babel} 
-\usepackage[style=ieee, backend=bibtex]{biblatex} % Bibliografía en formato IEEE
+\usepackage[style=ieee, backend=bibtex,citestyle=numeric-comp]{biblatex} % Bibliografía en formato IEEE
 \usepackage{sectsty}
 \usepackage{cover}
 \usepackage{graphicx}
@@ -108,7 +108,7 @@
     
     \subsection{Context}
         \subsubsection{Blockchain}
-            Blockchain\cite{blockchain-sum}\cite{blockchainGartner} is as a large distributed ledger that stores records of transactions. This "ledger" is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
+            Blockchain\cite{blockchain-sum,blockchainGartner} is as a large distributed ledger that stores records of transactions. This "ledger" is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
             
             Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
             
@@ -188,7 +188,7 @@
         
 \section{State of the Art}
     \subsection{Blockchain}
-        Blockchain\cite{Bitcoin2015}\cite{blockchain-hype}\cite{blockchain-tech} is a type of \acrfull{dlt} which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
+        Blockchain\cite{Bitcoin2015,blockchain-hype,blockchain-tech} is a type of \acrfull{dlt} which provides several properties. The main ones, known as the three pillars of the blockchain technology are:
         \begin{itemize}
             \item \textbf{Decentralization}. The information is not stored by a single entity, in fact, everyone in the network owns the information and can access it. Decentralization means that there is no core authority to dictate the truth to the other participants. Also, in a decentralized network, if you want to interact with another participant, you can do it directly without going through a third party.
             \item \textbf{Transparency}. The most misunderstood property. Some people say blockchain gives you privacy while some say that it is transparent. The fact is, that blockchain technology gives you both. Transparency because every participant in the network can see the transactions and its data, and privacy because the involved accounts are hidden via complex cryptography. In the figure below (figure \ref{fig:alastria_block_explorer}) we can see the public transaction in the Alastria network, but we are not able to know the accounts "from" and "to".
@@ -303,7 +303,7 @@
                 In the following sections we will talk in detail about the Smart Contracts and Solidity.
                 
             \paragraph{EVM Characteristics}
-                The \acrshort{evm} has a series of unique characteristics\cite{ethereumGavin}\cite{ethereumDocu}:
+                The \acrshort{evm} has a series of unique characteristics\cite{ethereumGavin,ethereumDocu}:
                 \begin{itemize}
                     \item It provides a \textbf{high level of security}. As it is a virtual machine limited in the instructions (opcodes) and the way they are executed, \acrshort{evm} is capable of executing unreliable codes without disastrous consequences.
                     \item The \acrshort{evm} is a \textbf{completely decentralized} build. Each node within the Ethereum network runs a copy of the virtual machine and is synchronized with the rest of the nodes that make up the network. This guarantees that the instructions given by the \acrshort{evm} are executed as long as there is at least one active node. This allows access to the system from anywhere in the world, resisting censorship and guaranteeing access to network resources. Furthermore, it does not require the participation of third parties, and resources can't be modified or altered.
@@ -411,7 +411,7 @@
             \end{itemize}
             
             \paragraph{How RPC works}
-                From the point of view of a remote call, the calling program is known as client, and the subroutine it calls is known as the server\cite{rpcInOS}\cite{howRPC}. When the client calls the server, the \acrshort{rpc} system must take care of:
+                From the point of view of a remote call, the calling program is known as client, and the subroutine it calls is known as the server\cite{rpcInOS,howRPC}. When the client calls the server, the \acrshort{rpc} system must take care of:
                 \begin{itemize}
                     \item Taking all the parameters which are passed to the subroutine and transferring them to the remote node
                     \item Having the subroutine executed on the remote node
@@ -670,7 +670,7 @@
                     In a second phase\cite{que-es-david19}, it is proposed that the entities join the ecosystem, and that they can issue more sophisticated credentials, such as permits to return to work, medical certifications or academic degrees. The ultimate goal of David19 is for a person to only need a mobile device (wallet) to demonstrate that they are fit to get on a plane, return to work, visit a museum, etc., all in compliance with applicable regulations. The final objective of David19 is that a person only needs a mobile device (wallet) to demonstrate that they are healthy to get on a plane, return to work, visit a museum, etc., all in compliance with the regulations that apply at the time and the place.
 
                 \paragraph{Hyperledger Indy}
-                    Contributed by the Sovrin Foundation\cite{sovrin-yt}\cite{sovrin}, Hyperledger Indy\cite{indy-gh}\cite{indy} (figure \ref{fig:indy}) enables people to manage and control their digital identities. Rather than companies storing large amounts of personal data, what they store are indicators of identity. One of Hyperledger Indy's key tenets is its privacy-by-design approach: \textit{"it's not about protecting data but about designing so, that data doesn't need protection"}.\\
+                    Contributed by the Sovrin Foundation\cite{sovrin-yt,sovrin}, Hyperledger Indy\cite{indy-gh,indy} (figure \ref{fig:indy}) enables people to manage and control their digital identities. Rather than companies storing large amounts of personal data, what they store are indicators of identity. One of Hyperledger Indy's key tenets is its privacy-by-design approach: \textit{"it's not about protecting data but about designing so, that data doesn't need protection"}.\\
                     \begin{figure}[h]
                         \centering
                         \includegraphics[width=.3\textwidth]{hyper-indy.png}
@@ -860,7 +860,7 @@
             At the moment no more objects have been defined, but if it is necessary to explain some peculiarities of the model with respect to the previous objects.
             
             \paragraph{Level Of Assurance (LOA)}
-                The Credentials and Presentation Requests can have an attribute called \textit{"levelOfAssurance}, which is the \acrfull{loa}. It corresponds to the \acrshort{eidas} assurance levels\footnote{\url{https://www.eid.as/\#article8}} (\textit{"Low"}, \textit{"Substantial"}, \textit{"High"}), plus an additional lower level \textit{"Self"} for self-asserted data. 
+                The Credentials and Presentation Requests can have an attribute called \textit{"levelOfAssurance}, which is the \acrfull{loa}. It corresponds to the \acrshort{eidas} assurance levels\footnote{\url{https://www.eid.as/\#article8}} (\textit{"Low"}, \textit{"Substantial"}, \textit{"High"}), plus an additional lower level \textit{"Self"} for self-asserted data. \\
                 
                 The actual level depends on the entity making the Credential and the process used by the entity to verify the attribute. If the field does not exist in the Credential, the verifier will have to use the knowledge that it has about the issuing entity in order to assess the risks associating with accepting that credential.
                 
@@ -949,7 +949,7 @@
                     \item \textbf{"AlastriaIdentityManager.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol}}: this is the main Contract, in charge of creating and managing identities. Contracts \textit{"AlastriaIdentityIssuer.sol"} and \textit{"AlastriaIdentityServiceProvider.sol"} assign roles, and this one creates the identities (\acrshort{did}s). This is the only Contract that is deployed, since it inherits the rest of the "identity" Contracts and is in charge of deploying the "registry" Contracts (figure \ref{fig:mvp1-contracts}).
                     \begin{figure}[h]
                         \centering
-                        \includegraphics[width=1.0\textwidth]{SCs-Diagram.png}
+                        \includegraphics[width=1.1\textwidth]{SCs-Diagram.png}
                         \caption{Alastria ID MVP1 Smart Contracts diagram}
                         \label{fig:mvp1-contracts}
                     \end{figure}
@@ -1245,7 +1245,7 @@
                 \label{fig:stats-aie}
             \end{figure}
         \subsection{Audit of the TypeScript library}
-            The objective of this subsection is to perform a security analysis to the version 1.5\footnote{\url{https://github.com/alastria/alastria-identity-lib/releases/tag/1.5}} of the \textit{TypeScript} library from the \acrshort{mvp}1 in order to detect vulnerabilities, with the aim of improving the quality of the library.\\ 
+            The objective of this subsection is to perform a security analysis to the version 1.5\footnote{\url{https://github.com/alastria/alastria-identity-lib/releases/tag/1.5}\label{lib-version}} of the \textit{TypeScript} library from the \acrshort{mvp}1 in order to detect vulnerabilities, with the aim of improving the quality of the library.\\ 
             
             For this purpose, two analyses will be made. First a dependency analysis will be performed with \textit{\acrshort{npm} audit}\footnote{\url{https://docs.npmjs.com/cli/v6/commands/npm-audit}}. Finally, the \textit{nodejsscan} tool (figure \ref{fig:nodejsscan-logo} will be used. \textit{Nodejsscan} is a \acrfull{sast} for \textit{Node.js} applications powered by \textit{libsast}\footnote{\url{https://github.com/ajinabraham/libsast}} and \textit{semgrep}\footnote{\url{https://github.com/returntocorp/semgrep}}.
             \begin{figure}[h]
