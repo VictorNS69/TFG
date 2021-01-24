@@ -31,5 +31,5 @@ recompile_and_rename:	## Recompiles the .text and renames the PDF file.
 
 clean:			## Clean output files.
 			@echo Removes compiled files.
-			rm -f Main.aux Main.glo  Main.lol Main.toc Main.bbl Main.gls Main.lot Main.acn  Main.blg Main.ist Main.out Main.acr Main-blx.bib Main.lof Main.run.xml Main.alg  Main.glg Main.log Main.fls Main.fdb_latexmk
+			rm -f Main.aux Main.glo  Main.lol Main.toc Main.bbl Main.gls Main.lot Main.acn  Main.blg Main.ist Main.out Main.acr Main-blx.bib Main.lof Main.run.xml Main.alg  Main.glg Main.log Main.fls Main.fdb_latexmk Main.glsdefs
 
