@@ -4,7 +4,7 @@ The objective of this subsection is to perform a security analysis to the versio
 For this purpose, two analyses will be made. First a dependency analysis will be performed with \textit{\acrshort{npm} audit}\footnote{\url{https://docs.npmjs.com/cli/v6/commands/npm-audit}}. Finally, the \textit{nodejsscan} tool (figure \ref{fig:nodejsscan-logo} will be used. \textit{Nodejsscan} is a \acrfull{sast} for \textit{Node.js} applications powered by \textit{libsast}\footnote{\url{https://github.com/ajinabraham/libsast}} and \textit{semgrep}\footnote{\url{https://github.com/returntocorp/semgrep}}.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.2\textwidth]{nodejsscan-logo.png}
+    \includegraphics[width=0.2\textwidth]{images/Security Audit/nodejsscan-logo.png}
     \caption{Nodejsscan logo}
     \label{fig:nodejsscan-logo}
 \end{figure}
@@ -13,7 +13,7 @@ For this purpose, two analyses will be made. First a dependency analysis will be
 "\acrshort{npm} audit" (figure \ref{fig:npmlogo}) is a command that submits a description of the dependencies configured in a project to the default registry and asks for a report of known vulnerabilities. The report returned includes instructions on how to act on this information.\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.2\textwidth]{images/npmlogo.png}
+    \includegraphics[width=0.2\textwidth]{images/Security Audit/npmlogo.png}
     \caption{\acrshort{npm} logo}
     \label{fig:npmlogo}
 \end{figure}
@@ -96,7 +96,7 @@ All issues found are from missconfiguration. Of the total fourteen issues found,
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
-        \pie[radius=1.5]{86/Misconfiguration, 7/\acrshort{csrf}, 7/Rate Limit}
+        \pie[radius=2]{86/Misconfiguration, 7/\acrshort{csrf}, 7/Rate Limit}
     \end{tikzpicture}
     \caption{Issues type in the TypeScript library}
     \label{fig:pie-issues-type}

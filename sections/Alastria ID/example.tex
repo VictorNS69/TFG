@@ -4,7 +4,7 @@ In this section, an Alastria ID use case will be explained, which is the example
 In this example, a user (Subject) wants to rent a car, for this, the rental company (Service Provider) asks the user through a Presentation Request for three data: 1) the driving license, 2) his credit card and 3) prove that the user is over 25 years old.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{ala-rent-car.png}
+    \includegraphics[width=0.8\textwidth]{images/Alastria ID/ala-rent-car.png}
     \caption{Renting a car with Alastria ID}
     \label{fig:ex-car}
 \end{figure}
@@ -13,7 +13,7 @@ The user must send this information to the rental company, and for this he uses 
 All these information flows between the different actors are registered in the blockchain with different Smart Contracts (figure \ref{fig:rent-cycle}): the Issuer when issuing the Credential calls a Smart Contract to register the issuance, the user (Subject) registers in the blockchain that he has received the same Credential; the user "wraps" the Credentials in a Presentation, indicating why they are delivered and the validity date, signs it and records that he has sent the Presentation; Finally, the Service Provider verifies that the Credentials are valid, consulting the record made by their Issuers, and then records that it has received the Presentation.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{rent-car-data-lifecycle.png}
+    \includegraphics[width=0.8\textwidth]{images/Alastria ID/rent-car-data-lifecycle.png}
     \caption{Alastria ID data life cycle}
     \label{fig:rent-cycle}
 \end{figure}

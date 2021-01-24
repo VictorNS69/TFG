@@ -11,14 +11,14 @@ The first officially released specification was \textit{JSON-RPC 1.0}\cite{json-
     \item A collection of name-value pairs (figure \ref{fig:json_objects}). In various languages, this is realized as an Object, Record, Struct, Dictionary, ...
           \begin{figure}[h]
               \centering
-              \includegraphics[width=0.6\textwidth]{json-objects.png}
+              \includegraphics[width=0.6\textwidth]{images/State of the Art/json-rpc/json-objects.png}
               \caption{\acrshort{json} objects schema}
               \label{fig:json_objects}
           \end{figure}
     \item An ordered list of values (figure \ref{fig:json_arrays}). In most languages, this is realized as an Array, Vector, List, ...
           \begin{figure}[h]
               \centering
-              \includegraphics[width=0.6\textwidth]{json-arrays.png}
+              \includegraphics[width=0.6\textwidth]{images/State of the Art/json-rpc/json-arrays.png}
               \caption{\acrshort{json} array schema}
               \label{fig:json_arrays}
           \end{figure}
@@ -45,7 +45,7 @@ From the point of view of a remote call, the calling program is known as client,
 In the next figure (figure \ref{fig:rpc_schema}) we can see the typical \acrshort{rpc} communication schema.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{rpc.png}
+    \includegraphics[width=0.7\textwidth]{images/State of the Art/json-rpc/rpc.png}
     \caption{\acrshort{rpc} schema}
     \label{fig:rpc_schema}
 \end{figure}
@@ -56,7 +56,7 @@ The client stub then uses a routine in the \acrshort{rpc} \acrfull{rts} to send 
 The server stub (located in the remote machine) is called by the \acrshort{rpc} \acrshort{rts} when the message arrives from the client. The server stub performs the unmarshall of the parameters passed to the subroutine, calling the subroutine, and marshalling the return parameters.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{rpc-mecha.png}
+    \includegraphics[width=0.7\textwidth]{images/State of the Art/json-rpc/rpc-mecha.png}
     \caption{\acrshort{rpc} mechanism}
     \label{fig:rpc_mechanism}
 \end{figure}
@@ -107,4 +107,3 @@ Similarly, the response from the server is expressed as a single \acrshort{json}
     \item \textbf{id}: This property must be the same as the value of the requested Object. If there was an error, it must be \textit{Null}.
 \end{itemize}
 To send several requests at the same time, the client may send an Array with all the request objects. It is called batch. The response from the server should be another Array containing the response objects after all the requests have been processed. The server may process the batch as a set of concurrent tasks. Also, the response objects may be returned in any order within the Array. Thanks to the id server and client will match the context between requests and responses.
-

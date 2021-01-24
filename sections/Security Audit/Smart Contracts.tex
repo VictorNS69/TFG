@@ -4,7 +4,7 @@ The objective of this subsection is to perform a security analysis of the Smart 
 For this purpose, two analyses will be made. One with the tool \textit{Mythril}\footnote{\url{https://github.com/ConsenSys/mythril}}. \textit{Mythril} (figure \ref{fig:myth}) is a security analysis tool for \acrshort{evm} bytecode. It detects security vulnerabilities in Smart Contracts built for \textit{Ethereum}, \textit{Hedera}, \textit{Quorum}, \textit{Vechain}, \textit{Roostock}, \textit{Tron} and other \acrshort{evm}-compatible blockchains. It uses symbolic execution, \acrshort{smt} solving and taint analysis to detect a variety of security vulnerabilities.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.3\textwidth]{mythril_logo.png}
+    \includegraphics[width=0.3\textwidth]{images/Security Audit/mythril_logo.png}
     \caption{Mythril logo}
     \label{fig:myth}
 \end{figure}
@@ -206,7 +206,7 @@ The vulnerability lies in the fact that a misuse of modifiers is being made.  In
 Bearing in mind that the role of Issuer is that which allows you to create identities (\acrshort{did}s), this vulnerability has been classified as "high" (8.9 overall score) and the following attack vector has been calculated\footnote{The detailed score can be checked \href{https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:H/E:F/RL:O/RC:R/CR:X/IR:H/AR:H/MAV:N/MAC:L/MPR:N/MUI:N/MS:C/MC:X/MI:H/MA:H&version=3.1}{here}} (figure \ref{fig:stats-aii}).\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\textwidth]{stats-aii.png}
+    \includegraphics[width=1.1\textwidth]{images/Security Audit/stats-aii.png}
     \caption{\acrshort{cvss} stats for AlastriaIdentityIssuer.sol}
     \label{fig:stats-aii}
 \end{figure}
@@ -237,7 +237,7 @@ The same error occurs as the one mentioned above. The modifier \textit{"onlyIden
 The vulnerability, although it no longer affects the creation of identities (\acrshort{did}s), remains at a "high" level (8.9), but it has a different attack vector\footnote{The detailed score can be checked \href{https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N/E:F/RL:O/RC:R/CR:H/IR:X/AR:X/MAV:N/MAC:L/MPR:N/MUI:N/MS:C/MC:H/MI:X/MA:X&version=3.1}{here}} (figure \ref{fig:stats-aii}).\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\textwidth]{stats-aie.png}
+    \includegraphics[width=1.1\textwidth]{images/Security Audit/stats-aie.png}
     \caption{\acrshort{cvss} stats for AlastriaIdentityEntity.sol}
     \label{fig:stats-aie}
 \end{figure}

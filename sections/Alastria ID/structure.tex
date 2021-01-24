@@ -2,7 +2,7 @@
 In this section we will talk about the structure of the first \acrlong{mvp} of Alastria ID (\textit{\acrshort{mvp}1})\cite{ala-mvp1}.\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{alastria-mvp1.jpg}
+    \includegraphics[width=0.7\textwidth]{images/Alastria ID/alastria-mvp1.jpg}
     \caption{Alastria ID MVP1 structure}
     \label{fig:ala_structure}
 \end{figure}
@@ -26,7 +26,7 @@ The Smart Contracts are distributed as follows:
               \item \textbf{"AlastriaIdentityManager.sol"}\footnote{\url{https://github.com/alastria/alastria-identity/blob/master/contracts/identityManager/AlastriaIdentityManager.sol}}: this is the main Contract, in charge of creating and managing identities. Contracts \textit{"AlastriaIdentityIssuer.sol"} and \textit{"AlastriaIdentityServiceProvider.sol"} assign roles, and this one creates the identities (\acrshort{did}s). This is the only Contract that is deployed, since it inherits the rest of the "identity" Contracts and is in charge of deploying the "registry" Contracts (figure \ref{fig:mvp1-contracts}).
                     \begin{figure}[h]
                         \centering
-                        \includegraphics[width=1.1\textwidth]{SCs-Diagram.png}
+                        \includegraphics[width=1.1\textwidth]{images/Alastria ID/SCs-Diagram.png}
                         \caption{Alastria ID MVP1 Smart Contracts diagram}
                         \label{fig:mvp1-contracts}
                     \end{figure}
