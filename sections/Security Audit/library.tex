@@ -1,0 +1,97 @@
+        \subsection{Audit of the TypeScript library}
+            The objective of this subsection is to perform a security analysis to the version 1.5\footnote{\url{https://github.com/alastria/alastria-identity-lib/releases/tag/1.5}\label{lib-version}} of the \textit{TypeScript} library from the \acrshort{mvp}1 in order to detect vulnerabilities, with the aim of improving the quality of the library.\\ 
+            
+            For this purpose, two analyses will be made. First a dependency analysis will be performed with \textit{\acrshort{npm} audit}\footnote{\url{https://docs.npmjs.com/cli/v6/commands/npm-audit}}. Finally, the \textit{nodejsscan} tool (figure \ref{fig:nodejsscan-logo} will be used. \textit{Nodejsscan} is a \acrfull{sast} for \textit{Node.js} applications powered by \textit{libsast}\footnote{\url{https://github.com/ajinabraham/libsast}} and \textit{semgrep}\footnote{\url{https://github.com/returntocorp/semgrep}}.
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.2\textwidth]{nodejsscan-logo.png}
+                \caption{Nodejsscan logo}
+                \label{fig:nodejsscan-logo}
+            \end{figure}
+            
+            \subsubsection{NPM audit}
+                "\acrshort{npm} audit" is a command that submits a description of the dependencies configured in a project to the default registry and asks for a report of known vulnerabilities. The report returned includes instructions on how to act on this information.\\
+                
+                After executing the command, the following results have been obtained (table \ref{tab:depen}):
+                \begin{longtable}{||p{0.11\linewidth} | p{0.11\linewidth} | p{0.35\linewidth} | p{0.43\linewidth}||}
+                    \hline
+                    \textbf{Package} & \textbf{Severity} & \textbf{Issue} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    web3 & Low &  Insecure Credential Storage  & The package stores encrypted wallets in local storage and requires a password to load the wallet. Once the wallet is loaded, the private key is accessible via \textit{LocalStorage}.\\
+                    \hline
+                    bl (web3 dependency) & High &  Remote Memory Exposure & The \textit{BufferList} state can be corrupted, tricking it into exposing uninitialized memory via regular \textit{.slice()} calls.\\
+                    \hline
+                    elliptic (web3 dependency) & High &  Signature Malleability  & Allows ECDSA signature malleability via variations in encoding, leading '$\backslash$0' bytes, or integer overflows. \\
+                    \hline
+                    \caption{TypeScript Library dependency report}
+                    \label{tab:depen}
+                \end{longtable}
+                
+                Regarding the vulnerabilities, the two "high" type have already been fixed in the last patches.
+                \begin{itemize}
+                    \item elliptic\footnote{\url{https://www.npmjs.com/advisories/1547}}: Fixed in "6.5.3" or later.
+                    \item bl\footnote{\url{https://www.npmjs.com/advisories/1555}}: Fixed in "4.0.3", "3.0.1", "2.2.1" or "1.2.3".
+                \end{itemize}
+                
+                About "Insecure Credential Storage" vulnerability, there is no fix available yet, but the web3 team is working on a solution\footnote{\url{https://www.npmjs.com/advisories/877}}.
+                
+            \subsubsection{Nodejsscan analysis}
+                After the analysis and study of the reports, fourteen issues of the twenty-two files evaluated have been detected (figure \ref{fig:pie-files}). Not all files in the package have been evaluated, as configuration files have been omitted.\\
+                      
+                \begin{figure}[h!]
+                    \centering
+                    \begin{tikzpicture}
+                        \pie[sum=auto, radius=2]{22/Files scanned, 14/Issues identified}
+                    \end{tikzpicture}
+                    \caption{TypeScript library files scanned and Issues found}
+                    \label{fig:pie-files}
+                \end{figure}
+                
+                The following table (table \ref{tab:lib}) summarizes the vulnerabilities found in the version 1.5 of the library after the analysis.\\
+                \begin{longtable}{||p{0.1\linewidth} | p{0.11\linewidth} | p{0.35\linewidth} | p{0.45\linewidth}||}
+                    \hline
+                    \textbf{\acrshort{cwe} ID} & \textbf{Severity} & \textbf{Issue} & \textbf{Description} \\ [0.5ex] 
+                    \hline\hline
+                    \href{https://cwe.mitre.org/data/definitions/352.html}{352} & Info &  Anti \acrshort{csrf} control &   This application does not have anti \acrshort{csrf} protection which prevents cross site request forgery attacks.\\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header \acrshort{xss} filter &  Helmet \acrshort{xss} Protection header is not configured for this application.\\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header check expect CT &   Helmet Expect CT header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header X powered by &  Helmet X Powered By header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header nosniff & Helmet No Sniff header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header check crossdomain & Helmet X Permitted Cross Domain Policies header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header \acrshort{dns} prefetch & Helmet \acrshort{dns} Prefetch header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header feature policy & Helmet Feature Policy header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header \acrshort{hsts} & Helmet \acrshort{hsts} header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header frame guard & Helmet X Frame Options header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header IENOOPEN & Helmet IE No Open header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header refferer policy & Helmet Referrer Policy header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/693.html}{693} & Info &  Helmet Header  check \acrshort{csp} & Helmet Content Security Policy header is not configured for this application. \\
+                    \hline
+                    \href{https://cwe.mitre.org/data/definitions/770.html}{770} & Info &  Rate Limit Control & This application does not have API rate limiting controls.\\[1ex]
+                    \hline
+                    \caption{TypeScript Library audit report}
+                    \label{tab:lib}
+                \end{longtable}
+                
+                All issues found are from missconfiguration. Of the total fourteen issues found, \textbf{86\% (12)} are \textbf{protection mechanism failures}, \textbf{7\% (1)} is a \textbf{\acrshort{csrf} missconfiguration}, and \textbf{7\% (1)} is a \textbf{broken access control} (figure \ref{fig:pie-issues-type}).
+                \begin{figure}[h!]
+                    \centering
+                    \begin{tikzpicture}
+                        \pie[radius=2]{86/Misconfiguration, 7/\acrshort{csrf}, 7/Rate Limit}
+                    \end{tikzpicture}
+                    \caption{Issues type in the TypeScript library}
+                    \label{fig:pie-issues-type}
+                \end{figure}
+
+
