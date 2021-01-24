@@ -1,82 +1,81 @@
 \section{Introduction}
 
- This section presents the context of the thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
-    
-    \subsection{Context}
-        \subsubsection{Blockchain}
-            Blockchain\cite{blockchain-sum,blockchainGartner} is as a large distributed ledger that stores records of transactions. This "ledger" is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
-            
-            Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
-            
-        \subsubsection{Self-Sovereign Identity}
-            \acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
-            
-            Under \acrlong{ssi} model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
-            
-            The ten guiding principles of \acrshort{ssi}, defined by Christopher Allen in \textit{The Path to \acrlong{ssi}}\cite{path-to-ssi} are:\\
-            \begin{itemize}
-                \item \textbf{Existence} - Users must have an independent existence.
-                \item \textbf{Control} - Users must control their identities.
-                \item \textbf{Access} - Users must have access to their own data.
-                \item \textbf{Transparency} - Systems and algorithms must be transparent.
-                \item \textbf{Persistence} - Identities must be long-lived.
-                \item \textbf{Portability} - Information and services about identity must be transportable.
-                \item \textbf{Interoperability} - Identities should be as widely usable as possible.
-                \item \textbf{Consent} - Users must agree to the use of their identity.
-                \item \textbf{Minimization} - Disclosure of claims must be minimized.
-                \item \textbf{Protection} - The rights of users must be protected.
-            \end{itemize}
-            
-            The \acrshort{ssi} idea was born to solve the problems that exist with the current digital identity, such as the control of the information offered by the user, elimination of repeated data, improve the user experience in online onboardings, facilitate \acrshort{gdpr} compliance, etc.\\
-            
-            Currently there are multiple initiatives, both national and international, with different models and different proposals for identity wallets. In this thesis we will talk about some models and their proposals.
-            
-        \subsubsection{Alastria}
-            Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
-            
-            Alastria has the clear vocation to become a pioneering project of reference in the generation of new Digital Economy models. It promotes an innovation methodology that anticipates the needs of the Society regarding the use of products and services based on decentralized technologies.\\
-            
-            Alastria's mission and vision covers several areas.
-            \begin{itemize}
-                \item Digital Economy: Alastria is a non-profit association that fosters the Digital Economy through the development of Blockchain.
-                \item Blockchain Democratization: Alastria seeks to democratize access to Blockchain by providing the necessary tools to promote access, adoption and use of technology.
-                \item Networks promoted by its members: Alastria is technology agnostic and offers the networks promoted by its members and a Digital Identity model (\textit{Alastria ID}), focused on making the transactions on the Networks with a legal validity. 
-                \item Pioneer Project: Alastria is a pioneering project that encourages innovation, anticipating the possible interest of our Society for the use of services and products based on Blockchain.
-            \end{itemize}
-        
-        \subsection{Motivation}
-            Currently, in such a technological society, people have serious problems regarding their digital identity. Each person has several accounts on different web pages, different emails, different passwords ... they are so many that sometimes we forget that we were registered somewhere, and we create a new account (repeated); it is also normal to have inconsistent data in different places, for example in a job portal, which you have not updated after you have found a job.\\
-            
-            It's not just people who have problems with digital identity. Companies also have problems, such as breaches of \acrshort{gdpr}, which leads to a financial penalty for the company. Another problem that companies have, when users try to register on their web pages, that most of the time it is a long and tedious process that can end with the lack of user interest, which implies the loss of a new potential customer.\\
-            
-            This is where the \acrlong{ssi} comes into play. The idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions, in order to improve the quality of life for the user and facilitate technological interactions between users and companies. This interest in \acrlong{ssi} is accompanied by interest in the Blockchain technology. Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects, as it provides very important features in this digital age. But it is important to note that for \acrlong{ssi} to work, it has to be a well-designed, safe and robust model and project.\\
-            
-            But this is not the only reason why I have chosen this topic for my thesis. Also the possibility of working with Alastria, to be able to work on a project with great complexity, open source and in a multi-profile and multi-company environment. It is very motivating for me to be able to learn from something "so big and difficult" and to make a contribution.\\
-            
-            Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), team with which I won the first place at \textit{Convergence, The Global Blockchain Congress (2019) Hackaton}\cite{iecisa-hackaton},  and also to be part of the \textit{CORE Identity Team of Alastria}. Therefore, and with the intention of studying other implementations for the \textit{\acrshort{ssi}}, improve my cybersecurity skills and to improve the current implementation proposed by Alastria, I have chosen this topic.
+This section presents the context of the thesis, the motivation behind it, the specific objectives to be achieved and an explanation of the structure of the rest of the document.
 
-        \subsection{Objectives}
-            The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{\acrlong{ssi}} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
-            \begin{itemize} 
-                \item[1)] the analysis of the blockchain technology: Explain and define what this technology is and how it works.
-                \item[2)] the study of the \textit{\acrlong{ssi}}: Study what it is and analyze implementations that are currently being made.
-                \item[3)] the delve in the implementation of \textit{Alastria ID}: Expose the \textit{Alastria ID} model with the tools created by Alastria to implement the \acrlong{ssi}.
-                \item[4)] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}: Analyze the framework and tools provided by Alastria, to grant they are not vulnerable.
-                \item[5)] the design of a potential attack and demonstration of its criticality: Create a proof of concept about an attack that can exploit a vulnerability inside \textit{Alastria ID}.
-            \end{itemize}
-            
-        \subsection{Document Structure}
-            The current document is divided into the following chapters dealing with the different objectives identified in the previous section.\\
-            
-            The second chapter \textit{State of the Art}, contains an introduction to blockchain. It presents the main concepts to understand the technology and typical use cases. Afterwards, \textit{Ethereum} will be explained in detail several concepts as \acrlong{eoa}, Smart Contracts or \acrlong{evm} will be discussed. This chapter also includes the definition of \acrshort{json}-\acrshort{rpc} and \acrfull{jwt}. Finally the concept of \acrlong{ssi} will be studied in detail, showing what it is, how it works and some use cases. Finally, there is a brief discussion of the Alastria proposal, Alastria ID and other proposals that exist today.\\
-            
-            The next chapter, \textit{Alastria ID} exposes in detail the Alastria ID implementation in order to obtain a detailed understanding of the model. This involves exploring the actors, specification and structure of the project.\\
-            
-            In chapter 4, \textit{Security audit}, security audits will be conducted. For the Smart Contracts, an analysis will be performed with the \textit{Mythrill} tool and also a dead code analysis. For the \textit{TypeScript} library will also be analyzed with the audit provided by \acrshort{npm} and the \textit{nodejsscan} tool.\\
-            
-            After the audit, in chapter 5 \textit{\acrshort{poc} attack}, a \acrlong{poc} will be made on one of the vulnerabilities detected in chapter 4. Several scripts will be made and the impact that this vulnerability would have in a real environment will be commented.\\
-            
-            Chapter 6, \textit{Conclusions}, collects the results of the thesis and compares the different \acrshort{ssi} models together to raise the conclusions of the work carried out. It justifies how the developed project satisfies the existing objectives.\\
-            
-            The final chapter, \textit{Future Work} proposes open research lines that can be applied in a future evolution of the Alastria ID \acrshort{ssi} model, and as a continuation of this thesis.
+\subsection{Context}
+\subsubsection{Blockchain}
+Blockchain\cite{blockchain-sum,blockchainGartner} is as a large distributed ledger that stores records of transactions. This "ledger" is replicated hundreds of times throughout the network so it is available to everyone. Every time a transaction occurs, it is updated in all of these replicated ledgers, so everyone can see it.\\
 
+Every time a new transaction is initiated, a block is created with the transactions details and broadcast to all the nodes. Every block has a timestamp, and a reference to the previous block in the chain, to help establish a sequence of events. Once the authenticity of the transaction is established, that block is linked to the previous block, creating a chain. This chain of blocks is replicated across the entire network, and all cryptographically secured which makes it not only challenging, but almost impossible to hack.
+
+\subsubsection{Self-Sovereign Identity}
+\acrlong{ssi} or just \textit{\acrshort{ssi}}\cite{ssi} is the concept of individuals or organizations having sole ownership of their digital identities, and control over how their personal data is shared and used. This adds a layer of security and flexibility allowing the identity holder to only reveal the necessary data for any given transaction or interaction.\\
+
+Under \acrlong{ssi} model, individuals and organizations can present claims relating to their data without having to go through an intermediary.\\
+
+The ten guiding principles of \acrshort{ssi}, defined by Christopher Allen in \textit{The Path to \acrlong{ssi}}\cite{path-to-ssi} are:\\
+\begin{itemize}
+    \item \textbf{Existence} - Users must have an independent existence.
+    \item \textbf{Control} - Users must control their identities.
+    \item \textbf{Access} - Users must have access to their own data.
+    \item \textbf{Transparency} - Systems and algorithms must be transparent.
+    \item \textbf{Persistence} - Identities must be long-lived.
+    \item \textbf{Portability} - Information and services about identity must be transportable.
+    \item \textbf{Interoperability} - Identities should be as widely usable as possible.
+    \item \textbf{Consent} - Users must agree to the use of their identity.
+    \item \textbf{Minimization} - Disclosure of claims must be minimized.
+    \item \textbf{Protection} - The rights of users must be protected.
+\end{itemize}
+
+The \acrshort{ssi} idea was born to solve the problems that exist with the current digital identity, such as the control of the information offered by the user, elimination of repeated data, improve the user experience in online onboardings, facilitate \acrshort{gdpr} compliance, etc.\\
+
+Currently there are multiple initiatives, both national and international, with different models and different proposals for identity wallets. In this thesis we will talk about some models and their proposals.
+
+\subsubsection{Alastria}
+Alastria is a non-profit association that promotes the Digital Economy through the development of decentralized technologies as Blockchain.\\
+
+Alastria has the clear vocation to become a pioneering project of reference in the generation of new Digital Economy models. It promotes an innovation methodology that anticipates the needs of the Society regarding the use of products and services based on decentralized technologies.\\
+
+Alastria's mission and vision covers several areas.
+\begin{itemize}
+    \item Digital Economy: Alastria is a non-profit association that fosters the Digital Economy through the development of Blockchain.
+    \item Blockchain Democratization: Alastria seeks to democratize access to Blockchain by providing the necessary tools to promote access, adoption and use of technology.
+    \item Networks promoted by its members: Alastria is technology agnostic and offers the networks promoted by its members and a Digital Identity model (\textit{Alastria ID}), focused on making the transactions on the Networks with a legal validity.
+    \item Pioneer Project: Alastria is a pioneering project that encourages innovation, anticipating the possible interest of our Society for the use of services and products based on Blockchain.
+\end{itemize}
+
+\subsection{Motivation}
+Currently, in such a technological society, people have serious problems regarding their digital identity. Each person has several accounts on different web pages, different emails, different passwords ... they are so many that sometimes we forget that we were registered somewhere, and we create a new account (repeated); it is also normal to have inconsistent data in different places, for example in a job portal, which you have not updated after you have found a job.\\
+
+It's not just people who have problems with digital identity. Companies also have problems, such as breaches of \acrshort{gdpr}, which leads to a financial penalty for the company. Another problem that companies have, when users try to register on their web pages, that most of the time it is a long and tedious process that can end with the lack of user interest, which implies the loss of a new potential customer.\\
+
+This is where the \acrlong{ssi} comes into play. The idea of a digital identity for each user in the network, is an issue that is beginning to be very relevant in the technology sector, and some companies and associations are implementing their solutions, in order to improve the quality of life for the user and facilitate technological interactions between users and companies. This interest in \acrlong{ssi} is accompanied by interest in the Blockchain technology. Blockchain is one of the technologies that has aroused the most hype in history. This is due to some of its properties like decentralization, security, transparency and immutability. This implies that many companies want to use blockchain for their projects, as it provides very important features in this digital age. But it is important to note that for \acrlong{ssi} to work, it has to be a well-designed, safe and robust model and project.\\
+
+But this is not the only reason why I have chosen this topic for my thesis. Also the possibility of working with Alastria, to be able to work on a project with great complexity, open source and in a multi-profile and multi-company environment. It is very motivating for me to be able to learn from something "so big and difficult" and to make a contribution.\\
+
+Currently I have the opportunity to work in the \textit{Inetum} blockchain team (formerly called \textit{IECISA}), team with which I won the first place at \textit{Convergence, The Global Blockchain Congress (2019) Hackaton}\cite{iecisa-hackaton},  and also to be part of the \textit{CORE Identity Team of Alastria}. Therefore, and with the intention of studying other implementations for the \textit{\acrshort{ssi}}, improve my cybersecurity skills and to improve the current implementation proposed by Alastria, I have chosen this topic.
+
+\subsection{Objectives}
+The present project has three main objectives: (1) explain the blockchain technology, (2) the study of the \textit{Alastria ID} and the \textit{\acrlong{ssi}} and (3) the audit of the artifacts and tools created by Alastria. These general objectives are specified in a list of specific objectives:
+\begin{itemize}
+    \item[1)] the analysis of the blockchain technology: Explain and define what this technology is and how it works.
+    \item[2)] the study of the \textit{\acrlong{ssi}}: Study what it is and analyze implementations that are currently being made.
+    \item[3)] the delve in the implementation of \textit{Alastria ID}: Expose the \textit{Alastria ID} model with the tools created by Alastria to implement the \acrlong{ssi}.
+    \item[4)] the audit of the artifacts and tools created by Alastria to use the \textit{Alastria ID}: Analyze the framework and tools provided by Alastria, to grant they are not vulnerable.
+    \item[5)] the design of a potential attack and demonstration of its criticality: Create a proof of concept about an attack that can exploit a vulnerability inside \textit{Alastria ID}.
+\end{itemize}
+
+\subsection{Document Structure}
+The current document is divided into the following chapters dealing with the different objectives identified in the previous section.\\
+
+The second chapter \textit{State of the Art}, contains an introduction to blockchain. It presents the main concepts to understand the technology and typical use cases. Afterwards, \textit{Ethereum} will be explained in detail several concepts as \acrlong{eoa}, Smart Contracts or \acrlong{evm} will be discussed. This chapter also includes the definition of \acrshort{json}-\acrshort{rpc} and \acrfull{jwt}. Finally the concept of \acrlong{ssi} will be studied in detail, showing what it is, how it works and some use cases. Finally, there is a brief discussion of the Alastria proposal, Alastria ID and other proposals that exist today.\\
+
+The next chapter, \textit{Alastria ID} exposes in detail the Alastria ID implementation in order to obtain a detailed understanding of the model. This involves exploring the actors, specification and structure of the project.\\
+
+In chapter 4, \textit{Security audit}, security audits will be conducted. For the Smart Contracts, an analysis will be performed with the \textit{Mythrill} tool and also a dead code analysis. For the \textit{TypeScript} library will also be analyzed with the audit provided by \acrshort{npm} and the \textit{nodejsscan} tool.\\
+
+After the audit, in chapter 5 \textit{\acrshort{poc} attack}, a \acrlong{poc} will be made on one of the vulnerabilities detected in chapter 4. Several scripts will be made and the impact that this vulnerability would have in a real environment will be commented.\\
+
+Chapter 6, \textit{Conclusions}, collects the results of the thesis and compares the different \acrshort{ssi} models together to raise the conclusions of the work carried out. It justifies how the developed project satisfies the existing objectives.\\
+
+The final chapter, \textit{Future Work} proposes open research lines that can be applied in a future evolution of the Alastria ID \acrshort{ssi} model, and as a continuation of this thesis.
