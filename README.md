@@ -25,7 +25,7 @@ Sovereign Identity, Ethereum, Quorum, Solidity, Smart Contracts, Hacking, Cybers
 ```bash
 sudo apt install texlive-full
 ```
-2. Install the **_pgf-pie_** package.
+2. Install the **_pgf-pie_** package.\
 First, you need to download the _.zip_ from: http://mirror.ctan.org/graphics/pgf/contrib/pgf-pie.zip, then:
 ```bash
 unzip pgf-pie.zip
