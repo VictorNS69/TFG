@@ -1,5 +1,5 @@
 # Alastria Blockchain Ecosystem. Security and privacy in Self-Sovereign Identity
-This repository contains my thesis for the degree in in IT Engineering at the [Universidad Politécnica de Madrid](http://www.upm.es/internacional).
+This repository contains my thesis (final-year project) for the Computer Engineering bachelor degree at the [Universidad Politécnica de Madrid](http://www.upm.es/internacional).
 
 ## Author
 [Víctor Nieves Sánchez](https://www.linkedin.com/in/victor-nieves-s%C3%A1nchez/)
