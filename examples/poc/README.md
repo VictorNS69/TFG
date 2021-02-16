@@ -13,5 +13,6 @@ The main files are:
 1. Install Node v10 
 2. Install dependencies with `npm install`
 3. Run the scripts in the following order:
+
 ![Poc flow](../../images/PoC/poc-flow.png)
 **Note** that, once the PoC has been executed, **the entity may not have the Issuer role**, so you will have to use the [Alastria examples](https://github.com/alastria/alastria-identity-example/blob/master/exampleIssuer/2.addIdentityIssuer.js) to reassign the Issuer role to the entity.
